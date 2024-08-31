@@ -1,0 +1,46 @@
+﻿@using Modele
+@{
+	IEnumerable<Mpandray>? liste_mpandray =(IEnumerable<Mpandray>?) ViewData["liste"] ;
+}
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>Numero</th>
+					<th>Anarana & Fanampiny</th>
+					<th>Adiresy</th>
+					<th>Telephone</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if(liste_mpandray!.Any())
+				{
+					@foreach(var item in liste_mpandray!)
+					{
+						<tr>
+							<td>@item.Numero</td>
+							<td>@item.Anarana	@item.Fanampiny</td>
+							<td>@item.Fonenana	@item.Fokontany</td>
+							@if (item.Tel != "0")
+							{
+								<td>@item.Tel</td>
+							}
+							else
+							{
+								<td>Aucun</td>
+							}
+						</tr>
+					}
+				}
+		</tbody>
+		</table>
+	</body>
+	<footer>
+
+	</footer>
+</html>

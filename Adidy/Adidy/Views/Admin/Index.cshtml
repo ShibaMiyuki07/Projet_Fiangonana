@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+    string error =(string) ViewData["Error"]!;
+}
+@if (!string.IsNullOrWhiteSpace(error))
+{
+    <div>@error</div>
+}
+<form method="post" action="/Admin/Index">
+    <input type="text" name="nomutilisateur"/>
+    <input type="password" name="motdepasse" />
+    <button type="submit">Ajouter</button>
+</form>

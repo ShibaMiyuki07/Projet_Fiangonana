@@ -1,0 +1,28 @@
+﻿@{
+    List<Tuple<int, string>> typeData = (List<Tuple<int, string>>)ViewData["type"]!;
+}
+
+<!doctype html>
+<html>
+    <head></head>
+    <body>
+    <form action="/Admin/Import" method="post" enctype="multipart/form-data">
+        <p class="text-center"> Importer les fichiers </p>
+        <p>
+            <label>Fichier : </label>
+            <div><input type="file" name="file" /></div>
+        </p>
+        <p>
+            <select name="dataType">
+                @foreach (var item in typeData)
+                {
+                    <option value="@item.Item1">@item.Item2</option>    
+                }
+            </select>
+        </p>
+        <div class="btn-wrapper mt-0 text-center">
+            <button type="submit">Valider</button>
+        </div>
+    </form>
+    </body>
+</html>
