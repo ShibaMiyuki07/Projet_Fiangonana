@@ -28,6 +28,13 @@ namespace Adidy.Services
         }
 
 
+        public async Task<Mpandray?> GetMpandrayByNumero(int numero)
+        {
+            return await fiangonanaContext.Mpandrays.Where(mpandray => mpandray.Numero == numero).FirstOrDefaultAsync();
+        }
+
+
+
         public async Task BulkInsert(IEnumerable<Mpandray> mpandrays)
         {
             await fiangonanaContext.BulkInsertAsync(mpandrays);

@@ -35,7 +35,7 @@ namespace Adidy.Controllers
 
 			if (page <= 0)
             {
-                liste_mpandray = null;
+                liste_mpandray = [];
 			}
             else
             {
