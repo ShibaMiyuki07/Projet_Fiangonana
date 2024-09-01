@@ -25,5 +25,23 @@ namespace Modele
         public readonly static List<Tuple<int, string>> toImport = [
             new Tuple<int,string>(1,"Adidy"),
             new Tuple<int,string>(2,"Mpandray")];
+
+
+
+        public readonly static Dictionary<string, int> DictionnaireMois = new() 
+        { 
+            { "janvier" , 1 },
+            { "fevrier" , 2 },
+            { "mars" , 3 },
+            {"avril" , 4 },
+            {"mai" , 5 },
+            {"juin" , 6 },
+            {"juillet" , 7 },
+            {"aout" , 8 },
+            {"septembre" , 9 },
+            {"octobre" , 10 },
+            {"novembre" , 11 },
+            {"decembre" , 12 }
+        };
     }
 }
