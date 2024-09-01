@@ -56,6 +56,11 @@ namespace Adidy.Controllers
                 IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File);
                 await mpandrayService.BulkInsert(liste_mpandray);
             }
+            else if (Constante.toImport[data.DataType - 1].Item2.Equals("adidy", StringComparison.CurrentCultureIgnoreCase))
+            {
+                IEnumerable<CsvAdidy> liste_mpandray = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
+                //await mpandrayService.BulkInsert(liste_mpandray);
+            }
             return RedirectToAction("ImportData","Admin");
         }
     }
