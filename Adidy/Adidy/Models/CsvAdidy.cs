@@ -1,4 +1,6 @@
-﻿namespace Adidy.Models
+﻿using Modele;
+
+namespace Adidy.Models
 {
     public class CsvAdidy
     {
@@ -14,5 +16,16 @@
 
         public decimal Adidy { get; set; } = decimal.Zero;
 
+
+
+        public IEnumerable<PaiementAdidy> CsvToPaiement(IEnumerable<CsvAdidy> csvAdidy)
+        {
+            List<PaiementAdidy> toReturn = new List<PaiementAdidy>();
+            return toReturn;
+        }
+
     }
+
+
+
 }

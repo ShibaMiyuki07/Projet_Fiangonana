@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|solutionrelative:adidy\\models\\csvadidy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AD8D951-98AB-49C2-BF80-9E96FABE4070}|Modele\\Modele.csproj|d:\\fiangoanana\\projet\\adidy\\modele\\mpandray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AD8D951-98AB-49C2-BF80-9E96FABE4070}|Modele\\Modele.csproj|solutionrelative:modele\\mpandray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|solutionrelative:adidy\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|solutionrelative:adidy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AD8D951-98AB-49C2-BF80-9E96FABE4070}|Modele\\Modele.csproj|d:\\fiangoanana\\projet\\adidy\\modele\\mpandray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AD8D951-98AB-49C2-BF80-9E96FABE4070}|Modele\\Modele.csproj|solutionrelative:modele\\mpandray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\services\\mpandrayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\views\\home\\mpandrayliste.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|solutionrelative:adidy\\views\\home\\mpandrayliste.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|solutionrelative:adidy\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\nlog.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -172,22 +172,9 @@
               "RelativeDocumentMoniker": "Adidy\\Models\\CsvAdidy.cs",
               "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Models\\CsvAdidy.cs",
               "RelativeToolTip": "Adidy\\Models\\CsvAdidy.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-01T18:38:43.896Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MpandrayAjout.cshtml",
-              "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayAjout.cshtml",
-              "RelativeDocumentMoniker": "Adidy\\Views\\Home\\MpandrayAjout.cshtml",
-              "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayAjout.cshtml",
-              "RelativeToolTip": "Adidy\\Views\\Home\\MpandrayAjout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-01T18:27:12.651Z",
               "EditorCaption": ""
             },
             {
@@ -205,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MpandrayService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\MpandrayService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\MpandrayService.cs",
@@ -213,12 +200,11 @@
               "RelativeToolTip": "Adidy\\Services\\MpandrayService.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAFUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T05:12:42.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T05:12:42.647Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UtilisateurService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\UtilisateurService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\UtilisateurService.cs",
@@ -231,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IMpandrayService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\Interface\\IMpandrayService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\Interface\\IMpandrayService.cs",
@@ -239,12 +225,11 @@
               "RelativeToolTip": "Adidy\\Services\\Interface\\IMpandrayService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T06:17:59.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T06:17:59.716Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Mpandray.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Mpandray.cs",
               "RelativeDocumentMoniker": "Modele\\Mpandray.cs",
@@ -252,12 +237,11 @@
               "RelativeToolTip": "Modele\\Mpandray.cs",
               "ViewState": "AQIAAB0AAAAAAAAAAAAIwDgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T05:52:37.727Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T05:52:37.727Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MpandrayListe.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayListe.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\Home\\MpandrayListe.cshtml",
@@ -265,8 +249,7 @@
               "RelativeToolTip": "Adidy\\Views\\Home\\MpandrayListe.cshtml",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAACsAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-30T19:20:10.37Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T19:20:10.37Z"
             },
             {
               "$type": "Document",
@@ -278,12 +261,36 @@
               "RelativeToolTip": "Adidy\\Views\\_ViewStart.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-30T17:17:10.979Z",
+              "WhenOpened": "2024-08-30T17:17:10.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Adidy\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Controllers\\AdminController.cs*",
+              "RelativeToolTip": "Adidy\\Controllers\\AdminController.cs*",
+              "ViewState": "AQIAACgAAAAAAAAAAAAcwDwAAABtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T07:29:04.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
+              "Title": "MpandrayAjout.cshtml",
+              "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayAjout.cshtml",
+              "RelativeDocumentMoniker": "Adidy\\Views\\Home\\MpandrayAjout.cshtml",
+              "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayAjout.cshtml",
+              "RelativeToolTip": "Adidy\\Views\\Home\\MpandrayAjout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T18:27:12.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "IUtilisateurService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\Interface\\IUtilisateurService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\Interface\\IUtilisateurService.cs",
@@ -291,21 +298,7 @@
               "RelativeToolTip": "Adidy\\Services\\Interface\\IUtilisateurService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAYAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T15:54:27.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Adidy\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Adidy\\Controllers\\AdminController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAmwC0AAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T07:29:04.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T15:54:27.348Z"
             },
             {
               "$type": "Document",
@@ -317,8 +310,7 @@
               "RelativeToolTip": "Adidy\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-30T07:17:36.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T07:17:36.345Z"
             },
             {
               "$type": "Document",
@@ -354,8 +346,7 @@
               "RelativeToolTip": "Adidy\\nlog.config",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-08-30T20:22:45.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T20:22:45.871Z"
             },
             {
               "$type": "Document",
@@ -619,8 +610,7 @@
               "RelativeToolTip": "Adidy\\Adidy.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-30T04:55:45.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T04:55:45.539Z"
             }
           ]
         }
