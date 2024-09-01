@@ -60,8 +60,18 @@ namespace Adidy.Services
 
         public async Task InsertOne(Mpandray mpandray)
         {
-            await fiangonanaContext.AddAsync(mpandray);
-            await fiangonanaContext.SaveChangesAsync();
+            try
+            {
+                await fiangonanaContext.AddAsync(mpandray);
+                await fiangonanaContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                if(ex.Message.Contains("duplicate"))
+                {
+                    throw new Exception("Efa misy mpandray manana io numerao io");
+                }
+            }
         }
 
         #region private function

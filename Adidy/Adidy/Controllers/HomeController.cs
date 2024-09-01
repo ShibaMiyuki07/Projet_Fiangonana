@@ -84,7 +84,15 @@ namespace Adidy.Controllers
         public async Task<IActionResult> MpandrayAjout(Mpandray mpandray)
         {
             name += "Ajout";
-            await MpandrayService.InsertOne(mpandray);
+            try
+            {
+                await MpandrayService.InsertOne(mpandray);
+            }
+            catch (Exception ex)
+            {
+                ViewData["error"] = ex.Message;
+                return View();
+            }
             ViewData["success"] = "";
             return View();
         }
