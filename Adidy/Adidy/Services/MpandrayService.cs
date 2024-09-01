@@ -28,13 +28,41 @@ namespace Adidy.Services
         }
 
 
+        public async Task<Mpandray?> GetMpandrayByNumero(int numero)
+        {
+            return await fiangonanaContext.Mpandrays.Where(mpandray => mpandray.Numero == numero).FirstOrDefaultAsync();
+        }
+
+
+        public async Task<Mpandray?> UpdateMpandray(Mpandray mpandray)
+        {
+            Mpandray? toModify = await GetMpandrayByNumero(mpandray.Numero);
+            if (toModify != null)
+            {
+                toModify!.Numero = mpandray.Numero;
+                toModify!.Anarana = mpandray.Anarana;
+                toModify!.Fanampiny = mpandray.Fanampiny;
+                toModify!.Fonenana = mpandray.Fonenana;
+                toModify!.Fokontany = mpandray.Fokontany;
+            }
+            else
+                throw new Exception("Mpandray non existant");
+
+            await fiangonanaContext.SaveChangesAsync();
+            return toModify;
+        }
+
         public async Task BulkInsert(IEnumerable<Mpandray> mpandrays)
         {
             await fiangonanaContext.BulkInsertAsync(mpandrays);
             await fiangonanaContext.SaveChangesAsync();
         }
 
-
+        public async Task InsertOne(Mpandray mpandray)
+        {
+            await fiangonanaContext.AddAsync(mpandray);
+            await fiangonanaContext.SaveChangesAsync();
+        }
 
         #region private function
         private static bool Condition(Mpandray mpandray,string[] toFind)

@@ -1,11 +1,13 @@
 ﻿@using Modele
 @{
 	IEnumerable<Mpandray>? liste_mpandray =(IEnumerable<Mpandray>?) ViewData["liste"] ;
+	int pejy =(int) ViewData["page"]!;
 }
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8"/>
+		<title>Lisitry ny mpandray - pejy @pejy</title>
 	</head>
 	<body>
 		<table>
@@ -23,7 +25,7 @@
 					@foreach(var item in liste_mpandray!)
 					{
 						<tr>
-							<td>@item.Numero</td>
+							<td><a href="/Home/Details?numero=@item.Numero">@item.Numero</a></td>
 							<td>@item.Anarana	@item.Fanampiny</td>
 							<td>@item.Fonenana	@item.Fokontany</td>
 							@if (item.Tel != "0")
@@ -39,6 +41,7 @@
 				}
 		</tbody>
 		</table>
+		@pejy
 	</body>
 	<footer>
 

@@ -1,0 +1,56 @@
+﻿@using Modele
+@{
+    Mpandray? details = (Mpandray?) ViewData["details"];
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Details de mpandray</title>
+    </head>
+    <body>
+        @if(details != null)
+        {
+            <div class="details">
+                <div>Numero Mpandray : @details.Numero</div>
+                <div>Anarana : @details.Anarana</div>
+                <div>Fanampiny : @details.Fanampiny</div>
+                <div>Fonenana : @details.Fonenana</div>
+                <div>Fokontany : @details.Fokontany</div>
+                <div>Numero Telephone : @details.Tel</div>
+            </div>
+
+            <div class="formulaire" style="display :none">
+                <form method="post" action="/Home/Details?numero=@details.Numero">
+                    <div>
+                        Numero Mpandray :
+                        <input type="number" name="numero" value="@details.Numero" />
+                    </div>
+                    <div>
+                        Anarana : 
+                        <input type="text" name="anarana" value="@details.Anarana" />
+                    </div>
+                    <div>
+                        Fanampiny :
+                        <input type="text" name="fanampiny" value="@details.Fanampiny" />
+                    </div>
+                    <div>
+                        Fonenana :
+                        <input type="text" name="fonenana" value="@details.Fonenana" />
+                    </div>
+                    <div>
+                        Fokontany :
+                        <input type="text" name="fokontany" value="@details.Fokontany" />
+                    </div>
+                    <div>
+                        Numero Telephone :
+                        <input type="text" name="tel" value="@details.Tel" />
+                    </div>
+                    <button type="submit">Modifier</button>
+                </form>
+            </div>
+        }
+        else
+        {
+            <div>Mpandray non existant</div>
+        }
+</body>
+</html>
