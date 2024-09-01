@@ -31,6 +31,7 @@ namespace Adidy.Controllers
         [HttpGet]
         public async Task<IActionResult> MpandrayListe(int page)
         {
+            name += "/Liste";
             IEnumerable<Mpandray>? liste_mpandray;
 
 			if (page <= 0)
@@ -45,6 +46,15 @@ namespace Adidy.Controllers
 			return View();
         }
 
+
+        [HttpGet("/Home/Details")]
+        public async Task<IActionResult> MpandrayDetails(int numero)
+        {
+            name += "/Details";
+            Mpandray? details = await MpandrayService.GetMpandrayByNumero(numero);
+            ViewData["detais"] = details;
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

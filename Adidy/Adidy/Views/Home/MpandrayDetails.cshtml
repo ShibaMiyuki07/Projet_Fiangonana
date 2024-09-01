@@ -1,6 +1,20 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@using Modele
+@{
+    Mpandray? details = (Mpandray?) ViewData["details"];
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Details de mpandray</title>
     </head>
-    <body></body>
+    <body>
+        @if(details != null)
+        {
+            <div>@details.Numero</div>
+            <div>@details.Anarana</div>
+            <div>@details.Fanampiny</div>
+            <div>@details.Fonenana</div>
+            <div>@details.Fokontany</div>
+            <div>@details.Tel</div>
+        }
+    </body>
 </html>
