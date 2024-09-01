@@ -12,5 +12,8 @@ namespace Adidy.Services.Interface
 
         public Task<Mpandray?> GetMpandrayByNumero(int numero);
 
-	}
+        public Task<Mpandray?> UpdateMpandray(Mpandray mpandray);
+
+
+    }
 }

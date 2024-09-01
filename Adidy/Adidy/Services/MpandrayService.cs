@@ -34,7 +34,7 @@ namespace Adidy.Services
         }
 
 
-        public async Task<Mpandray> UpdateMpandray(Mpandray mpandray)
+        public async Task<Mpandray?> UpdateMpandray(Mpandray mpandray)
         {
             Mpandray? toModify = await GetMpandrayByNumero(mpandray.Numero);
             if (toModify != null)

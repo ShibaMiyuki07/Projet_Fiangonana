@@ -10,16 +10,16 @@
         @if(details != null)
         {
             <div class="details">
-                <div>@details.Numero</div>
-                <div>@details.Anarana</div>
-                <div>@details.Fanampiny</div>
-                <div>@details.Fonenana</div>
-                <div>@details.Fokontany</div>
-                <div>@details.Tel</div>
+                <div>Numero Mpandray : @details.Numero</div>
+                <div>Anarana : @details.Anarana</div>
+                <div>Fanampiny : @details.Fanampiny</div>
+                <div>Fonenana : @details.Fonenana</div>
+                <div>Fokontany : @details.Fokontany</div>
+                <div>Numero Telephone : @details.Tel</div>
             </div>
 
-            <div>
-                <form>
+            <div class="formulaire" style="display :none">
+                <form method="post" action="/Home/Details?numero=@details.Numero">
                     <div>
                         Numero Mpandray :
                         <input type="number" name="numero" value="@details.Numero" />

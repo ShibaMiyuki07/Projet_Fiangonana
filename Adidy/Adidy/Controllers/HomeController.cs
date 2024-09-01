@@ -56,11 +56,14 @@ namespace Adidy.Controllers
             return View();
         }
 
+
+        //Modification mpandray
         [HttpPost("/Home/Details")]
         public async Task<IActionResult> MpandrayDetails(Mpandray mpandray)
         {
             name += "/Modification";
-
+            Mpandray? changed = await MpandrayService.UpdateMpandray(mpandray);
+            ViewData["details"] = changed;
             return View();
         }
 
