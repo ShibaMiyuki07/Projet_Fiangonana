@@ -93,7 +93,7 @@ namespace Adidy.Controllers
                 ViewData["error"] = ex.Message;
                 return View();
             }
-            ViewData["success"] = "";
+            ViewData["success"] = "Enregistrer ilay mpandray";
             return View();
         }
 

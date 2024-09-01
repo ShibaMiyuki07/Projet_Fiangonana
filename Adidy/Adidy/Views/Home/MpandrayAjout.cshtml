@@ -1,8 +1,16 @@
-﻿<html>
+﻿@{
+    string? erreur = (string?)ViewData["error"];
+}
+
+<html>
 	<head>
         <title>Mpandray vaovao</title>
 	</head>
 	<body>
+    @if(!string.IsNullOrEmpty(erreur))
+    {
+        <div>@erreur</div>
+    }
     <div class="formulaire">
         <form method="post" action="/Home/Ajout">
             <div>

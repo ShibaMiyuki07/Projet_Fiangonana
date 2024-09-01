@@ -48,7 +48,17 @@ namespace Adidy.Services
             else
                 throw new Exception("Mpandray non existant");
 
-            await fiangonanaContext.SaveChangesAsync();
+            try
+            {
+                await fiangonanaContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException!.Message.Contains("pkey"))
+                {
+                    throw new Exception("Efa misy mpandray manana io numerao io");
+                }
+            }
             return toModify;
         }
 
@@ -67,7 +77,7 @@ namespace Adidy.Services
             }
             catch (Exception ex)
             {
-                if(ex.Message.Contains("duplicate"))
+                if(ex.InnerException!.Message.Contains("pkey"))
                 {
                     throw new Exception("Efa misy mpandray manana io numerao io");
                 }
