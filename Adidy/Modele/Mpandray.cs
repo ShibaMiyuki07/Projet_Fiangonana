@@ -48,15 +48,11 @@ public partial class Mpandray
 
     private static void CheckNumero(string value, out string retour)
     {
+        if (string.IsNullOrEmpty(value))
+        {
+            value = "0";
+        }
         retour = value;
-        if (!value.Split('-')[0].StartsWith('0'))
-        {
-            retour = '0' + value;
-        }
-        if (value.Split('-').Length > 1)
-        {
-            retour = value.Split("-")[0];
-        }
     }
 
     public virtual ICollection<PaiementAdidy> PaiementAdidies { get; set; } = [];
