@@ -58,7 +58,11 @@ namespace Adidy.Services
             await fiangonanaContext.SaveChangesAsync();
         }
 
-
+        public async Task InsertOne(Mpandray mpandray)
+        {
+            await fiangonanaContext.AddAsync(mpandray);
+            await fiangonanaContext.SaveChangesAsync();
+        }
 
         #region private function
         private static bool Condition(Mpandray mpandray,string[] toFind)

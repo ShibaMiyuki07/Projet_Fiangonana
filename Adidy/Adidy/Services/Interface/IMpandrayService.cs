@@ -14,6 +14,6 @@ namespace Adidy.Services.Interface
 
         public Task<Mpandray?> UpdateMpandray(Mpandray mpandray);
 
-
+        public Task InsertOne(Mpandray mpandray);
     }
 }

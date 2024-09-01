@@ -37,11 +37,13 @@ namespace Adidy.Controllers
 			if (page <= 0)
             {
                 liste_mpandray = [];
+                page = 0;
 			}
             else
             {
 				liste_mpandray = await MpandrayService.MpandraysPaginate(page);
 			}
+            ViewData["page"] = page;
 			ViewData["liste"] = liste_mpandray;
 			return View();
         }
@@ -66,6 +68,28 @@ namespace Adidy.Controllers
             ViewData["details"] = changed;
             return View();
         }
+
+        [HttpGet("/Home/Ajout")]
+        public async Task<IActionResult> MpandrayAjout()
+        {
+            name += "Ajout";
+            return await Task.Run(() =>
+                {
+                    return View();
+                }
+            );
+        }
+
+        [HttpPost("/Home/Ajout")]
+        public async Task<IActionResult> MpandrayAjout(Mpandray mpandray)
+        {
+            name += "Ajout";
+            await MpandrayService.InsertOne(mpandray);
+            ViewData["success"] = "";
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

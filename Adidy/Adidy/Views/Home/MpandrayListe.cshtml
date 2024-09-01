@@ -1,11 +1,13 @@
 ﻿@using Modele
 @{
 	IEnumerable<Mpandray>? liste_mpandray =(IEnumerable<Mpandray>?) ViewData["liste"] ;
+	int pejy =(int) ViewData["page"]!;
 }
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8"/>
+		<title>Lisitry ny mpandray - pejy @pejy</title>
 	</head>
 	<body>
 		<table>
@@ -39,6 +41,7 @@
 				}
 		</tbody>
 		</table>
+		@pejy
 	</body>
 	<footer>
 
