@@ -1,4 +1,5 @@
 ﻿using Modele;
+using NetTopologySuite.Index.HPRtree;
 
 namespace Adidy.Models
 {
@@ -18,10 +19,31 @@ namespace Adidy.Models
 
 
 
-        public IEnumerable<PaiementAdidy> CsvToPaiement(IEnumerable<CsvAdidy> csvAdidy)
+        public IEnumerable<PaiementAdidy> CsvToPaiement(IEnumerable<CsvAdidy> listes)
         {
-            List<PaiementAdidy> toReturn = new List<PaiementAdidy>();
+            List<PaiementAdidy> toReturn = [];
+
+            foreach(var item in listes)
+            {
+                if (item.Adidy != decimal.Zero)
+                {
+                    
+                    /*toAdd*/
+                }
+            }
             return toReturn;
+        }
+
+        public PaiementAdidy CsvToPaiementAdidy(CsvAdidy ligne)
+        {
+            PaiementAdidy toAdd = new()
+            {
+                NumeroMpandray = ligne.Numero,
+                Montant = ligne.Adidy
+            };
+
+            
+            return toAdd;
         }
 
     }
