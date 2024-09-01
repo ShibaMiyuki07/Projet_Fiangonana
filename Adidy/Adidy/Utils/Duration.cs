@@ -1,4 +1,6 @@
-﻿namespace Adidy.Utils
+﻿using Modele;
+
+namespace Adidy.Utils
 {
     public class Duration
     {
@@ -11,7 +13,10 @@
             }
             else if(anneeDebut == anneeFin  && moisDebut != moisFin)
             {
+                int debutmois = Constante.DictionnaireMois[moisDebut.ToLower()];
+                int finmois = Constante.DictionnaireMois[moisFin.ToLower()];
 
+                duree = finmois - debutmois;
             }
             else
             {

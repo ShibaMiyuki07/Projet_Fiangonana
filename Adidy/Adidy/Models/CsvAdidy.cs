@@ -1,4 +1,5 @@
-﻿using Modele;
+﻿using Adidy.Utils;
+using Modele;
 using NetTopologySuite.Index.HPRtree;
 
 namespace Adidy.Models
@@ -48,6 +49,9 @@ namespace Adidy.Models
                 Montant = ligne.Adidy,
                 AnneeDebut = ligne.AnneeDebut,
                 AnneeFin = ligne.AnneeFin,
+                Duree = Duration.CalculDuration(ligne.MoisDebut, ligne.AnneeDebut, ligne.MoisFin, ligne.AnneeFin),
+                MoisDebut = Constante.DictionnaireMois[ligne.MoisDebut],
+                MoisFin = Constante.DictionnaireMois[ligne.MoisFin],
             };
             return toAdd;
         }
