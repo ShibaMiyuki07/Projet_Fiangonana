@@ -23,7 +23,7 @@
 					@foreach(var item in liste_mpandray!)
 					{
 						<tr>
-							<td>@item.Numero</td>
+							<td><a href="/Home/Details?numero=@item.Numero">@item.Numero</a></td>
 							<td>@item.Anarana	@item.Fanampiny</td>
 							<td>@item.Fonenana	@item.Fokontany</td>
 							@if (item.Tel != "0")

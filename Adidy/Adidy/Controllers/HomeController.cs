@@ -52,7 +52,7 @@ namespace Adidy.Controllers
         {
             name += "/Details";
             Mpandray? details = await MpandrayService.GetMpandrayByNumero(numero);
-            ViewData["detais"] = details;
+            ViewData["details"] = details;
             return View();
         }
 
