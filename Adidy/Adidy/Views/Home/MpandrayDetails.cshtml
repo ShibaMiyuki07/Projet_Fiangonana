@@ -9,12 +9,44 @@
     <body>
         @if(details != null)
         {
-            <div>@details.Numero</div>
-            <div>@details.Anarana</div>
-            <div>@details.Fanampiny</div>
-            <div>@details.Fonenana</div>
-            <div>@details.Fokontany</div>
-            <div>@details.Tel</div>
+            <div class="details">
+                <div>@details.Numero</div>
+                <div>@details.Anarana</div>
+                <div>@details.Fanampiny</div>
+                <div>@details.Fonenana</div>
+                <div>@details.Fokontany</div>
+                <div>@details.Tel</div>
+            </div>
+
+            <div>
+                <form>
+                    <div>
+                        Numero Mpandray :
+                        <input type="number" name="numero" value="@details.Numero" />
+                    </div>
+                    <div>
+                        Anarana : 
+                        <input type="text" name="anarana" value="@details.Anarana" />
+                    </div>
+                    <div>
+                        Fanampiny :
+                        <input type="text" name="fanampiny" value="@details.Fanampiny" />
+                    </div>
+                    <div>
+                        Fonenana :
+                        <input type="text" name="fonenana" value="@details.Fonenana" />
+                    </div>
+                    <div>
+                        Fokontany :
+                        <input type="text" name="fokontany" value="@details.Fokontany" />
+                    </div>
+                    <div>
+                        Numero Telephone :
+                        <input type="text" name="tel" value="@details.Tel" />
+                    </div>
+                    <button type="submit">Modifier</button>
+                </form>
+            </div>
         }
         else
         {

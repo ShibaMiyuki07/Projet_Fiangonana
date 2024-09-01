@@ -56,6 +56,14 @@ namespace Adidy.Controllers
             return View();
         }
 
+        [HttpPost("/Home/Details")]
+        public async Task<IActionResult> MpandrayDetails(Mpandray mpandray)
+        {
+            name += "/Modification";
+
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
