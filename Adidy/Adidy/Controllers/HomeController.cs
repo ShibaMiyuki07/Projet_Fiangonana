@@ -6,9 +6,10 @@ using System.Diagnostics;
 
 namespace Adidy.Controllers
 {
-    public class HomeController(IMpandrayService MpandrayService) : Controller
+    public class HomeController(IMpandrayService MpandrayService,IPaiementAdidyService paiementAdidyService) : Controller
     {
         private readonly IMpandrayService MpandrayService = MpandrayService;
+        private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private static string name = "Home";
 
         public IActionResult Index()
@@ -54,7 +55,9 @@ namespace Adidy.Controllers
         {
             name += "/Details";
             Mpandray? details = await MpandrayService.GetMpandrayByNumero(numero);
+            IEnumerable<PaiementAdidy> listePaiementsAdidy = await paiementAdidyService.GetPaiementByNumeroMpandray(numero);
             ViewData["details"] = details;
+            ViewData["listePaiementAdidy"] = listePaiementsAdidy;
             return View();
         }
 
@@ -65,7 +68,9 @@ namespace Adidy.Controllers
         {
             name += "/Modification";
             Mpandray? changed = await MpandrayService.UpdateMpandray(mpandray);
+            IEnumerable<PaiementAdidy> listePaiements = await paiementAdidyService.GetPaiementByNumeroMpandray(mpandray.Numero);
             ViewData["details"] = changed;
+            ViewData["listePaiement"] = listePaiements;
             return View();
         }
 

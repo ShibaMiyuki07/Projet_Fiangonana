@@ -34,6 +34,11 @@ namespace Adidy.Services
         }
 
 
+        public async Task<IEnumerable<int>> GetAllNumeroMpandray()
+        {
+            return await fiangonanaContext.Mpandrays.Select(mpandray => mpandray.Numero).ToArrayAsync();
+        }
+
         public async Task<Mpandray?> UpdateMpandray(Mpandray mpandray)
         {
             Mpandray? toModify = await GetMpandrayByNumero(mpandray.Numero);
