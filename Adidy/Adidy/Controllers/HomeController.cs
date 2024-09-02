@@ -55,9 +55,9 @@ namespace Adidy.Controllers
         {
             name += "/Details";
             Mpandray? details = await MpandrayService.GetMpandrayByNumero(numero);
-            IEnumerable<PaiementAdidy> listePaiements = await paiementAdidyService.GetPaiementByNumeroMpandray(numero);
+            IEnumerable<PaiementAdidy> listePaiementsAdidy = await paiementAdidyService.GetPaiementByNumeroMpandray(numero);
             ViewData["details"] = details;
-            ViewData["listePaiement"] = listePaiements;
+            ViewData["listePaiementAdidy"] = listePaiementsAdidy;
             return View();
         }
 

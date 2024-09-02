@@ -1,6 +1,7 @@
 ﻿@using Modele
 @{
     Mpandray? details = (Mpandray?) ViewData["details"];
+    IEnumerable<PaiementAdidy> listePaiementAdidy = (IEnumerable<PaiementAdidy>)ViewData["listePaiementAdidy"]!;
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -47,10 +48,39 @@
                     <button type="submit">Modifier</button>
                 </form>
             </div>
+            @if(listePaiementAdidy != null && listePaiementAdidy.Any())
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Daty nandoavana vola</th>
+                            <th>Volana/Taona fiantombohana</th>
+                            <th>Volana/Taona niafarana</th>
+                            <th>Vola naloa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in listePaiementAdidy)
+                        {
+                            <tr>
+                                <td>@item.Dateheurepaiemet</td>
+                                <td>@item.MoisDebut/@item.AnneeDebut</td>
+                                <td>@item.MoisFin/@item.AnneeFin</td>
+                                <td>@item.Montant Ar</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div>Tsy mbola nandoa adidy ity mpandray ity</div>
+            }
         }
         else
         {
-            <div>Mpandray non existant</div>
+            <div>Tsy misy io numerao mpandray io</div>
         }
 </body>
 </html>

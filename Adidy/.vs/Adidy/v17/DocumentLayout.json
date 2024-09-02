@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Fiangoanana\\Projet\\Adidy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\views\\home\\mpandraydetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|solutionrelative:adidy\\views\\home\\mpandraydetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|d:\\fiangoanana\\projet\\adidy\\adidy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C26C4F51-829B-4FCE-8D1A-DB00A990F89D}|Adidy\\Adidy.csproj|solutionrelative:adidy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -178,7 +182,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -186,7 +190,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "MpandrayDetails.cshtml",
+              "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayDetails.cshtml",
+              "RelativeDocumentMoniker": "Adidy\\Views\\Home\\MpandrayDetails.cshtml",
+              "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayDetails.cshtml",
+              "RelativeToolTip": "Adidy\\Views\\Home\\MpandrayDetails.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAEQAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-02T10:09:05.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "IPaiementAdidyService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\Interface\\IPaiementAdidyService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\Interface\\IPaiementAdidyService.cs",
@@ -199,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PaiementAdidyService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\PaiementAdidyService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\PaiementAdidyService.cs",
@@ -212,7 +229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MpandrayNotExistException.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Exceptions\\MpandrayNotExistException.cs",
               "RelativeDocumentMoniker": "Adidy\\Exceptions\\MpandrayNotExistException.cs",
@@ -225,20 +242,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Adidy\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Adidy\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwDkAAACAAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAcwDsAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-30T05:10:46.68Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Import.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Admin\\Import.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\Admin\\Import.cshtml",
@@ -251,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "CsvAdidy.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Models\\CsvAdidy.cs",
               "RelativeDocumentMoniker": "Adidy\\Models\\CsvAdidy.cs",
@@ -264,7 +281,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "MpandrayService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\MpandrayService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\MpandrayService.cs",
@@ -277,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BuilderExtension.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Extensions\\BuilderExtension.cs",
               "RelativeDocumentMoniker": "Adidy\\Extensions\\BuilderExtension.cs",
@@ -290,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Adidy\\Controllers\\AdminController.cs",
@@ -303,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DateTimeChanger.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Utils\\DateTimeChanger.cs",
               "RelativeDocumentMoniker": "Adidy\\Utils\\DateTimeChanger.cs",
@@ -316,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Duration.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Utils\\Duration.cs",
               "RelativeDocumentMoniker": "Adidy\\Utils\\Duration.cs",
@@ -329,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "IMpandrayService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\Interface\\IMpandrayService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\Interface\\IMpandrayService.cs",
@@ -342,7 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Constante.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Constante.cs",
               "RelativeDocumentMoniker": "Modele\\Constante.cs",
@@ -354,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "UtilisateurService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\UtilisateurService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\UtilisateurService.cs",
@@ -367,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\_ViewStart.cshtml",
@@ -379,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "MpandrayListe.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayListe.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\Home\\MpandrayListe.cshtml",
@@ -391,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "PasswordException.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Exceptions\\PasswordException.cs",
               "RelativeDocumentMoniker": "Adidy\\Exceptions\\PasswordException.cs",
@@ -404,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Mpandray.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Mpandray.cs",
               "RelativeDocumentMoniker": "Modele\\Mpandray.cs",
@@ -416,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "PaiementAdidy.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\PaiementAdidy.cs",
               "RelativeDocumentMoniker": "Modele\\PaiementAdidy.cs",
@@ -429,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "MpandrayAjout.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayAjout.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\Home\\MpandrayAjout.cshtml",
@@ -441,7 +458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "IUtilisateurService.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Services\\Interface\\IUtilisateurService.cs",
               "RelativeDocumentMoniker": "Adidy\\Services\\Interface\\IUtilisateurService.cs",
@@ -453,7 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\Shared\\_Layout.cshtml",
@@ -465,7 +482,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "CSV.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Models\\CSV.cs",
               "RelativeDocumentMoniker": "Adidy\\Models\\CSV.cs",
@@ -477,7 +494,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "nlog.config",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\nlog.config",
               "RelativeDocumentMoniker": "Adidy\\nlog.config",
@@ -489,7 +506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Admin\\Index.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\Admin\\Index.cshtml",
@@ -501,7 +518,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Adidy\\Views\\Home\\Index.cshtml",
@@ -513,7 +530,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "appsettings.Production.json",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\appsettings.Production.json",
               "RelativeDocumentMoniker": "Adidy\\appsettings.Production.json",
@@ -525,7 +542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Adidy\\appsettings.Development.json",
@@ -537,7 +554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "ImportCsv.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Models\\ImportCsv.cs",
               "RelativeDocumentMoniker": "Adidy\\Models\\ImportCsv.cs",
@@ -549,7 +566,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "PasswordEncryption.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Utils\\PasswordEncryption.cs",
               "RelativeDocumentMoniker": "Adidy\\Utils\\PasswordEncryption.cs",
@@ -561,7 +578,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "FiangonanaContext.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Contexts\\FiangonanaContext.cs",
               "RelativeDocumentMoniker": "Adidy\\Contexts\\FiangonanaContext.cs",
@@ -573,7 +590,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "Droit.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Droit.cs",
               "RelativeDocumentMoniker": "Modele\\Droit.cs",
@@ -585,7 +602,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "DroitUtilisateur.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\DroitUtilisateur.cs",
               "RelativeDocumentMoniker": "Modele\\DroitUtilisateur.cs",
@@ -597,7 +614,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "Type.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Type.cs",
               "RelativeDocumentMoniker": "Modele\\Type.cs",
@@ -609,7 +626,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "PaiementIsantaona.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\PaiementIsantaona.cs",
               "RelativeDocumentMoniker": "Modele\\PaiementIsantaona.cs",
@@ -621,7 +638,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "Utilisateur.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Utilisateur.cs",
               "RelativeDocumentMoniker": "Modele\\Utilisateur.cs",
@@ -633,7 +650,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "site.css",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "Adidy\\wwwroot\\css\\site.css",
@@ -645,7 +662,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "LoggerManager.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Log\\LoggerManager.cs",
               "RelativeDocumentMoniker": "Adidy\\Log\\LoggerManager.cs",
@@ -657,7 +674,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "ILoggerManager.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Log\\Interface\\ILoggerManager.cs",
               "RelativeDocumentMoniker": "Adidy\\Log\\Interface\\ILoggerManager.cs",
@@ -669,7 +686,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Program.cs",
               "RelativeDocumentMoniker": "Adidy\\Program.cs",
@@ -681,7 +698,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\appsettings.json",
               "RelativeDocumentMoniker": "Adidy\\appsettings.json",
@@ -693,7 +710,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "Adidy.csproj",
               "DocumentMoniker": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Adidy.csproj",
               "RelativeDocumentMoniker": "Adidy\\Adidy.csproj",
