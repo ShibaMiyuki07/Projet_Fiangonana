@@ -12,9 +12,9 @@ namespace Adidy.Models
 
         public string? Anarana { get; set; }
 
-        public decimal Ikt {  get; set; } = decimal.Zero;
+        public string Ikt {  get; set; } = string.Empty;
 
-        public decimal Adidy { get; set; } = decimal.Zero;
+        public string Adidy { get; set; } = string.Empty ;
 
         public string MoisDebut {  get; set; } = string.Empty;
 
@@ -26,32 +26,34 @@ namespace Adidy.Models
 
 
 
-        public IEnumerable<PaiementAdidy> CsvToPaiement(IEnumerable<CsvAdidy> listes)
+        public async Task<IEnumerable<PaiementAdidy>> CsvToPaiement(IEnumerable<CsvAdidy> listes)
         {
             List<PaiementAdidy> toReturn = [];
-
-            foreach(var item in listes)
+            await Task.Run( () =>
             {
-                if (item.Adidy != decimal.Zero)
+                foreach (var item in listes)
                 {
-                    
-                    /*toAdd*/
+                    if (item.Adidy != string.Empty)
+                    {
+
+                        toReturn.Add(CsvToPaiementAdidy(item));
+                    }
                 }
-            }
+            });
             return toReturn;
         }
 
-        public PaiementAdidy CsvToPaiementAdidy(CsvAdidy ligne)
+        public static PaiementAdidy CsvToPaiementAdidy(CsvAdidy ligne)
         {
             PaiementAdidy toAdd = new()
             {
                 NumeroMpandray = ligne.Numero,
-                Montant = ligne.Adidy,
+                Montant = decimal.Parse(ligne.Adidy),
                 AnneeDebut = ligne.AnneeDebut,
                 AnneeFin = ligne.AnneeFin,
                 Duree = Duration.CalculDuration(ligne.MoisDebut, ligne.AnneeDebut, ligne.MoisFin, ligne.AnneeFin),
-                MoisDebut = Constante.DictionnaireMois[ligne.MoisDebut],
-                MoisFin = Constante.DictionnaireMois[ligne.MoisFin],
+                MoisDebut = Constante.DictionnaireMois[ligne.MoisDebut.ToLower()],
+                MoisFin = Constante.DictionnaireMois[ligne.MoisFin.ToLower()],
             };
             return toAdd;
         }

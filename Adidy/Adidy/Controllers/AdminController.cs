@@ -59,6 +59,10 @@ namespace Adidy.Controllers
             else if (Constante.toImport[data.DataType - 1].Item2.Equals("adidy", StringComparison.CurrentCultureIgnoreCase))
             {
                 IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
+                IEnumerable<PaiementAdidy> liste_paiement_adidy = await new CsvAdidy().CsvToPaiement(liste_adidy);
+                ViewData["PaiementAdidy"] = liste_paiement_adidy;
+                ViewData["type"] = Constante.toImport;
+                return View();
                 //await mpandrayService.BulkInsert(liste_mpandray);
             }
             return RedirectToAction("ImportData","Admin");

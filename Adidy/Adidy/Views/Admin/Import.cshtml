@@ -1,5 +1,7 @@
-﻿@{
+﻿@using Modele
+@{
     List<Tuple<int, string>> typeData = (List<Tuple<int, string>>)ViewData["type"]!;
+    IEnumerable<PaiementAdidy> listes = (IEnumerable<PaiementAdidy>)ViewData["PaiementAdidy"]!;
 }
 
 <!doctype html>
@@ -24,5 +26,13 @@
             <button type="submit">Valider</button>
         </div>
     </form>
-    </body>
+    @if(listes != null)
+    {
+        @foreach (var item in listes)
+        {
+            <div>@item.NumeroMpandray - @item.MoisDebut/@item.AnneeDebut - @item.MoisFin/@item.AnneeFin - @item.Montant - @item.Duree </div>
+        }
+
+    }
+</body>
 </html>
