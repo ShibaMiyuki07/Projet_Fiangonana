@@ -35,28 +35,28 @@ namespace Adidy.Controllers
             {
                 ViewData["error"] = e.Message;
 
-				return View();
+				return View("Index");
 			}
             catch (Exception ex)
             {
                 ViewData["error"] = ex.Message;
 
-				return View();
+				return View("Index");
 			}
 
 
 
         }
 
+        [HttpGet]
         public async Task<IActionResult> Search(string tosearch)
         {
             name += "/Search";
             IEnumerable<Mpandray> resultat = await MpandrayService.Search(tosearch);
-            return await Task.Run(() =>
-            {
-                return View();
-            }
-            );
+            ViewData["liste"] = resultat;
+            ViewData["page"] = 0;
+
+			return View("MpandrayListe");
         }
 
         [HttpGet]

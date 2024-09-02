@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<form method="post" action="/Home/Login">
-			@if(string.IsNullOrEmpty(error))
+			@if(!string.IsNullOrEmpty(error))
 			{
 				<div>@error</div>	
 			}
