@@ -4,7 +4,7 @@ using Modele;
 
 namespace Adidy.Services
 {
-	public class PaiementIsantaonaService(FiangonanaContext context, IMpandrayService mpandrayService)
+	public class PaiementIsantaonaService(FiangonanaContext context, IMpandrayService mpandrayService) : IPaiementIsantaonaService
 	{
 		private readonly FiangonanaContext fiangonanaContext = context;
 		private readonly IMpandrayService mpandrayService = mpandrayService;

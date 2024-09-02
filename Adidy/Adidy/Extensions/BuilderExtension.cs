@@ -23,6 +23,7 @@ namespace Adidy.Extensions
             services.AddScoped<IMpandrayService,MpandrayService>();
             services.AddScoped<IUtilisateurService, UtilisateurService>();
             services.AddScoped<IPaiementAdidyService, PaiementAdidyService>();
+            services.AddScoped<IPaiementIsantaonaService, PaiementIsantaonaService>();
         }
 
 
