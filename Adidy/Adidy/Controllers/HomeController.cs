@@ -28,7 +28,7 @@ namespace Adidy.Controllers
             try
             {
                 Utilisateur loger = await utilisateurService.Login(user);
-                TempData["loger"] = JsonConvert.SerializeObject(loger);
+                httpContextAccessor.HttpContext!.Session.SetString( "user",JsonConvert.SerializeObject(loger));
                 return RedirectToAction("MpandrayListe", "Home",new { page = 1});
             }
             catch (UtilisateurNotExistException e)
