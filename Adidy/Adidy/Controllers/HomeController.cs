@@ -3,6 +3,7 @@ using Adidy.Models;
 using Adidy.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Modele;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace Adidy.Controllers
@@ -21,23 +22,27 @@ namespace Adidy.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Login(Utilisateur user)
         {
             try
             {
                 Utilisateur loger = await utilisateurService.Login(user);
-                TempData["loger"] = loger;
-                return await MpandrayListe(1);
+                TempData["loger"] = JsonConvert.SerializeObject(loger);
+                return RedirectToAction("MpandrayListe", "Home",new { page = 1});
             }
             catch (UtilisateurNotExistException e)
             {
                 ViewData["error"] = e.Message;
-            }
+
+				return View();
+			}
             catch (Exception ex)
             {
                 ViewData["error"] = ex.Message;
-            }
-            return View();
+
+				return View();
+			}
 
 
 
