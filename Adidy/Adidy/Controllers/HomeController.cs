@@ -1,3 +1,4 @@
+using Adidy.Exceptions;
 using Adidy.Models;
 using Adidy.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -6,16 +7,40 @@ using System.Diagnostics;
 
 namespace Adidy.Controllers
 {
-    public class HomeController(IMpandrayService MpandrayService,IPaiementAdidyService paiementAdidyService) : Controller
+    public class HomeController(IMpandrayService MpandrayService,IPaiementAdidyService paiementAdidyService, IHttpContextAccessor httpContextAccessor,IUtilisateurService utilisateurService) : Controller
     {
         private readonly IMpandrayService MpandrayService = MpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
+        private readonly IUtilisateurService utilisateurService = utilisateurService;
+        private IHttpContextAccessor httpContextAccessor = httpContextAccessor;
         private static string name = "Home";
 
         public IActionResult Index()
         {
             
             return View();
+        }
+
+        public async Task<IActionResult> Login(Utilisateur user)
+        {
+            try
+            {
+                Utilisateur loger = await utilisateurService.Login(user);
+                TempData["loger"] = loger;
+                return await MpandrayListe(1);
+            }
+            catch (UtilisateurNotExistException e)
+            {
+                ViewData["error"] = e.Message;
+            }
+            catch (Exception ex)
+            {
+                ViewData["error"] = ex.Message;
+            }
+            return View();
+
+
+
         }
 
         public async Task<IActionResult> Search(string tosearch)
