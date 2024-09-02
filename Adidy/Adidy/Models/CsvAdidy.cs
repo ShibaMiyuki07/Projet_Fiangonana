@@ -1,26 +1,25 @@
 ﻿using Adidy.Utils;
 using Modele;
-using NetTopologySuite.Index.HPRtree;
 
 namespace Adidy.Models
 {
     public class CsvAdidy
     {
-        public string? Daty {  get; set; }
+        public string? Daty { get; set; }
 
         public int Numero { get; set; }
 
         public string? Anarana { get; set; }
 
-        public string Ikt {  get; set; } = string.Empty;
+        public string Ikt { get; set; } = string.Empty;
 
-        public string Adidy { get; set; } = string.Empty ;
+        public string Adidy { get; set; } = string.Empty;
 
-        public string MoisDebut {  get; set; } = string.Empty;
+        public string MoisDebut { get; set; } = string.Empty;
 
         public int AnneeDebut { get; set; }
 
-        public string MoisFin { get; set; } = string.Empty ;
+        public string MoisFin { get; set; } = string.Empty;
 
         public int AnneeFin { get; set; }
 
@@ -29,7 +28,7 @@ namespace Adidy.Models
         public async Task<IEnumerable<PaiementAdidy>> CsvToPaiement(IEnumerable<CsvAdidy> listes)
         {
             List<PaiementAdidy> toReturn = [];
-            await Task.Run( () =>
+            await Task.Run(() =>
             {
                 foreach (var item in listes)
                 {
@@ -44,25 +43,25 @@ namespace Adidy.Models
 
         public async Task<IEnumerable<PaiementIsantaona>> CsvToPaiementIsantaona(IEnumerable<CsvAdidy> listes)
         {
-			List<PaiementIsantaona> toReturn = [];
-			await Task.Run(() =>
-			{
-				foreach (var item in listes)
-				{
-					if (item.Ikt != string.Empty)
-					{
-						toReturn.Add(CsvToIsantaona(item));
-					}
-				}
-			});
-			return toReturn;
-		}
+            List<PaiementIsantaona> toReturn = [];
+            await Task.Run(() =>
+            {
+                foreach (var item in listes)
+                {
+                    if (item.Ikt != string.Empty)
+                    {
+                        toReturn.Add(CsvToIsantaona(item));
+                    }
+                }
+            });
+            return toReturn;
+        }
 
         private static PaiementAdidy CsvToPaiementAdidy(CsvAdidy ligne)
         {
             PaiementAdidy toAdd = new()
             {
-                Dateheurepaiemet = DateTimeChanger.StringToDateTime(ligne.Daty!) ,
+                Dateheurepaiemet = DateTimeChanger.StringToDateTime(ligne.Daty!),
                 NumeroMpandray = ligne.Numero,
                 Montant = decimal.Parse(ligne.Adidy),
                 AnneeDebut = ligne.AnneeDebut,
@@ -74,20 +73,20 @@ namespace Adidy.Models
             return toAdd;
         }
 
-		private static PaiementIsantaona CsvToIsantaona(CsvAdidy ligne)
-		{
+        private static PaiementIsantaona CsvToIsantaona(CsvAdidy ligne)
+        {
             PaiementIsantaona toAdd = new()
             {
                 Dateheurepaiemet = DateTimeChanger.StringToDateTime(ligne.Daty!),
                 NumeroMpandray = ligne.Numero,
-                Montant = decimal.Parse(ligne.Adidy),
+                Montant = decimal.Parse(ligne.Ikt),
                 AnneeDebut = ligne.AnneeDebut,
                 AnneeFin = ligne.AnneeFin
             };
-			return toAdd;
-		}
+            return toAdd;
+        }
 
-	}
+    }
 
 
 

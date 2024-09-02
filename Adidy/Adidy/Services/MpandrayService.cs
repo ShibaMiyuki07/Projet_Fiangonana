@@ -10,31 +10,31 @@ namespace Adidy.Services
     {
         private readonly FiangonanaContext fiangonanaContext = fiangonanaContext;
 
-        public async Task<IEnumerable<Mpandray>> Search(int page,string condition)
+        public async Task<IEnumerable<Mpandray>> Search(int page, string condition)
         {
-            if(string.IsNullOrWhiteSpace(condition))
+            if (string.IsNullOrWhiteSpace(condition))
             {
                 return await MpandraysPaginate(1);
-                
+
             }
             string[] toSearch = Split_condition(condition);
             return await fiangonanaContext.Mpandrays
                 .Where(mpandray => toSearch.Any(ts => mpandray.Anarana!.Contains(ts)) || toSearch.Any(ts => mpandray.Fanampiny!.Contains(ts)) || toSearch.Any(ts => mpandray.Numero!.ToString().Contains(ts)))
-                .Skip((page-1)*20)
+                .Skip((page - 1) * 20)
                 .Take(20)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Mpandray>> MpandraysPaginate(int page)
         {
-            int toSkip = (page-1)*20;
+            int toSkip = (page - 1) * 20;
             return await fiangonanaContext.Mpandrays.OrderBy(mpandray => mpandray.Numero).Skip(toSkip).Take(20).ToListAsync();
         }
 
 
         public async Task<Mpandray?> GetMpandrayByNumero(int numero)
         {
-            return await fiangonanaContext.Mpandrays.Where(mpandray => mpandray.Numero == numero).FirstOrDefaultAsync();
+            return await fiangonanaContext.Mpandrays.Where(mpandray => mpandray.Numero == numero).Include(c => c.PaiementAdidies).Include(c => c.PaiementIsantaonas).FirstOrDefaultAsync();
         }
 
 
@@ -86,7 +86,7 @@ namespace Adidy.Services
             }
             catch (Exception ex)
             {
-                if(ex.InnerException!.Message.Contains("pkey"))
+                if (ex.InnerException!.Message.Contains("pkey"))
                 {
                     throw new Exception("Efa misy mpandray manana io numerao io");
                 }

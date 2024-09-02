@@ -1,9 +1,7 @@
 ﻿using Adidy.Contexts;
 using Adidy.Services.Interface;
-using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
 using Modele;
-using System.Linq;
 
 namespace Adidy.Services
 {
