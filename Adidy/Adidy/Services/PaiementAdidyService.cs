@@ -17,8 +17,13 @@ namespace Adidy.Services
         {
             HashSet<int> numeroMpandray = new(await mpandrayService.GetAllNumeroMpandray());
             IEnumerable<PaiementAdidy> liste_final = liste_paiement_adidy.Where(p => numeroMpandray.Contains((int)p.NumeroMpandray!)).ToList();
-            await fiangonanaContext.BulkInsertAsync(liste_final);
+            await fiangonanaContext.AddRangeAsync(liste_final);
             await fiangonanaContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<PaiementAdidy>> GetPaiementByNumeroMpandray(int numero)
+        {
+            return await fiangonanaContext.PaiementAdidies.Where(paiement => paiement.NumeroMpandray == numero).ToListAsync();
         }
     }
 }

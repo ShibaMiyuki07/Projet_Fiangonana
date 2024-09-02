@@ -6,10 +6,11 @@ using Modele;
 
 namespace Adidy.Controllers
 {
-    public class AdminController(IUtilisateurService utilisateur,IMpandrayService mpandrayService) : Controller
+    public class AdminController(IUtilisateurService utilisateur,IMpandrayService mpandrayService,IPaiementAdidyService paiementAdidyService) : Controller
     {
         private readonly IUtilisateurService utilisateurService = utilisateur;
         private readonly IMpandrayService mpandrayService = mpandrayService;
+        private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
 
         public IActionResult Index()
         {
@@ -62,6 +63,7 @@ namespace Adidy.Controllers
                 IEnumerable<PaiementAdidy> liste_paiement_adidy = await new CsvAdidy().CsvToPaiement(liste_adidy);
                 ViewData["PaiementAdidy"] = liste_paiement_adidy;
                 ViewData["type"] = Constante.toImport;
+                await paiementAdidyService.BulkInsert(liste_paiement_adidy);
                 return View();
                 //await mpandrayService.BulkInsert(liste_mpandray);
             }
