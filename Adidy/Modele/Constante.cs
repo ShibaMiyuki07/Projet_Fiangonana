@@ -24,6 +24,7 @@ namespace Modele
 
         public readonly static List<Tuple<int, string>> toImport = [
             new Tuple<int,string>(1,"Adidy"),
+            new Tuple<int,string>(2,"IKT"),
             new Tuple<int,string>(2,"Mpandray")];
 
 
