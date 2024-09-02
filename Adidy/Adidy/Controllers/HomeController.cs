@@ -18,9 +18,9 @@ namespace Adidy.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Home(string tosearch)
+        public async Task<IActionResult> Search(string tosearch)
         {
-            name += "/Home";
+            name += "/Search";
             IEnumerable<Mpandray> resultat = await MpandrayService.Search(tosearch);
             return await Task.Run(() =>
             {
