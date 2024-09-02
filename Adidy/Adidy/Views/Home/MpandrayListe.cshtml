@@ -11,7 +11,14 @@
 	</head>
 	<body>
 		<div>
-
+			<form action="/Home/Search" method="get">
+				<div>
+					<input type="text" name="tosearch" />
+				</div>	
+				<div>
+					<button type="submit">Tadiavina</button>
+				</div>
+			</form>
 		</div>
 		<table>
 			<thead>
@@ -44,7 +51,10 @@
 				}
 		</tbody>
 		</table>
-		@pejy
+		@if(pejy > 0)
+		{
+			@pejy
+		}
 	</body>
 	<footer>
 

@@ -18,7 +18,7 @@ namespace Adidy.Services
                 
             }
             string[] toSearch = Split_condition(condition);
-            return await fiangonanaContext.Mpandrays.Where(mpandray => Condition(mpandray,toSearch)).Take(20).ToListAsync();
+            return await fiangonanaContext.Mpandrays.Where(mpandray => toSearch.Any(ts => mpandray.Anarana!.Contains(ts)) || toSearch.Any(ts => mpandray.Fanampiny!.Contains(ts)) || toSearch.Any(ts => mpandray.Numero!.ToString().Contains(ts))).Take(20).ToListAsync();
         }
 
         public async Task<IEnumerable<Mpandray>> MpandraysPaginate(int page)
@@ -90,28 +90,7 @@ namespace Adidy.Services
         }
 
         #region private function
-        private static bool Condition(Mpandray mpandray,string[] toFind)
-        {
-            bool retour = false;
-            foreach (var item in toFind)
-            {
-                int result = StringToInt(item);
-;                if(item == mpandray.Anarana || item == mpandray.Fanampiny ||  result == mpandray.Numero)
-                {
-                    retour = true;
-                }
-            }
-            return retour;
-        }
 
-        private static int StringToInt(string str)
-        {
-            try
-            {
-                return Int32.Parse(str);
-            }
-            catch { return 0; }
-        }
 
         public static string[] Split_condition(string condition)
         {
