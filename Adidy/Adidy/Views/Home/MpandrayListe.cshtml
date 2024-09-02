@@ -68,16 +68,19 @@
 				{
 					<a href="/Home/Search?page=@(pejy-1)&tosearch=@query">Aoriana</a>
 				}
-			}
-			@pejy
-			@if (string.IsNullOrEmpty(query) && liste_mpandray!.Any())
+			}	
+			@pejy	
+			@if(liste_mpandray!.Any())
 			{
-				<a href="/Home/MpandrayListe?page=@(pejy+1)">Manaraka</a>
+				@if (string.IsNullOrEmpty(query))
+				{
+					<a href="/Home/MpandrayListe?page=@(pejy+1)">Manaraka</a>
+				}
+				else 
+					{
+						<a href="/Home/Search?page=@(pejy+1)&tosearch=@query">Manaraka</a>
+					}
+				}
 			}
-			else if (!string.IsNullOrEmpty(query) && liste_mpandray!.Any())
-			{
-				<a href="/Home/Search?page=@(pejy+1)&tosearch=@query">Manaraka</a>
-			}
-	}
 	</body>
 </html>
