@@ -18,7 +18,11 @@ namespace Adidy.Services
                 
             }
             string[] toSearch = Split_condition(condition);
-            return await fiangonanaContext.Mpandrays.Where(mpandray => toSearch.Any(ts => mpandray.Anarana!.Contains(ts)) || toSearch.Any(ts => mpandray.Fanampiny!.Contains(ts)) || toSearch.Any(ts => mpandray.Numero!.ToString().Contains(ts))).Skip((page-1)*20).Take(20).ToListAsync();
+            return await fiangonanaContext.Mpandrays
+                .Where(mpandray => toSearch.Any(ts => mpandray.Anarana!.Contains(ts)) || toSearch.Any(ts => mpandray.Fanampiny!.Contains(ts)) || toSearch.Any(ts => mpandray.Numero!.ToString().Contains(ts)))
+                .Skip((page-1)*20)
+                .Take(20)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Mpandray>> MpandraysPaginate(int page)
