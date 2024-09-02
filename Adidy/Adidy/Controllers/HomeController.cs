@@ -49,13 +49,20 @@ namespace Adidy.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search(string tosearch)
+        public async Task<IActionResult> Search(int page,string tosearch)
         {
+            if(page == 0)
+            {
+                page = 1;
+            }
             name += "/Search";
-            IEnumerable<Mpandray> resultat = await MpandrayService.Search(tosearch);
+            IEnumerable<Mpandray> resultat = await MpandrayService.Search(page,tosearch);
             ViewData["liste"] = resultat;
-            ViewData["page"] = 0;
+            ViewData["page"] = page;
+            string currentLink = Request.Path.ToString();
+            ViewData["link"] = currentLink;
 
+            ViewData["query"] = tosearch;
 			return View("MpandrayListe");
         }
 
@@ -76,6 +83,8 @@ namespace Adidy.Controllers
 			}
             ViewData["page"] = page;
 			ViewData["liste"] = liste_mpandray;
+			string currentLink = Request.Path.ToString();
+			ViewData["link"] = currentLink;
 			return View();
         }
 

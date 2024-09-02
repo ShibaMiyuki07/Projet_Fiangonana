@@ -2,6 +2,7 @@
 @{
 	IEnumerable<Mpandray>? liste_mpandray =(IEnumerable<Mpandray>?) ViewData["liste"] ;
 	int pejy =(int) ViewData["page"]!;
+	string query = (string)ViewData["query"]!;
 }
 <!doctype html>
 <html>
@@ -49,14 +50,34 @@
 						</tr>
 					}
 				}
+				else
+				{
+					<td colspan="4">Tsy misy mpandray intsony</td>
+				}
 		</tbody>
 		</table>
 		@if(pejy > 0)
 		{
+			@if(pejy >1)
+			{
+				@if (string.IsNullOrEmpty(query))
+				{
+					<a href="/Home/MpandrayListe?page=@(pejy-1)">Aoriana</a>
+				}
+				else
+				{
+					<a href="/Home/Search?page=@(pejy-1)&tosearch=@query">Aoriana</a>
+				}
+			}
 			@pejy
-		}
+			@if (string.IsNullOrEmpty(query) && liste_mpandray!.Any())
+			{
+				<a href="/Home/MpandrayListe?page=@(pejy+1)">Manaraka</a>
+			}
+			else if (!string.IsNullOrEmpty(query) && liste_mpandray!.Any())
+			{
+				<a href="/Home/Search?page=@(pejy+1)&tosearch=@query">Manaraka</a>
+			}
+	}
 	</body>
-	<footer>
-
-	</footer>
 </html>
