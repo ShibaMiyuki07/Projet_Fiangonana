@@ -21,7 +21,7 @@ public partial class PaiementAdidy
 
     public int? Duree { get; set; }
 
-    public DateTime? Dateheurepaiemet { get; set; }
+    public DateTime? Dateheurepaiemet { get; set; } = DateTime.Now;
 
     public virtual Mpandray? NumeroMpandrayNavigation { get; set; }
 }

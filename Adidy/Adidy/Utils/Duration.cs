@@ -20,7 +20,7 @@ namespace Adidy.Utils
                     if (finmois != 12)
                         duree = ((anneeFin - anneeDebut) * 12) + Math.Abs(debutmois - finmois);
                     else
-                        duree = ((anneeFin - anneeDebut) * 12);
+                        duree = (((anneeFin - anneeDebut)+1) * 12);
                  }
                  else
                     duree = ((anneeFin - anneeDebut) * 12) - Math.Abs(debutmois - finmois);

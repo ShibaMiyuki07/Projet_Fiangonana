@@ -35,7 +35,6 @@ namespace Adidy.Models
                 {
                     if (item.Adidy != string.Empty)
                     {
-
                         toReturn.Add(CsvToPaiementAdidy(item));
                     }
                 }
@@ -47,6 +46,7 @@ namespace Adidy.Models
         {
             PaiementAdidy toAdd = new()
             {
+                Dateheurepaiemet = DateTimeChanger.StringToDateTime(ligne.Daty!) ,
                 NumeroMpandray = ligne.Numero,
                 Montant = decimal.Parse(ligne.Adidy),
                 AnneeDebut = ligne.AnneeDebut,
