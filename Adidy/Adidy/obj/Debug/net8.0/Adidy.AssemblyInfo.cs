@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Adidy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce74574d93e6ade677c39c6336eb38eefbe030b4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b5e0179ff9c1d3a90fdba3aeb863a9020aef9d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Adidy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Adidy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
