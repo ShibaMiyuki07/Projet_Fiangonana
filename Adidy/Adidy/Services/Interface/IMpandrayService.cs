@@ -4,7 +4,7 @@ namespace Adidy.Services.Interface
 {
     public interface IMpandrayService
     {
-        public Task<IEnumerable<Mpandray>> Search(string condition);
+        public Task<IEnumerable<Mpandray>> Search(int page,string condition);
 
         public Task<IEnumerable<Mpandray>> MpandraysPaginate(int page);
 
