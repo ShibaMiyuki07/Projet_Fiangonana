@@ -42,7 +42,23 @@ namespace Adidy.Models
             return toReturn;
         }
 
-        public static PaiementAdidy CsvToPaiementAdidy(CsvAdidy ligne)
+        public async Task<IEnumerable<PaiementIsantaona>> CsvToPaiementIsantaona(IEnumerable<CsvAdidy> listes)
+        {
+			List<PaiementIsantaona> toReturn = [];
+			await Task.Run(() =>
+			{
+				foreach (var item in listes)
+				{
+					if (item.Ikt != string.Empty)
+					{
+						toReturn.Add(CsvToIsantaona(item));
+					}
+				}
+			});
+			return toReturn;
+		}
+
+        private static PaiementAdidy CsvToPaiementAdidy(CsvAdidy ligne)
         {
             PaiementAdidy toAdd = new()
             {
@@ -58,7 +74,20 @@ namespace Adidy.Models
             return toAdd;
         }
 
-    }
+		private static PaiementIsantaona CsvToIsantaona(CsvAdidy ligne)
+		{
+            PaiementIsantaona toAdd = new()
+            {
+                Dateheurepaiemet = DateTimeChanger.StringToDateTime(ligne.Daty!),
+                NumeroMpandray = ligne.Numero,
+                Montant = decimal.Parse(ligne.Adidy),
+                AnneeDebut = ligne.AnneeDebut,
+                AnneeFin = ligne.AnneeFin
+            };
+			return toAdd;
+		}
+
+	}
 
 
 
