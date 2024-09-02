@@ -1,15 +1,19 @@
+using Adidy.Exceptions;
 using Adidy.Models;
 using Adidy.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Modele;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace Adidy.Controllers
 {
-    public class HomeController(IMpandrayService MpandrayService,IPaiementAdidyService paiementAdidyService) : Controller
+    public class HomeController(IMpandrayService MpandrayService,IPaiementAdidyService paiementAdidyService, IHttpContextAccessor httpContextAccessor,IUtilisateurService utilisateurService) : Controller
     {
         private readonly IMpandrayService MpandrayService = MpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
+        private readonly IUtilisateurService utilisateurService = utilisateurService;
+        private IHttpContextAccessor httpContextAccessor = httpContextAccessor;
         private static string name = "Home";
 
         public IActionResult Index()
@@ -18,9 +22,35 @@ namespace Adidy.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Home(string tosearch)
+        [HttpPost]
+        public async Task<IActionResult> Login(Utilisateur user)
         {
-            name += "/Home";
+            try
+            {
+                Utilisateur loger = await utilisateurService.Login(user);
+                httpContextAccessor.HttpContext!.Session.SetString( "user",JsonConvert.SerializeObject(loger));
+                return RedirectToAction("MpandrayListe", "Home",new { page = 1});
+            }
+            catch (UtilisateurNotExistException e)
+            {
+                ViewData["error"] = e.Message;
+
+				return View();
+			}
+            catch (Exception ex)
+            {
+                ViewData["error"] = ex.Message;
+
+				return View();
+			}
+
+
+
+        }
+
+        public async Task<IActionResult> Search(string tosearch)
+        {
+            name += "/Search";
             IEnumerable<Mpandray> resultat = await MpandrayService.Search(tosearch);
             return await Task.Run(() =>
             {

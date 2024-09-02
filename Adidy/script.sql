@@ -35,3 +35,6 @@ create table droits(iddroit serial primary key,typedroit text);
 create table droit_utilisateurs(iddroit_utilisateur char(6) primary key default concat('DU00',nextval('iddroit_utilisateur')),iddroit int, idutilisateur char(5),isvalid boolean,foreign key(iddroit) references droits(iddroit),foreign key(idutilisateur) references utilisateurs(idutilisateur));
 
 insert into type(nomAdidy) values('vkt'),('ikt'),('adidy');
+
+insert into table droits(typedroit) values
+("/Home/Ajout"),("/Home/Details","/Home/Liste","/Home/Home");
