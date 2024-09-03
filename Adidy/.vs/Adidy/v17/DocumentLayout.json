@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "Adidy\\Views\\Home\\MpandrayDetails.cshtml",
               "ToolTip": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Views\\Home\\MpandrayDetails.cshtml",
               "RelativeToolTip": "Adidy\\Views\\Home\\MpandrayDetails.cshtml",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAIwFYAAAAgAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAADIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-02T13:57:01.065Z",
               "EditorCaption": ""
@@ -59,8 +59,7 @@
               "RelativeToolTip": "Adidy\\Controllers\\HomeController.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAgwF8AAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T13:55:49.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-02T13:55:49.832Z"
             },
             {
               "$type": "Document",
@@ -72,8 +71,7 @@
               "RelativeToolTip": "Adidy\\Services\\MpandrayService.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAQwCQAAACjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T13:53:50.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-02T13:53:50.024Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "Adidy\\Models\\CsvAdidy.cs",
               "ViewState": "AQIAAEEAAAAAAAAAAAAcwFEAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T13:51:22.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-02T13:51:22.586Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "Adidy\\Controllers\\AdminController.cs",
               "ViewState": "AQIAADUAAAAAAAAAAAAIwEMAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T13:51:14.93Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-02T13:51:14.93Z"
             }
           ]
         }
