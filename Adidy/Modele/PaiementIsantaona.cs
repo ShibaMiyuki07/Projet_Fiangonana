@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Modele;
+﻿namespace Modele;
 
 public partial class PaiementIsantaona
 {

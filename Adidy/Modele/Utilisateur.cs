@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Modele;
 
-public partial class Utilisateur 
+public partial class Utilisateur
 {
     public string Idutilisateur { get; set; } = null!;
 
@@ -14,6 +11,6 @@ public partial class Utilisateur
     [JsonIgnore]
     public string? Motdepasse { get; set; }
 
-    public virtual ICollection<DroitUtilisateur> DroitUtilisateurs { get; set; } =[];
+    public virtual ICollection<DroitUtilisateur> DroitUtilisateurs { get; set; } = [];
 
 }

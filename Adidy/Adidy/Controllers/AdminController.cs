@@ -6,11 +6,12 @@ using Modele;
 
 namespace Adidy.Controllers
 {
-    public class AdminController(IUtilisateurService utilisateur,IMpandrayService mpandrayService,IPaiementAdidyService paiementAdidyService) : Controller
+    public class AdminController(IUtilisateurService utilisateur, IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService) : Controller
     {
         private readonly IUtilisateurService utilisateurService = utilisateur;
         private readonly IMpandrayService mpandrayService = mpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
+        private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
 
         public IActionResult Index()
         {
@@ -36,9 +37,9 @@ namespace Adidy.Controllers
         [HttpGet]
         public async Task<IActionResult> ImportData()
         {
-            return await Task.Run(IActionResult() =>
+            return await Task.Run(IActionResult () =>
             {
-                ViewData["type"] = Constante.toImport; 
+                ViewData["type"] = Constante.toImport;
                 return View("Import");
             });
         }
@@ -52,7 +53,7 @@ namespace Adidy.Controllers
                 return View("Import");
             }
 
-            if (Constante.toImport[data.DataType-1].Item2.Equals("mpandray", StringComparison.CurrentCultureIgnoreCase))
+            if (Constante.toImport[data.DataType - 1].Item2.Equals("mpandray", StringComparison.CurrentCultureIgnoreCase))
             {
                 IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File);
                 await mpandrayService.BulkInsert(liste_mpandray);
@@ -65,9 +66,17 @@ namespace Adidy.Controllers
                 ViewData["type"] = Constante.toImport;
                 await paiementAdidyService.BulkInsert(liste_paiement_adidy);
                 return View();
-                //await mpandrayService.BulkInsert(liste_mpandray);
             }
-            return RedirectToAction("ImportData","Admin");
+            else if (Constante.toImport[data.DataType - 1].Item2.Equals("ikt", StringComparison.CurrentCultureIgnoreCase))
+            {
+                IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
+                IEnumerable<PaiementIsantaona> liste_paiement_adidy = await new CsvAdidy().CsvToPaiementIsantaona(liste_adidy);
+                ViewData["PaiementIsantaona"] = liste_paiement_adidy;
+                ViewData["type"] = Constante.toImport;
+                await paiementIsantaonaService.BulkInsert(liste_paiement_adidy);
+                return View();
+            }
+            return RedirectToAction("ImportData", "Admin");
         }
     }
 }

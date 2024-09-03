@@ -15,7 +15,7 @@ namespace Data
             HeaderValidated = null
         };
 
-        
+
         public async Task<IEnumerable<T>> ImportFromIFormFile(IFormFile file)
         {
             return await Task.Run(async () =>

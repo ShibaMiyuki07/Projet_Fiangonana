@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Adidy.Controllers
 {
-    public class HomeController(IMpandrayService MpandrayService,IPaiementAdidyService paiementAdidyService, IHttpContextAccessor httpContextAccessor,IUtilisateurService utilisateurService) : Controller
+    public class HomeController(IMpandrayService MpandrayService, IPaiementAdidyService paiementAdidyService, IHttpContextAccessor httpContextAccessor, IUtilisateurService utilisateurService) : Controller
     {
         private readonly IMpandrayService MpandrayService = MpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
@@ -18,7 +18,7 @@ namespace Adidy.Controllers
 
         public IActionResult Index()
         {
-            
+
             return View();
         }
 
@@ -28,42 +28,42 @@ namespace Adidy.Controllers
             try
             {
                 Utilisateur loger = await utilisateurService.Login(user);
-                httpContextAccessor.HttpContext!.Session.SetString( "user",JsonConvert.SerializeObject(loger));
-                return RedirectToAction("MpandrayListe", "Home",new { page = 1});
+                httpContextAccessor.HttpContext!.Session.SetString("user", JsonConvert.SerializeObject(loger));
+                return RedirectToAction("MpandrayListe", "Home", new { page = 1 });
             }
             catch (UtilisateurNotExistException e)
             {
                 ViewData["error"] = e.Message;
 
-				return View("Index");
-			}
+                return View("Index");
+            }
             catch (Exception ex)
             {
                 ViewData["error"] = ex.Message;
 
-				return View("Index");
-			}
+                return View("Index");
+            }
 
 
 
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search(int page,string tosearch)
+        public async Task<IActionResult> Search(int page, string tosearch)
         {
-            if(page == 0)
+            if (page == 0)
             {
                 page = 1;
             }
             name += "/Search";
-            IEnumerable<Mpandray> resultat = await MpandrayService.Search(page,tosearch);
+            IEnumerable<Mpandray> resultat = await MpandrayService.Search(page, tosearch);
             ViewData["liste"] = resultat;
             ViewData["page"] = page;
             string currentLink = Request.Path.ToString();
             ViewData["link"] = currentLink;
 
             ViewData["query"] = tosearch;
-			return View("MpandrayListe");
+            return View("MpandrayListe");
         }
 
         [HttpGet]
@@ -72,20 +72,20 @@ namespace Adidy.Controllers
             name += "/Liste";
             IEnumerable<Mpandray>? liste_mpandray;
 
-			if (page <= 0)
+            if (page <= 0)
             {
                 liste_mpandray = [];
                 page = 0;
-			}
+            }
             else
             {
-				liste_mpandray = await MpandrayService.MpandraysPaginate(page);
-			}
+                liste_mpandray = await MpandrayService.MpandraysPaginate(page);
+            }
             ViewData["page"] = page;
-			ViewData["liste"] = liste_mpandray;
-			string currentLink = Request.Path.ToString();
-			ViewData["link"] = currentLink;
-			return View();
+            ViewData["liste"] = liste_mpandray;
+            string currentLink = Request.Path.ToString();
+            ViewData["link"] = currentLink;
+            return View();
         }
 
 
@@ -94,9 +94,7 @@ namespace Adidy.Controllers
         {
             name += "/Details";
             Mpandray? details = await MpandrayService.GetMpandrayByNumero(numero);
-            IEnumerable<PaiementAdidy> listePaiementsAdidy = await paiementAdidyService.GetPaiementByNumeroMpandray(numero);
             ViewData["details"] = details;
-            ViewData["listePaiementAdidy"] = listePaiementsAdidy;
             return View();
         }
 

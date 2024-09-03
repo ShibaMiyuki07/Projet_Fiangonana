@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Modele
+﻿namespace Modele
 {
     public static class Constante
     {
-        public readonly static List<Tuple<int, string>> mois = 
+        public readonly static List<Tuple<int, string>> mois =
             [new Tuple<int,string>(1, "Janvier"),
             new Tuple<int, string>(2, "Fevrier"),
             new Tuple<int, string>(3, "Mars"),
@@ -24,12 +18,13 @@ namespace Modele
 
         public readonly static List<Tuple<int, string>> toImport = [
             new Tuple<int,string>(1,"Adidy"),
+            new Tuple<int,string>(2,"IKT"),
             new Tuple<int,string>(2,"Mpandray")];
 
 
 
-        public readonly static Dictionary<string, int> DictionnaireMois = new() 
-        { 
+        public readonly static Dictionary<string, int> DictionnaireMois = new()
+        {
             { "janvier" , 1 },
             { "fevrier" , 2 },
             { "mars" , 3 },

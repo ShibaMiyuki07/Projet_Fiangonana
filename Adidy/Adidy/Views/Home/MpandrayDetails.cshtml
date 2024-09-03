@@ -1,7 +1,6 @@
 ﻿@using Modele
 @{
     Mpandray? details = (Mpandray?) ViewData["details"];
-    IEnumerable<PaiementAdidy> listePaiementAdidy = (IEnumerable<PaiementAdidy>)ViewData["listePaiementAdidy"]!;
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -48,7 +47,7 @@
                     <button type="submit">Modifier</button>
                 </form>
             </div>
-            @if(listePaiementAdidy != null && listePaiementAdidy.Any())
+            if (details.PaiementAdidies != null && details.PaiementAdidies.Any())
             {
                 <table>
                     <thead>
@@ -60,12 +59,42 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var item in listePaiementAdidy)
+                        @foreach (var item in details.PaiementAdidies)
                         {
                             <tr>
                                 <td>@item.Dateheurepaiemet</td>
                                 <td>@item.MoisDebut/@item.AnneeDebut</td>
                                 <td>@item.MoisFin/@item.AnneeFin</td>
+                                <td>@item.Montant Ar</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div>Tsy mbola nandoa adidy ity mpandray ity</div>
+            }
+
+            if (details.PaiementIsantaonas != null && details.PaiementIsantaonas.Any())
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Daty nandoavana vola</th>
+                            <th>Taona fiantombohana</th>
+                            <th>Taona niafarana</th>
+                            <th>Vola naloa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in details.PaiementIsantaonas)
+                        {
+                            <tr>
+                                <td>@item.Dateheurepaiemet</td>
+                                <td>@item.AnneeDebut</td>
+                                <td>@item.AnneeFin</td>
                                 <td>@item.Montant Ar</td>
 
                             </tr>

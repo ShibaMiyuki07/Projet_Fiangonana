@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CsvHelper.Configuration.Attributes;
 using System.ComponentModel.DataAnnotations;
-using CsvHelper.Configuration.Attributes;
 
 namespace Modele;
 
