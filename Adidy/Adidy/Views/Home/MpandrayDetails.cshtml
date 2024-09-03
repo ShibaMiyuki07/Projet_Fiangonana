@@ -8,48 +8,53 @@
     <head>
         <title>Details de mpandray</title>
         <link rel="stylesheet" href="~/css/MpandrayDetails.css" />
+
     </head>
     <body>
         @if(details != null)
         {
             <div class="details" id="details">
-                <div>Numero Mpandray : @details.Numero</div>
-                <div>Anarana : @details.Anarana</div>
-                <div>Fanampiny : @details.Fanampiny</div>
-                <div>Fonenana : @details.Fonenana</div>
-                <div>Fokontany : @details.Fokontany</div>
-                <div>Numero Telephone : @details.Tel</div>
-                <div><button onclick="showModif()">Modifier</button></div>
+                <div class="children">Numero Mpandray : @details.Numero</div>
+                <div class="children">Anarana : @details.Anarana</div>
+                <div class="children">Fanampiny : @details.Fanampiny</div>
+                <div class="children">Fonenana : @details.Fonenana</div>
+                <div class="children">Fokontany : @details.Fokontany</div>
+                <div class="children">Numero Telephone : @details.Tel</div>
+                <div class="children"><button onclick="showModif()">Modifier</button></div>
             </div>
 
-            <div id="cacher" class="formulaire_modification" style="display :none">
+            <div id="cacher" class="details" style="display :none">
                 <form method="post" action="/Home/Details?numero=@details.Numero">
-                    <div>
+                    <div class="children">
                         Numero Mpandray :
                         <input type="number" name="numero" value="@details.Numero" />
                     </div>
-                    <div>
+                    <div class="children">
                         Anarana : 
                         <input type="text" name="anarana" value="@details.Anarana" />
                     </div>
-                    <div>
+                    <div class="children">
                         Fanampiny :
                         <input type="text" name="fanampiny" value="@details.Fanampiny" />
                     </div>
-                    <div>
+                    <div class="children"> 
                         Fonenana :
                         <input type="text" name="fonenana" value="@details.Fonenana" />
                     </div>
-                    <div>
+                    <div class="children">
                         Fokontany :
                         <input type="text" name="fokontany" value="@details.Fokontany" />
                     </div>
-                    <div>
+                    <div class="children">
                         Numero Telephone :
                         <input type="text" name="tel" value="@details.Tel" />
                     </div>
-                    <button type="submit">Modifier</button>
-                    <button>Annuler</button>
+                    <div class="children">
+                        <button type="submit">Modifier</button>
+                    </div>
+                    <div class="children">
+                        <button>Annuler</button>
+                    </div>
                 </form>
             </div>
 
@@ -160,12 +165,12 @@
 <script>
     function showModif() { 
         document.getElementById("details").style.display = "none";
-        document.getElementById("cacher").style.display = "block";
+        document.getElementById("cacher").style.display = "flex";
     }
 
     function hideModif()
     {
-        document.getElementById("details").style.display = "block";
+        document.getElementById("details").style.display = "flex";
         document.getElementById("cacher").style.display = "none";
     }
 </script>

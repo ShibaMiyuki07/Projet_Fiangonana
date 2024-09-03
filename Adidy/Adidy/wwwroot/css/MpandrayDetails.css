@@ -1,3 +1,7 @@
 ﻿.details {
-    display : inline
+    display : flex;
+}
+
+.children{
+    display : inline-block;
 }
