@@ -51,9 +51,9 @@
             </div>
 
             <div>
-                <form action="/Home/AjoutPaiement">
+                <form action="/Home/AjoutPaiement" method="post">
                     <div>
-                        <input type="number" name="numerompandray" />
+                        <input type="hidden" name="numerompandray" value="@details.Numero" />
                         <div>
                             <select name="type">
                                 @for(int i=0;i<type_adidy.Count();i++)
