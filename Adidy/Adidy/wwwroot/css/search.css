@@ -1,0 +1,10 @@
+﻿.forms {
+    padding-top: 1%;
+    padding-left: 65%;
+}
+
+.forms input[type=text],input[type=button]
+{
+    height : 34px;
+}
+

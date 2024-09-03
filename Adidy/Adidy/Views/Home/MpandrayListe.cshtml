@@ -1,5 +1,11 @@
-﻿<!doctype html>
-<html lang="en">
+﻿@using Modele
+@{
+	IEnumerable<Mpandray>? liste_mpandray = (IEnumerable<Mpandray>?)ViewData["liste"];
+	int pejy = (int)ViewData["page"]!;
+	string query = (string)ViewData["query"]!;
+}
+<!doctype html>
+<html lang="fr">
 <head>
 	<title>Table 01</title>
 	<meta charset="utf-8">
@@ -9,8 +15,17 @@
 
 	<link rel="stylesheet" href="~/css/style.css">
 
+	<link rel="stylesheet" href="~/css/search.css">
+
 </head>
 <body>
+	<div class="forms">
+		<form class="searchForms" action="/Home/Search" method="get">
+			<div>
+				<input type="text" name="tosearch" /><input type="submit" value="rechercher" />
+			</div>
+		</form>
+	</div>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -19,43 +34,36 @@
 						<table class="table">
 							<thead class="thead-primary">
 								<tr>
-									<th>#</th>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Email Address</th>
+									<th>Numero</th>
+									<th>Anarana & Fanampiny</th>
+									<th>Adiresy</th>
+									<th>Telephone</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td>markotto@email.com</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td>jacobthornton@email.com</td>
-								</tr>
-								<tr>
-									<th scope="row">3</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>larrybird@email.com</td>
-								</tr>
-								<tr>
-									<th scope="row">4</th>
-									<td>John</td>
-									<td>Doe</td>
-									<td>johndoe@email.com</td>
-								</tr>
-								<tr>
-									<th scope="row">5</th>
-									<td>Gary</td>
-									<td>Bird</td>
-									<td>garybird@email.com</td>
-								</tr>
+								@if (liste_mpandray!.Any())
+								{
+									@foreach (var item in liste_mpandray!)
+									{
+										<tr>
+											<th scope="row"><a href="/Home/Details?numero=@item.Numero">@item.Numero</a></th>
+											<td>@item.Anarana	@item.Fanampiny</td>
+											<td>@item.Fonenana	@item.Fokontany</td>
+											@if (item.Tel != "0")
+											{
+												<td>@item.Tel</td>
+											}
+											else
+											{
+												<td>Aucun</td>
+											}
+										</tr>
+									}
+								}
+								else
+								{
+									<td colspan="4">Tsy misy mpandray intsony</td>
+								}
 							</tbody>
 						</table>
 					</div>
@@ -64,9 +72,6 @@
 		</div>
 	</section>
 
-	<script src="~/js/jquery.min.js"></script>
-	<script src="~/js/popper.js"></script>
-	<script src="~/js/bootstrap.min.js"></script>
 
 </body>
 </html>
