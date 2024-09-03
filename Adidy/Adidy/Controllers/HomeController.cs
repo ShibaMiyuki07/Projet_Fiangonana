@@ -98,7 +98,6 @@ namespace Adidy.Controllers
             return View();
         }
 
-
         //Modification mpandray
         [HttpPost("/Home/Details")]
         public async Task<IActionResult> MpandrayDetails(Mpandray mpandray)
@@ -139,6 +138,17 @@ namespace Adidy.Controllers
             return View();
         }
 
+
+        [HttpPost("/Home/AjoutPaiement")]
+        public async Task<IActionResult> PaiementAdidy(int numerompandray,int type,int moisdebut,int anneedebut,int moisfin,int anneefin,string montant)
+        {
+            name += "/AjoutPaiement";
+            if (Constante.type_adidy[type].ToLower() =="Adidy".ToLower())
+            {
+
+            }
+            return RedirectToAction("Details", "Home", new { numero = numerompandray });
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

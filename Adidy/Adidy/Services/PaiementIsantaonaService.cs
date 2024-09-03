@@ -15,5 +15,11 @@ namespace Adidy.Services
             await fiangonanaContext.AddRangeAsync(liste_final);
             await fiangonanaContext.SaveChangesAsync();
         }
+
+        public async Task AddPaiement(PaiementIsantaona paiementIsantaona)
+        {
+            await fiangonanaContext.AddAsync(paiementIsantaona);
+            await fiangonanaContext.SaveChangesAsync();
+        }
     }
 }

@@ -18,8 +18,6 @@ namespace Adidy.Controllers
             return View();
         }
 
-
-
         [HttpPost("/Admin/Index")]
         public async Task<IActionResult> CreateUser(Utilisateur user)
         {
@@ -52,7 +50,6 @@ namespace Adidy.Controllers
                 ViewData["Error"] = "Les donnees a enregistre doivent etre en csv";
                 return View("Import");
             }
-
             if (Constante.toImport[data.DataType - 1].Item2.Equals("mpandray", StringComparison.CurrentCultureIgnoreCase))
             {
                 IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File);

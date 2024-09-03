@@ -20,6 +20,7 @@
             new Tuple<int,string>(1,"Adidy/Ikt"),
             new Tuple<int,string>(2,"Mpandray")];
 
+        public readonly static List<string> type_adidy = ["Adidy","IKT"];
 
 
         public readonly static Dictionary<string, int> DictionnaireMois = new()

@@ -2,6 +2,7 @@
 @{
     Mpandray? details = (Mpandray?) ViewData["details"];
     IEnumerable<Tuple<int, string>> mois = Constante.mois;
+    List<string> type_adidy = Constante.type_adidy;
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -54,7 +55,12 @@
                     <div>
                         <input type="number" name="numerompandray" />
                         <div>
-
+                            <select name="type">
+                                @for(int i=0;i<type_adidy.Count();i++)
+                                {
+                                    <option value="@i">@type_adidy[i]</option>
+                                }
+                            </select>
                         </div>
                         <div>
                             <select name="moisdebut">
