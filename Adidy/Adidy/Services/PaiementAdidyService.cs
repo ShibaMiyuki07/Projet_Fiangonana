@@ -23,5 +23,11 @@ namespace Adidy.Services
         {
             return await fiangonanaContext.PaiementAdidies.Where(paiement => paiement.NumeroMpandray == numero).ToListAsync();
         }
+
+        public async Task AddPaiement(PaiementAdidy paiementAdidy)
+        {
+            await fiangonanaContext.AddAsync(paiementAdidy);
+            await fiangonanaContext.SaveChangesAsync();
+        }
     }
 }

@@ -18,8 +18,6 @@ namespace Adidy.Controllers
             return View();
         }
 
-
-
         [HttpPost("/Admin/Index")]
         public async Task<IActionResult> CreateUser(Utilisateur user)
         {
@@ -52,28 +50,21 @@ namespace Adidy.Controllers
                 ViewData["Error"] = "Les donnees a enregistre doivent etre en csv";
                 return View("Import");
             }
-
             if (Constante.toImport[data.DataType - 1].Item2.Equals("mpandray", StringComparison.CurrentCultureIgnoreCase))
             {
                 IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File);
                 await mpandrayService.BulkInsert(liste_mpandray);
             }
-            else if (Constante.toImport[data.DataType - 1].Item2.Equals("adidy", StringComparison.CurrentCultureIgnoreCase))
+            else
             {
                 IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
                 IEnumerable<PaiementAdidy> liste_paiement_adidy = await new CsvAdidy().CsvToPaiement(liste_adidy);
+                IEnumerable<PaiementIsantaona> liste_paiement_isantaona = await new CsvAdidy().CsvToPaiementIsantaona(liste_adidy);
                 ViewData["PaiementAdidy"] = liste_paiement_adidy;
+                ViewData["PaiementIsantaona"] = liste_paiement_isantaona;
                 ViewData["type"] = Constante.toImport;
                 await paiementAdidyService.BulkInsert(liste_paiement_adidy);
-                return View();
-            }
-            else if (Constante.toImport[data.DataType - 1].Item2.Equals("ikt", StringComparison.CurrentCultureIgnoreCase))
-            {
-                IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
-                IEnumerable<PaiementIsantaona> liste_paiement_adidy = await new CsvAdidy().CsvToPaiementIsantaona(liste_adidy);
-                ViewData["PaiementIsantaona"] = liste_paiement_adidy;
-                ViewData["type"] = Constante.toImport;
-                await paiementIsantaonaService.BulkInsert(liste_paiement_adidy);
+                await paiementIsantaonaService.BulkInsert(liste_paiement_isantaona);
                 return View();
             }
             return RedirectToAction("ImportData", "Admin");

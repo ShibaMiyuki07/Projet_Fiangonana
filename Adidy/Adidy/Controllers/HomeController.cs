@@ -1,6 +1,7 @@
 using Adidy.Exceptions;
 using Adidy.Models;
 using Adidy.Services.Interface;
+using Adidy.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Modele;
 using Newtonsoft.Json;
@@ -8,12 +9,17 @@ using System.Diagnostics;
 
 namespace Adidy.Controllers
 {
-    public class HomeController(IMpandrayService MpandrayService, IPaiementAdidyService paiementAdidyService, IHttpContextAccessor httpContextAccessor, IUtilisateurService utilisateurService) : Controller
+    public class HomeController(IMpandrayService MpandrayService, 
+        IPaiementAdidyService paiementAdidyService, 
+        IHttpContextAccessor httpContextAccessor, 
+        IUtilisateurService utilisateurService,
+        IPaiementIsantaonaService paiementIsantaonaService) : Controller
     {
         private readonly IMpandrayService MpandrayService = MpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IUtilisateurService utilisateurService = utilisateurService;
         private IHttpContextAccessor httpContextAccessor = httpContextAccessor;
+        private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
         private static string name = "Home";
 
         public IActionResult Index()
@@ -98,7 +104,6 @@ namespace Adidy.Controllers
             return View();
         }
 
-
         //Modification mpandray
         [HttpPost("/Home/Details")]
         public async Task<IActionResult> MpandrayDetails(Mpandray mpandray)
@@ -139,6 +144,52 @@ namespace Adidy.Controllers
             return View();
         }
 
+
+        [HttpPost("/Home/AjoutPaiement")]
+        public async Task<IActionResult> Paiement(string numerompandray,int type,int moisdebut,int anneedebut,int moisfin,int anneefin,string montant)
+        {
+            name += "/AjoutPaiement";
+            if (Constante.type_adidy[type].Equals("Adidy", StringComparison.CurrentCultureIgnoreCase))
+            {
+                try
+                {
+                    PaiementAdidy aPayer = new()
+                    {
+                        NumeroMpandray = Int32.Parse(numerompandray),
+                        MoisDebut = moisdebut,
+                        AnneeDebut = anneedebut,
+                        MoisFin = moisfin,
+                        AnneeFin = anneefin,
+                        Montant = decimal.Parse(montant),
+                        Duree = Duration.CalculDuration(moisdebut, anneedebut,moisfin,anneefin)
+                    };
+                    await paiementAdidyService.AddPaiement(aPayer);
+                }
+                catch(Exception e)
+                {
+                    ViewData["error"] = "Chiffre no atao eo amin'ilay montant";
+                }
+            }
+            else if(Constante.type_adidy[type].Equals("ikt", StringComparison.CurrentCultureIgnoreCase))
+            {
+                try
+                {
+                    PaiementIsantaona aPayer = new()
+                    {
+                        NumeroMpandray = Int32.Parse(numerompandray),
+                        AnneeDebut = anneedebut,
+                        AnneeFin = anneefin,
+                        Montant = decimal.Parse(montant)
+                    };
+                    await paiementIsantaonaService.AddPaiement(aPayer);
+                }
+                catch (Exception e)
+                {
+                    ViewData["error"] = "Chiffre no atao eo amin'ilay montant";
+                }
+            }
+            return RedirectToAction("Details", "Home", new { numero = numerompandray });
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

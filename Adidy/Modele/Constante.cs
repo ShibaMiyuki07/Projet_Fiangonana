@@ -17,10 +17,10 @@
             new Tuple<int, string>(12, "Decembre")];
 
         public readonly static List<Tuple<int, string>> toImport = [
-            new Tuple<int,string>(1,"Adidy"),
-            new Tuple<int,string>(2,"IKT"),
+            new Tuple<int,string>(1,"Adidy/Ikt"),
             new Tuple<int,string>(2,"Mpandray")];
 
+        public readonly static List<string> type_adidy = ["Adidy","IKT"];
 
 
         public readonly static Dictionary<string, int> DictionnaireMois = new()
