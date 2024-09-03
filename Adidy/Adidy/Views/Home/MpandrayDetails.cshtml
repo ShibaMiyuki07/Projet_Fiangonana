@@ -1,6 +1,7 @@
 ﻿@using Modele
 @{
     Mpandray? details = (Mpandray?) ViewData["details"];
+    IEnumerable<Tuple<int, string>> mois = Constante.mois;
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -18,7 +19,7 @@
                 <div>Numero Telephone : @details.Tel</div>
             </div>
 
-            <div class="formulaire" style="display :none">
+            <div class="formulaire_modification" style="display :none">
                 <form method="post" action="/Home/Details?numero=@details.Numero">
                     <div>
                         Numero Mpandray :
@@ -47,15 +48,47 @@
                     <button type="submit">Modifier</button>
                 </form>
             </div>
+
+            <div>
+                <form>
+                    <div>
+                        <input type="number" name="numerompandray" />
+                        <div>
+                            <select name="moisdebut">
+                                @foreach(var item in mois)
+                                {
+                                    <option value="@item.Item1">
+                                        @item.Item2
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <input type="number" name="anneedebut"/>
+                        <div>
+                            <select name="moisfin">
+                                @foreach (var item in mois)
+                                {
+                                    <option value="@item.Item1">
+                                        @item.Item2
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <input type="number" name="anneefin" />
+                        <input type="text" name="montant" />
+                        <button>Ajouter</button>
+                    </div>
+                </form>
+            </div>
             if (details.PaiementAdidies != null && details.PaiementAdidies.Any())
             {
                 <table>
                     <thead>
                         <tr>
-                            <th>Daty nandoavana vola</th>
-                            <th>Volana/Taona fiantombohana</th>
-                            <th>Volana/Taona niafarana</th>
-                            <th>Vola naloa</th>
+                            <th>Date Paiement</th>
+                            <th>Mois/Annee debut</th>
+                            <th>Mois/Annee fin</th>
+                            <th>Montant</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,10 +115,10 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Daty nandoavana vola</th>
-                            <th>Taona fiantombohana</th>
-                            <th>Taona niafarana</th>
-                            <th>Vola naloa</th>
+                            <th>Date paiement</th>
+                            <th>Annee debut</th>
+                            <th>Annee fin</th>
+                            <th>Montant</th>
                         </tr>
                     </thead>
                     <tbody>
