@@ -12,16 +12,17 @@
     <body>
         @if(details != null)
         {
-            <div class="details">
+            <div class="details" id="details">
                 <div>Numero Mpandray : @details.Numero</div>
                 <div>Anarana : @details.Anarana</div>
                 <div>Fanampiny : @details.Fanampiny</div>
                 <div>Fonenana : @details.Fonenana</div>
                 <div>Fokontany : @details.Fokontany</div>
                 <div>Numero Telephone : @details.Tel</div>
+                <div><button onclick="showModif()">Modifier</button></div>
             </div>
 
-            <div class="formulaire_modification" style="display :none">
+            <div id="cacher" class="formulaire_modification" style="display :none">
                 <form method="post" action="/Home/Details?numero=@details.Numero">
                     <div>
                         Numero Mpandray :
@@ -48,6 +49,7 @@
                         <input type="text" name="tel" value="@details.Tel" />
                     </div>
                     <button type="submit">Modifier</button>
+                    <button>Annuler</button>
                 </form>
             </div>
 
@@ -147,7 +149,7 @@
             }
             else
             {
-                <div>Tsy mbola nandoa adidy ity mpandray ity</div>
+                <div>Tsy mbola nandoa IKT</div>
             }
         }
         else
@@ -155,4 +157,16 @@
             <div>Tsy misy io numerao mpandray io</div>
         }
 </body>
+<script>
+    function showModif() { 
+        document.getElementById("details").style.display = "none";
+        document.getElementById("cacher").style.display = "block";
+    }
+
+    function hideModif()
+    {
+        document.getElementById("details").style.display = "block";
+        document.getElementById("cacher").style.display = "none";
+    }
+</script>
 </html>
