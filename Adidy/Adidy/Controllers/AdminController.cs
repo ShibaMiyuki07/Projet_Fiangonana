@@ -6,12 +6,14 @@ using Modele;
 
 namespace Adidy.Controllers
 {
-    public class AdminController(IUtilisateurService utilisateur, IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService) : Controller
+    public class AdminController(IUtilisateurService utilisateur,
+        IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService,IDroitService droitService) : Controller
     {
         private readonly IUtilisateurService utilisateurService = utilisateur;
         private readonly IMpandrayService mpandrayService = mpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
+        private readonly IDroitService droitService = droitService;
 
         public IActionResult AjoutUtilisateur()
         {
@@ -82,7 +84,9 @@ namespace Adidy.Controllers
         public async Task<IActionResult> UtilisateurDetails([FromRoute]string idUtilisateur)
         {
             Utilisateur? utilisateur = await utilisateurService.GetUtilisateurById(idUtilisateur);
+            IEnumerable<Droit> droitNotInUtilisateur = await droitService.DroitNotInUtilisateur(utilisateur);
             ViewData["details"] = utilisateur;
+            ViewData["droits"] = droitNotInUtilisateur;
             return View();
         }
     }
