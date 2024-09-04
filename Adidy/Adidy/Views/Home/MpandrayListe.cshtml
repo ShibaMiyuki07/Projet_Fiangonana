@@ -3,6 +3,7 @@
 	IEnumerable<Mpandray>? liste_mpandray = (IEnumerable<Mpandray>?)ViewData["liste"];
 	int pejy = (int)ViewData["page"]!;
 	string query = (string)ViewData["query"]!;
+	List<Tuple<int, string>> mois = Constante.mois;
 }
 <!doctype html>
 <html lang="fr">
@@ -36,8 +37,9 @@
 								<tr>
 									<th>Numero</th>
 									<th>Anarana & Fanampiny</th>
-									<th>Adiresy</th>
 									<th>Telephone</th>
+									<th>Adidy</th>
+									<th>IKT</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -48,7 +50,6 @@
 										<tr>
 											<th scope="row"><a href="/Home/Details?numero=@item.Numero">@item.Numero</a></th>
 											<td>@item.Anarana	@item.Fanampiny</td>
-											<td>@item.Fonenana	@item.Fokontany</td>
 											@if (item.Tel != "0")
 											{
 												<td>@item.Tel</td>
@@ -56,6 +57,22 @@
 											else
 											{
 												<td>Aucun</td>
+											}
+											@if(item.PaiementAdidies?.OrderByDescending(c => c.AnneeFin).OrderByDescending(c => c.MoisFin)?.Select(c => new { mois = c.MoisFin })?.FirstOrDefault() != null)
+											{
+												<td>@(mois[(int) item.PaiementAdidies?.OrderByDescending(c => c.AnneeFin).OrderByDescending(c => c.MoisFin)?.Select(c => new { mois = c.MoisFin })?.FirstOrDefault()?.mois!-1].Item2)/@item.PaiementAdidies?.OrderByDescending(c => c.Dateheurepaiemet)?.Select(c => new { annee = c.AnneeFin })?.FirstOrDefault()?.annee</td>
+											}
+											else
+											{
+												<td></td>
+											}
+											@if(item.PaiementIsantaonas?.OrderByDescending(c => c.AnneeFin)?.Select(c => new { annee = c.AnneeFin })?.FirstOrDefault() != null)
+											{
+												<td>@item.PaiementIsantaonas?.OrderByDescending(c => c.AnneeFin)?.Select(c => new { annee = c.AnneeFin })?.FirstOrDefault()?.annee</td>
+											}
+											else
+											{
+												<td></td>
 											}
 										</tr>
 									}
