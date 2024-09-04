@@ -1,5 +1,13 @@
 ﻿@{
-	string error = (string)ViewData["error"]!;
+	string error = "";
+	if(!string.IsNullOrEmpty((string)ViewData["error"]!))
+	{
+		error = (string)ViewData["error"]!;
+	}
+	if(!string.IsNullOrEmpty((string)TempData["error"]!))
+	{
+		error = (string)TempData["error"]!;
+	}
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -29,13 +37,11 @@
 	<!--===============================================================================================-->
 </head>
 <body>
-	@if(string.IsNullOrEmpty(error))
-	{
-		<div>@error</div>
-	}
+	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+				
 				<form class="login100-form validate-form" method="post" action="/Home/Login">
 					<span class="login100-form-title p-b-26">
 						Se connecter
@@ -53,7 +59,11 @@
 						<input class="input100" type="password" name="motdepasse">
 						<span class="focus-input100" data-placeholder="Mot de passe"></span>
 					</div>
-
+					
+					@if(!string.IsNullOrEmpty(error))
+					{
+						<div class="error" style="color :red">@error</div>
+					}
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
