@@ -69,5 +69,13 @@ namespace Adidy.Controllers
             }
             return RedirectToAction("ImportData", "Admin");
         }
+
+
+        public async Task<IActionResult> UtilisateurListe()
+        {
+            IEnumerable<Utilisateur> liste_utilisateur = await utilisateurService.GetAllUtilisateur();
+            ViewData["liste_utilisateur"] = liste_utilisateur;
+            return View();
+        }
     }
 }

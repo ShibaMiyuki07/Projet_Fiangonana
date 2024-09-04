@@ -18,7 +18,7 @@ namespace Adidy.Controllers
         private readonly IMpandrayService MpandrayService = MpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IUtilisateurService utilisateurService = utilisateurService;
-        private IHttpContextAccessor httpContextAccessor = httpContextAccessor;
+        private readonly IHttpContextAccessor httpContextAccessor = httpContextAccessor;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
         private static string name = "Home";
 
@@ -165,7 +165,7 @@ namespace Adidy.Controllers
                     };
                     await paiementAdidyService.AddPaiement(aPayer);
                 }
-                catch(Exception e)
+                catch
                 {
                     ViewData["error"] = "Chiffre no atao eo amin'ilay montant";
                 }
@@ -183,7 +183,7 @@ namespace Adidy.Controllers
                     };
                     await paiementIsantaonaService.AddPaiement(aPayer);
                 }
-                catch (Exception e)
+                catch
                 {
                     ViewData["error"] = "Chiffre no atao eo amin'ilay montant";
                 }

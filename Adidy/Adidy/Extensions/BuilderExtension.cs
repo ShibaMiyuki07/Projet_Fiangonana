@@ -30,7 +30,7 @@ namespace Adidy.Extensions
         public static void InjectBdd(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<FiangonanaContext>(
-                options => options.UseNpgsql(configuration.GetConnectionString("Psql")!));
+                options => options.UseNpgsql(configuration.GetConnectionString("Psql")!, o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)));
         }
 
         public static void InjectLog(this IServiceCollection services)

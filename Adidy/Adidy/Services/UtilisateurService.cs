@@ -30,8 +30,13 @@ namespace Adidy.Services
             user.Motdepasse = PasswordEncryption.StrToShA1(user?.Motdepasse!);
             Utilisateur? resultat = await context.Utilisateurs.Where(utilisateur => utilisateur.Nomutilisateur == user!.Nomutilisateur && utilisateur.Motdepasse == user.Motdepasse).Include(c => c.DroitUtilisateurs).FirstOrDefaultAsync();
             if (resultat == null)
-                throw new UtilisateurNotExistException("Tsy misy io anarana io/na io takela miafina io");
+                throw new UtilisateurNotExistException("Nom d'utilisateur/Mot de passe inexistant");
             return resultat!;
+        }
+
+        public async Task<IEnumerable<Utilisateur>> GetAllUtilisateur()
+        {
+            return await context.Utilisateurs.ToListAsync();
         }
     }
 }

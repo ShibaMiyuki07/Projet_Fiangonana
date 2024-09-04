@@ -25,7 +25,7 @@ namespace Adidy.Models
 
 
 
-        public async Task<IEnumerable<PaiementAdidy>> CsvToPaiement(IEnumerable<CsvAdidy> listes)
+        public static async Task<IEnumerable<PaiementAdidy>> CsvToPaiement(IEnumerable<CsvAdidy> listes)
         {
             List<PaiementAdidy> toReturn = [];
             await Task.Run(() =>
@@ -41,7 +41,7 @@ namespace Adidy.Models
             return toReturn;
         }
 
-        public async Task<IEnumerable<PaiementIsantaona>> CsvToPaiementIsantaona(IEnumerable<CsvAdidy> listes)
+        public static async Task<IEnumerable<PaiementIsantaona>> CsvToPaiementIsantaona(IEnumerable<CsvAdidy> listes)
         {
             List<PaiementIsantaona> toReturn = [];
             await Task.Run(() =>
