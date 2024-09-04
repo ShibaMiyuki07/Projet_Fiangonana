@@ -36,7 +36,7 @@
 									@foreach (var item in liste_utilisateur!)
 									{
 										<tr>
-											<th scope="row"><a href="/Home/Details?numero=@item.Idutilisateur">@item.Idutilisateur</a></th>
+											<th scope="row"><a href="/Admin/Details/@item.Idutilisateur">@item.Idutilisateur</a></th>
 											<td>@item.Nomutilisateur</td>
 											<td>@item.Motdepasse</td>
 										</tr>

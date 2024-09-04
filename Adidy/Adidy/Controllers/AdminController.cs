@@ -7,13 +7,14 @@ using Modele;
 namespace Adidy.Controllers
 {
     public class AdminController(IUtilisateurService utilisateur,
-        IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService,IDroitService droitService) : Controller
+        IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService,IDroitService droitService,IDroitUtilisateurService droitUtilisateurService) : Controller
     {
         private readonly IUtilisateurService utilisateurService = utilisateur;
         private readonly IMpandrayService mpandrayService = mpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
         private readonly IDroitService droitService = droitService;
+        private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
 
         public IActionResult AjoutUtilisateur()
         {
@@ -87,6 +88,19 @@ namespace Adidy.Controllers
             IEnumerable<Droit> droitNotInUtilisateur = await droitService.DroitNotInUtilisateur(utilisateur);
             ViewData["details"] = utilisateur;
             ViewData["droits"] = droitNotInUtilisateur;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AjoutDroitUtilisateur(string idUtilisateur,int idDroit)
+        {
+            DroitUtilisateur droitUtilisateur = new()
+            {
+                Idutilisateur = idUtilisateur,
+                Iddroit = idDroit,
+                Isvalid = true
+            };
+            await droitUtilisateurService.Add(droitUtilisateur);
             return View();
         }
     }

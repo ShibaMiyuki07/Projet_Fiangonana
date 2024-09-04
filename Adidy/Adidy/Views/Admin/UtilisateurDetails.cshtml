@@ -33,6 +33,10 @@
                     </tr>
                 }
             }
+            else
+            {
+                <div>Utilisateur sans droit</div>
+            }
             @if(droits != null && droits.Any())
             {
                 @foreach(var item in droits)
@@ -45,10 +49,7 @@
             }
             </tbody>
         </table>
-        else
-        {
-            <div>Utilisateur sans droit</div>
-        }
+        
     }
     else
     {
