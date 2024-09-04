@@ -58,8 +58,8 @@ namespace Adidy.Controllers
             else
             {
                 IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
-                IEnumerable<PaiementAdidy> liste_paiement_adidy = await new CsvAdidy().CsvToPaiement(liste_adidy);
-                IEnumerable<PaiementIsantaona> liste_paiement_isantaona = await new CsvAdidy().CsvToPaiementIsantaona(liste_adidy);
+                IEnumerable<PaiementAdidy> liste_paiement_adidy = await CsvAdidy.CsvToPaiement(liste_adidy);
+                IEnumerable<PaiementIsantaona> liste_paiement_isantaona = await CsvAdidy.CsvToPaiementIsantaona(liste_adidy);
                 ViewData["PaiementAdidy"] = liste_paiement_adidy;
                 ViewData["PaiementIsantaona"] = liste_paiement_isantaona;
                 ViewData["type"] = Constante.toImport;
