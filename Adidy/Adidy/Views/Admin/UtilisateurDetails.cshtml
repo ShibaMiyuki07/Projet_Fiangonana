@@ -1,6 +1,7 @@
 ﻿@using Modele
 @{
     Utilisateur? details = (Utilisateur?)ViewData["details"];
+    IEnumerable<Droit> droits = (IEnumerable<Droit>) ViewData["droits"]!;
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -15,26 +16,35 @@
             <div class="children">Id Utilisateur : @details.Idutilisateur</div>
             <div class="children">Nom Utilisateur : @details.Nomutilisateur</div>
         </div>
-
-        if (details.DroitUtilisateurs != null && details.DroitUtilisateurs.Any())
-        {
-            <table>
-                <thead>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type de droit de l'utilisateur'</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (details.DroitUtilisateurs != null && details.DroitUtilisateurs.Any())
+            {
+                @foreach (var item in details.DroitUtilisateurs)
+                {
                     <tr>
-                        <th>Type de droit de l'utilisateur'</th>
+                        <td>@item.IddroitNavigation!.Typedroit</td>
+                        <td>Supprimer</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in details.DroitUtilisateurs)
-                    {
-                        <tr>
-                            <td>@item.IddroitNavigation!.Typedroit</td>
-
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
+                }
+            }
+            @if(droits != null && droits.Any())
+            {
+                @foreach(var item in droits)
+                {
+                   <tr>
+                       <td>@item.Typedroit</td>
+                       <td>Ajouter</td>
+                   </tr>     
+                }
+            }
+            </tbody>
+        </table>
         else
         {
             <div>Utilisateur sans droit</div>
