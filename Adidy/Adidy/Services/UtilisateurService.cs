@@ -38,5 +38,10 @@ namespace Adidy.Services
         {
             return await context.Utilisateurs.ToListAsync();
         }
+
+        public async Task<Utilisateur?> GetUtilisateurById(string id)
+        {
+            return await context.Utilisateurs.Where(utilisateur => utilisateur.Idutilisateur == id).FirstOrDefaultAsync();
+        }
     }
 }

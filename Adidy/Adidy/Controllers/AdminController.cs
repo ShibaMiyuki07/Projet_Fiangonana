@@ -13,12 +13,12 @@ namespace Adidy.Controllers
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
 
-        public IActionResult Index()
+        public IActionResult AjoutUtilisateur()
         {
             return View();
         }
 
-        [HttpPost("/Admin/Index")]
+        [HttpPost("/Admin/AjoutUtilisateur")]
         public async Task<IActionResult> CreateUser(Utilisateur user)
         {
             try
@@ -70,11 +70,19 @@ namespace Adidy.Controllers
             return RedirectToAction("ImportData", "Admin");
         }
 
-
         public async Task<IActionResult> UtilisateurListe()
         {
             IEnumerable<Utilisateur> liste_utilisateur = await utilisateurService.GetAllUtilisateur();
             ViewData["liste_utilisateur"] = liste_utilisateur;
+            return View();
+        }
+
+
+        [HttpGet("/Admin/Details/{idUtilisateur}")]
+        public async Task<IActionResult> UtilisateurDetails([FromRoute]string idUtilisateur)
+        {
+            Utilisateur? utilisateur = await utilisateurService.GetUtilisateurById(idUtilisateur);
+            ViewData["details"] = utilisateur;
             return View();
         }
     }
