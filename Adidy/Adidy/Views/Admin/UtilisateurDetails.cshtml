@@ -19,11 +19,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>Type de droit de l'utilisateur'</th>
+                    <th>Type de droit de l'utilisateur</th>
                 </tr>
             </thead>
             <tbody>
-            @if (details.DroitUtilisateurs != null && details.DroitUtilisateurs.Any())
+            @if (details.DroitUtilisateurs != null)
             {
                 @foreach (var item in details.DroitUtilisateurs)
                 {
@@ -43,7 +43,7 @@
                 {
                    <tr>
                        <td>@item.Typedroit</td>
-                       <td>Ajouter</td>
+                       <td><form action="/Admin/AjoutDroitUtilisateur" method="post"><input type="hidden" name="idutilisateur" value="@details.Idutilisateur" /><input type="hidden" name="iddroit" value="@item.Iddroit" /><button type="submit">Ajouter</button></form></td>
                    </tr>     
                 }
             }

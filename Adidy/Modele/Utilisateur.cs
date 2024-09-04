@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿
+
+using System.Text.Json.Serialization;
 
 namespace Modele;
 
@@ -10,6 +12,7 @@ public partial class Utilisateur
 
     [JsonIgnore]
     public string? Motdepasse { get; set; }
+    [JsonIgnore]
 
     public virtual ICollection<DroitUtilisateur> DroitUtilisateurs { get; set; } = [];
 

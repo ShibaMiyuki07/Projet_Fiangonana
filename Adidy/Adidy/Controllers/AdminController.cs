@@ -101,7 +101,7 @@ namespace Adidy.Controllers
                 Isvalid = true
             };
             await droitUtilisateurService.Add(droitUtilisateur);
-            return View();
+            return Redirect($"/Admin/Details/{idUtilisateur}");
         }
     }
 }
