@@ -1,4 +1,6 @@
-﻿namespace Modele;
+﻿using System.Text.Json.Serialization;
+
+namespace Modele;
 
 public partial class DroitUtilisateur
 {
@@ -8,9 +10,11 @@ public partial class DroitUtilisateur
 
     public string? Idutilisateur { get; set; }
 
-    public bool? Isvalid { get; set; }
+    public bool? Isvalid { get; set; } = false;
 
+    [JsonIgnore]
     public virtual Droit? IddroitNavigation { get; set; }
 
+    [JsonIgnore]
     public virtual Utilisateur? IdutilisateurNavigation { get; set; }
 }

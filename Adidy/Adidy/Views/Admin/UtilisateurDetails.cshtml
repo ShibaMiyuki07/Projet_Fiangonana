@@ -1,0 +1,59 @@
+﻿@using Modele
+@{
+    Utilisateur? details = (Utilisateur?)ViewData["details"];
+    IEnumerable<Droit> droits = (IEnumerable<Droit>) ViewData["droits"]!;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Details de mpandray</title>
+    <link rel="stylesheet" href="~/css/MpandrayDetails.css" />
+
+</head>
+<body>
+    @if (details != null)
+    {
+        <div class="details" id="details">
+            <div class="children">Id Utilisateur : @details.Idutilisateur</div>
+            <div class="children">Nom Utilisateur : @details.Nomutilisateur</div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type de droit de l'utilisateur</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (details.DroitUtilisateurs != null)
+            {
+                @foreach (var item in details.DroitUtilisateurs)
+                {
+                    <tr>
+                        <td>@item.IddroitNavigation!.Typedroit</td>
+                        <td>Supprimer</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <div>Utilisateur sans droit</div>
+            }
+            @if(droits != null && droits.Any())
+            {
+                @foreach(var item in droits)
+                {
+                   <tr>
+                       <td>@item.Typedroit</td>
+                       <td><form action="/Admin/AjoutDroitUtilisateur" method="post"><input type="hidden" name="idutilisateur" value="@details.Idutilisateur" /><input type="hidden" name="iddroit" value="@item.Iddroit" /><button type="submit">Ajouter</button></form></td>
+                   </tr>     
+                }
+            }
+            </tbody>
+        </table>
+        
+    }
+    else
+    {
+        <div>Utilisateur inexistant</div>
+    }
+</body>
+</html>

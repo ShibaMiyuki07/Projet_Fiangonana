@@ -13,13 +13,15 @@ namespace Adidy.Controllers
         IPaiementAdidyService paiementAdidyService, 
         IHttpContextAccessor httpContextAccessor, 
         IUtilisateurService utilisateurService,
-        IPaiementIsantaonaService paiementIsantaonaService) : Controller
+        IPaiementIsantaonaService paiementIsantaonaService,
+        IDroitUtilisateurService droitUtilisateurService) : Controller
     {
         private readonly IMpandrayService MpandrayService = MpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IUtilisateurService utilisateurService = utilisateurService;
         private readonly IHttpContextAccessor httpContextAccessor = httpContextAccessor;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
+        private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
         private static string name = "Home";
 
         public IActionResult Index()
@@ -76,6 +78,7 @@ namespace Adidy.Controllers
         public async Task<IActionResult> MpandrayListe(int page)
         {
             name += "/Liste";
+
             IEnumerable<Mpandray>? liste_mpandray;
 
             if (page <= 0)

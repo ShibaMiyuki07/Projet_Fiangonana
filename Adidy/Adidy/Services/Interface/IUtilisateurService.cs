@@ -9,5 +9,7 @@ namespace Adidy.Services.Interface
         public Task<Utilisateur> Login(Utilisateur user);
 
         public Task<IEnumerable<Utilisateur>> GetAllUtilisateur();
+
+        public Task<Utilisateur?> GetUtilisateurById(string id);
     }
 }

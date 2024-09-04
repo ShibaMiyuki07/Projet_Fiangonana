@@ -24,6 +24,8 @@ namespace Adidy.Extensions
             services.AddScoped<IUtilisateurService, UtilisateurService>();
             services.AddScoped<IPaiementAdidyService, PaiementAdidyService>();
             services.AddScoped<IPaiementIsantaonaService, PaiementIsantaonaService>();
+            services.AddScoped<IDroitService,DroitService>();
+            services.AddScoped<IDroitUtilisateurService, DroitUtilisateurService>();
         }
 
 

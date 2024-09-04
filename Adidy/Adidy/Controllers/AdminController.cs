@@ -6,19 +6,22 @@ using Modele;
 
 namespace Adidy.Controllers
 {
-    public class AdminController(IUtilisateurService utilisateur, IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService) : Controller
+    public class AdminController(IUtilisateurService utilisateur,
+        IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService,IDroitService droitService,IDroitUtilisateurService droitUtilisateurService) : Controller
     {
         private readonly IUtilisateurService utilisateurService = utilisateur;
         private readonly IMpandrayService mpandrayService = mpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
+        private readonly IDroitService droitService = droitService;
+        private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
 
-        public IActionResult Index()
+        public IActionResult AjoutUtilisateur()
         {
             return View();
         }
 
-        [HttpPost("/Admin/Index")]
+        [HttpPost("/Admin/AjoutUtilisateur")]
         public async Task<IActionResult> CreateUser(Utilisateur user)
         {
             try
@@ -70,12 +73,35 @@ namespace Adidy.Controllers
             return RedirectToAction("ImportData", "Admin");
         }
 
-
         public async Task<IActionResult> UtilisateurListe()
         {
             IEnumerable<Utilisateur> liste_utilisateur = await utilisateurService.GetAllUtilisateur();
             ViewData["liste_utilisateur"] = liste_utilisateur;
             return View();
+        }
+
+
+        [HttpGet("/Admin/Details/{idUtilisateur}")]
+        public async Task<IActionResult> UtilisateurDetails([FromRoute]string idUtilisateur)
+        {
+            Utilisateur? utilisateur = await utilisateurService.GetUtilisateurById(idUtilisateur);
+            IEnumerable<Droit> droitNotInUtilisateur = await droitService.DroitNotInUtilisateur(utilisateur);
+            ViewData["details"] = utilisateur;
+            ViewData["droits"] = droitNotInUtilisateur;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AjoutDroitUtilisateur(string idUtilisateur,int idDroit)
+        {
+            DroitUtilisateur droitUtilisateur = new()
+            {
+                Idutilisateur = idUtilisateur,
+                Iddroit = idDroit,
+                Isvalid = true
+            };
+            await droitUtilisateurService.Add(droitUtilisateur);
+            return Redirect($"/Admin/Details/{idUtilisateur}");
         }
     }
 }

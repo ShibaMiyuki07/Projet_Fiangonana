@@ -5,6 +5,7 @@ grant select,update,insert on table public.paiement_isantaona to fiangonana;
 grant select,update,insert on table public.droits to fiangonana;
 grant select,update,insert on table public.droit_utilisateurs to fiangonana;
 grant select,update,insert on table public.mpandray to fiangonana;
+grant delete on table public.droit_utilisateurs to fiangonana;
 
 grant usage on sequence idtype to fiangonana;
 grant usage on sequence idpaiement_adidy to fiangonana;
@@ -19,7 +20,9 @@ create sequence idpaiement_isantaona;
 create sequence idutilisateur;
 create sequence iddroit_utilisateur;
 
-alter sequence idpaiement_adidy restart 0;
+alter sequence idpaiement_adidy restart with 0;
+alter sequence idpaiement_isantaona restart with 0;
+alter sequence idpaiement_isantaona minvalue 0;
 
 
 create table mpandray(numero int primary key,anarana text,fanampiny text,fonenana text,fokontany text,tel char(11));
@@ -39,4 +42,4 @@ create table droit_utilisateurs(iddroit_utilisateur char(6) primary key default 
 insert into type(nomAdidy) values('vkt'),('ikt'),('adidy');
 
 insert into table droits(typedroit) values
-("/Home/Ajout"),("/Home/Details","/Home/Liste","/Home/Home");
+("/Home/Ajout"),("/Home/Details"),("/Home/Liste"),("/Home/Home"),("/Home/AjoutPaiement"),("/Admin/AjoutUtilisateur"),("/Admin/ImportData"),("/Admin/Details"),("AjoutDroitUtilisateur");
