@@ -20,7 +20,7 @@ namespace Adidy.Services
             if (user == null)
                 throw new UtilisateurNotExistException();
 
-            var droitsUtilisateurIds = user.DroitUtilisateurs.Select(du => du.Iddroit).ToList();
+            var droitsUtilisateurIds = user.DroitUtilisateurs.Where(utilisateur => utilisateur.Isvalid != false).Select(du => du.Iddroit).ToList();
 
             return await context.Droits
                 .Where(droit => !droitsUtilisateurIds.Contains(droit.Iddroit))

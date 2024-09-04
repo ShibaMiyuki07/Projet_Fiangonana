@@ -8,7 +8,7 @@ public partial class DroitUtilisateur
 
     public string? Idutilisateur { get; set; }
 
-    public bool? Isvalid { get; set; }
+    public bool? Isvalid { get; set; } = false;
 
     public virtual Droit? IddroitNavigation { get; set; }
 
