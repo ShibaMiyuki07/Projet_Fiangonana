@@ -33,5 +33,10 @@ namespace Adidy.Services
                 throw new UtilisateurNotExistException("Nom d'utilisateur/Mot de passe inexistant");
             return resultat!;
         }
+
+        public async Task<IEnumerable<Utilisateur>> GetAllUtilisateur()
+        {
+            return await context.Utilisateurs.ToListAsync();
+        }
     }
 }

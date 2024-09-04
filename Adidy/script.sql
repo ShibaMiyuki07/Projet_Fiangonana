@@ -19,14 +19,16 @@ create sequence idpaiement_isantaona;
 create sequence idutilisateur;
 create sequence iddroit_utilisateur;
 
+alter sequence idpaiement_adidy restart 0;
+
 
 create table mpandray(numero int primary key,anarana text,fanampiny text,fonenana text,fokontany text,tel char(11));
 
 create table type(idtype char(4) primary key default concat('T0',nextval('idtype')),nomAdidy text);
 
-create table paiement_adidy(idPaiement_adidy char(5) primary key default concat('PA',nextval('idpaiement_adidy')),numero_mpandray int, mois_debut int,annee_debut int,mois_fin int,annee_fin int,montant decimal(10,2),duree int, dateheurepaiemet timestamp default now(),foreign key(numero_mpandray) references mpandray(numero));
+create table paiement_adidy(idPaiement_adidy char(10) primary key default concat('PA',nextval('idpaiement_adidy')),numero_mpandray int, mois_debut int,annee_debut int,mois_fin int,annee_fin int,montant decimal(10,2),duree int, dateheurepaiemet timestamp default now(),foreign key(numero_mpandray) references mpandray(numero));
 
-create table paiement_isantaona(idpaiement_isantaona char(5) primary key default concat('PI',nextval('idpaiement_isantaona')),numero_mpandray int,annee_debut int,annee_fin int,montant decimal(10,2),dateheurepaiemet timestamp default now(),foreign key(numero_mpandray) references mpandray(numero));
+create table paiement_isantaona(idpaiement_isantaona char(10) primary key default concat('PI',nextval('idpaiement_isantaona')),numero_mpandray int,annee_debut int,annee_fin int,montant decimal(10,2),dateheurepaiemet timestamp default now(),foreign key(numero_mpandray) references mpandray(numero));
 
 create table utilisateurs(idutilisateur char(5) primary key default concat('U00',nextval('idutilisateur')),nomutilisateur text,motdepasse text);
 

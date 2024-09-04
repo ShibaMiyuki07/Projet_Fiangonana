@@ -96,7 +96,7 @@ public partial class FiangonanaContext : DbContext
             entity.ToTable("paiement_adidy");
 
             entity.Property(e => e.IdpaiementAdidy)
-                .HasMaxLength(5)
+                .HasMaxLength(10)
                 .HasDefaultValueSql("concat('PA', nextval('idpaiement_adidy'::regclass))")
                 .IsFixedLength()
                 .HasColumnName("idpaiement_adidy");
@@ -126,7 +126,7 @@ public partial class FiangonanaContext : DbContext
             entity.ToTable("paiement_isantaona");
 
             entity.Property(e => e.IdpaiementIsantaona)
-                .HasMaxLength(5)
+                .HasMaxLength(10)
                 .HasDefaultValueSql("concat('PI', nextval('idpaiement_isantaona'::regclass))")
                 .IsFixedLength()
                 .HasColumnName("idpaiement_isantaona");

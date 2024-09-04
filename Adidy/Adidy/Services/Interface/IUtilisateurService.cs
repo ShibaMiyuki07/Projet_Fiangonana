@@ -7,5 +7,7 @@ namespace Adidy.Services.Interface
         public Task CreateUtilisateur(Utilisateur user);
 
         public Task<Utilisateur> Login(Utilisateur user);
+
+        public Task<IEnumerable<Utilisateur>> GetAllUtilisateur();
     }
 }
