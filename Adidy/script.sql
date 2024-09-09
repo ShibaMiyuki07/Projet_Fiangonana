@@ -42,4 +42,4 @@ create table droit_utilisateurs(iddroit_utilisateur char(6) primary key default 
 insert into type(nomAdidy) values('vkt'),('ikt'),('adidy');
 
 insert into droits(typedroit) values
-('/Home/Ajout'),('/Home/Details'),('/Home/Liste'),('/Home/Home'),('/Home/AjoutPaiement'),('/Admin/AjoutUtilisateur'),('/Admin/ImportData'),('/Admin/Details'),('AjoutDroitUtilisateur');
+('/Home/Ajout'),('/Home/Details'),('/Home/Liste'),('/Home/Home'),,('/Home/Search')('/Home/AjoutPaiement'),('/Admin/AjoutUtilisateur'),('/Admin/ImportData'),('/Admin/Details'),('AjoutDroitUtilisateur');

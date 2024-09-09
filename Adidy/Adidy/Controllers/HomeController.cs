@@ -80,8 +80,8 @@ namespace Adidy.Controllers
             return View("MpandrayListe");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> MpandrayListe(int page)
+        [HttpGet("/Home/MpandrayListe/{page}")]
+        public async Task<IActionResult> MpandrayListe([FromRoute]int page)
         {
             string pageName = name + "/Liste";
             try
@@ -107,8 +107,8 @@ namespace Adidy.Controllers
         }
 
 
-        [HttpGet("/Home/Details")]
-        public async Task<IActionResult> MpandrayDetails(int numero)
+        [HttpGet("/Home/Details/{numero}")]
+        public async Task<IActionResult> MpandrayDetails([FromRoute]int numero)
         {
 
 			string pageName = name + "/Details";
@@ -186,13 +186,14 @@ namespace Adidy.Controllers
         public async Task<IActionResult> Paiement(string numerompandray,int type,int moisdebut,int anneedebut,int moisfin,int anneefin,string montant)
         {
             string pageName = name + "/AjoutPaiement";
+            int numero = Int32.Parse(numerompandray);
 			try
 			{
 				await Autorisation(pageName);
 			}
 			catch
 			{
-				return RedirectToAction("Details", "Home",new { numero = Int32.Parse(numerompandray) });
+				return Redirect($"/Home/Details/{numero}"); ;
 			}
 			if (Constante.type_adidy[type].Equals("Adidy", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -233,7 +234,7 @@ namespace Adidy.Controllers
                     ViewData["error"] = "Chiffre no atao eo amin'ilay montant";
                 }
             }
-            return RedirectToAction("Details", "Home", new { numero = numerompandray });
+            return Redirect($"/Home/Details/{numero}");
         }
 
 
