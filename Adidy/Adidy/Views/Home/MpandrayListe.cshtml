@@ -48,7 +48,7 @@
 									@foreach (var item in liste_mpandray!)
 									{
 										<tr>
-											<th scope="row"><a href="/Home/Details?numero=@item.Numero">@item.Numero</a></th>
+											<th scope="row"><a href="/Home/Details/@item.Numero">@item.Numero</a></th>
 											<td>@item.Anarana	@item.Fanampiny</td>
 											@if (item.Tel != "0")
 											{

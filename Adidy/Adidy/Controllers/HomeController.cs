@@ -3,6 +3,7 @@ using Adidy.Models;
 using Adidy.Services.Interface;
 using Adidy.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Modele;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -22,7 +23,7 @@ namespace Adidy.Controllers
         private readonly IHttpContextAccessor httpContextAccessor = httpContextAccessor;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
-        private static string name = "Home";
+        private string name = "/Home";
 
         public IActionResult Index()
         {
@@ -51,19 +52,24 @@ namespace Adidy.Controllers
 
                 return View("Index");
             }
-
-
-
         }
 
         [HttpGet]
         public async Task<IActionResult> Search(int page, string tosearch)
         {
-            if (page == 0)
+			string pageName = name + "/Search";
+			try
+			{
+				await Autorisation(pageName);
+			}
+			catch
+			{
+				return RedirectToAction("Index", "Home");
+			}
+			if (page == 0)
             {
                 page = 1;
             }
-            name += "/Search";
             IEnumerable<Mpandray> resultat = await MpandrayService.Search(page, tosearch);
             ViewData["liste"] = resultat;
             ViewData["page"] = page;
@@ -74,22 +80,25 @@ namespace Adidy.Controllers
             return View("MpandrayListe");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> MpandrayListe(int page)
+        [HttpGet("/Home/MpandrayListe/{page}")]
+        public async Task<IActionResult> MpandrayListe([FromRoute]int page)
         {
-            name += "/Liste";
-
-            IEnumerable<Mpandray>? liste_mpandray;
+            string pageName = name + "/Liste";
+            try
+            {
+                await Autorisation(pageName);
+            }
+            catch
+            {
+                return RedirectToAction("Index","Home");
+            }
+            IEnumerable<Mpandray>? liste_mpandray = [];
 
             if (page <= 0)
             {
-                liste_mpandray = [];
-                page = 0;
+                page = 1;
             }
-            else
-            {
-                liste_mpandray = await MpandrayService.MpandraysPaginate(page);
-            }
+            liste_mpandray = await MpandrayService.MpandraysPaginate(page);
             ViewData["page"] = page;
             ViewData["liste"] = liste_mpandray;
             string currentLink = Request.Path.ToString();
@@ -98,10 +107,19 @@ namespace Adidy.Controllers
         }
 
 
-        [HttpGet("/Home/Details")]
-        public async Task<IActionResult> MpandrayDetails(int numero)
+        [HttpGet("/Home/Details/{numero}")]
+        public async Task<IActionResult> MpandrayDetails([FromRoute]int numero)
         {
-            name += "/Details";
+
+			string pageName = name + "/Details";
+			try
+			{
+				await Autorisation(pageName);
+			}
+			catch
+			{
+				return RedirectToAction("Index", "Home");
+			}
             Mpandray? details = await MpandrayService.GetMpandrayByNumero(numero);
             ViewData["details"] = details;
             return View();
@@ -111,8 +129,16 @@ namespace Adidy.Controllers
         [HttpPost("/Home/Details")]
         public async Task<IActionResult> MpandrayDetails(Mpandray mpandray)
         {
-            name += "/Modification";
-            Mpandray? changed = await MpandrayService.UpdateMpandray(mpandray);
+            string pageName = name + "/Modification";
+			try
+			{
+				await Autorisation(pageName);
+			}
+			catch
+			{
+				return RedirectToAction("Details", "Home",new {numero = mpandray.Numero});
+			}
+			Mpandray? changed = await MpandrayService.UpdateMpandray(mpandray);
             IEnumerable<PaiementAdidy> listePaiements = await paiementAdidyService.GetPaiementByNumeroMpandray(mpandray.Numero);
             ViewData["details"] = changed;
             ViewData["listePaiement"] = listePaiements;
@@ -122,8 +148,16 @@ namespace Adidy.Controllers
         [HttpGet("/Home/Ajout")]
         public async Task<IActionResult> MpandrayAjout()
         {
-            name += "Ajout";
-            return await Task.Run(() =>
+            string pageName = name + "Ajout";
+			try
+			{
+				await Autorisation(pageName);
+			}
+			catch
+			{
+				return RedirectToAction("Details", "Home");
+			}
+			return await Task.Run(() =>
                 {
                     return View();
                 }
@@ -151,8 +185,17 @@ namespace Adidy.Controllers
         [HttpPost("/Home/AjoutPaiement")]
         public async Task<IActionResult> Paiement(string numerompandray,int type,int moisdebut,int anneedebut,int moisfin,int anneefin,string montant)
         {
-            name += "/AjoutPaiement";
-            if (Constante.type_adidy[type].Equals("Adidy", StringComparison.CurrentCultureIgnoreCase))
+            string pageName = name + "/AjoutPaiement";
+            int numero = Int32.Parse(numerompandray);
+			try
+			{
+				await Autorisation(pageName);
+			}
+			catch
+			{
+				return Redirect($"/Home/Details/{numero}"); ;
+			}
+			if (Constante.type_adidy[type].Equals("Adidy", StringComparison.CurrentCultureIgnoreCase))
             {
                 try
                 {
@@ -191,7 +234,7 @@ namespace Adidy.Controllers
                     ViewData["error"] = "Chiffre no atao eo amin'ilay montant";
                 }
             }
-            return RedirectToAction("Details", "Home", new { numero = numerompandray });
+            return Redirect($"/Home/Details/{numero}");
         }
 
 
@@ -200,5 +243,30 @@ namespace Adidy.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public async Task Autorisation(string pageName)
+        {
+			Utilisateur? user = null;
+			if (httpContextAccessor.HttpContext!.Session.GetString("user")! == null)
+			{
+				TempData["error"] = "Veuillez vous connecter";
+                throw new Exception();
+			}
+			else
+			{
+				user = JsonConvert.DeserializeObject<Utilisateur>(httpContextAccessor.HttpContext!.Session.GetString("user")!)!;
+				if (user == null)
+				{
+					TempData["error"] = "Veuillez vous connecter";
+					throw new Exception();
+				}
+			}
+			bool checkDroit = await droitUtilisateurService.CheckDroit(user!.Idutilisateur, pageName);
+			if (!checkDroit)
+			{
+				TempData["error"] = "Vous n'avez pas les droits requis. Consultez un administrateur.";
+				throw new Exception();
+			}
+		}
     }
 }

@@ -18,7 +18,7 @@ namespace Adidy.Controllers
 
         public IActionResult AjoutUtilisateur()
         {
-            return View();
+            return View("UtilisateurAjout");
         }
 
         [HttpPost("/Admin/AjoutUtilisateur")]
@@ -32,7 +32,7 @@ namespace Adidy.Controllers
             {
                 ViewData["Error"] = ex.Message;
             }
-            return View("Index");
+            return View("UtilisateurAjout");
         }
 
         [HttpGet]
