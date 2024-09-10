@@ -12,6 +12,7 @@ builder.Services.AddSession(options =>
 {
     options.Cookie.Name = ".Fiangonana.Session";
     options.Cookie.IsEssential = true;
+    options.Cookie.Expiration = TimeSpan.FromDays(10);
 });
 
 var app = builder.Build();
@@ -41,5 +42,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();

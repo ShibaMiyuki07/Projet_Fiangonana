@@ -25,9 +25,8 @@ namespace Adidy.Controllers
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
         private string name = "/Home";
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
-
             return View();
         }
 
@@ -92,7 +91,7 @@ namespace Adidy.Controllers
             {
                 return RedirectToAction("Index","Home");
             }
-            IEnumerable<Mpandray>? liste_mpandray = [];
+            IEnumerable<Mpandray>? liste_mpandray;
 
             if (page <= 0)
             {
@@ -246,7 +245,7 @@ namespace Adidy.Controllers
 
         public async Task Autorisation(string pageName)
         {
-			Utilisateur? user = null;
+			Utilisateur? user;
 			if (httpContextAccessor.HttpContext!.Session.GetString("user")! == null)
 			{
 				TempData["error"] = "Veuillez vous connecter";
