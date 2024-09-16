@@ -8501,24 +8501,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RIVO\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Manitra\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Adidy.csproj",
+      "projectUniqueName": "D:\\Projet\\Adidy\\Adidy\\Adidy.csproj",
       "projectName": "Adidy",
-      "projectPath": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\Adidy.csproj",
-      "packagesPath": "C:\\Users\\RIVO\\.nuget\\packages\\",
-      "outputPath": "D:\\Fiangoanana\\Projet\\Adidy\\Adidy\\obj\\",
+      "projectPath": "D:\\Projet\\Adidy\\Adidy\\Adidy.csproj",
+      "packagesPath": "C:\\Users\\Manitra\\.nuget\\packages\\",
+      "outputPath": "D:\\Projet\\Adidy\\Adidy\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\RIVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Manitra\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8533,8 +8528,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Modele.csproj": {
-              "projectPath": "D:\\Fiangoanana\\Projet\\Adidy\\Modele\\Modele.csproj"
+            "D:\\Projet\\Adidy\\Modele\\Modele.csproj": {
+              "projectPath": "D:\\Projet\\Adidy\\Modele\\Modele.csproj"
             }
           }
         }
@@ -8622,7 +8617,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
