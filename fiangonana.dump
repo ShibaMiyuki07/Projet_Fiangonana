@@ -1,0 +1,522 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17rc1
+-- Dumped by pg_dump version 17rc1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: iddroit_utilisateur; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.iddroit_utilisateur
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.iddroit_utilisateur OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: droit_utilisateurs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.droit_utilisateurs (
+    iddroit_utilisateur character(6) DEFAULT concat('DU00', nextval('public.iddroit_utilisateur'::regclass)) NOT NULL,
+    iddroit integer,
+    idutilisateur character(5),
+    isvalid boolean
+);
+
+
+ALTER TABLE public.droit_utilisateurs OWNER TO postgres;
+
+--
+-- Name: droits; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.droits (
+    iddroit integer NOT NULL,
+    typedroit text
+);
+
+
+ALTER TABLE public.droits OWNER TO postgres;
+
+--
+-- Name: droits_iddroit_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.droits_iddroit_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.droits_iddroit_seq OWNER TO postgres;
+
+--
+-- Name: droits_iddroit_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.droits_iddroit_seq OWNED BY public.droits.iddroit;
+
+
+--
+-- Name: idpaiement_adidy; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.idpaiement_adidy
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.idpaiement_adidy OWNER TO postgres;
+
+--
+-- Name: idpaiement_isantaona; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.idpaiement_isantaona
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.idpaiement_isantaona OWNER TO postgres;
+
+--
+-- Name: idtype; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.idtype
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.idtype OWNER TO postgres;
+
+--
+-- Name: idutilisateur; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.idutilisateur
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.idutilisateur OWNER TO postgres;
+
+--
+-- Name: mpandray; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.mpandray (
+    numero integer NOT NULL,
+    anarana text,
+    fanampiny text,
+    fonenana text,
+    fokontany text,
+    tel character(11)
+);
+
+
+ALTER TABLE public.mpandray OWNER TO postgres;
+
+--
+-- Name: paiement_adidy; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.paiement_adidy (
+    idpaiement_adidy character(10) DEFAULT concat('PA', nextval('public.idpaiement_adidy'::regclass)) NOT NULL,
+    numero_mpandray integer,
+    mois_debut integer,
+    annee_debut integer,
+    mois_fin integer,
+    annee_fin integer,
+    montant numeric(10,2),
+    duree integer,
+    dateheurepaiemet timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.paiement_adidy OWNER TO postgres;
+
+--
+-- Name: paiement_isantaona; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.paiement_isantaona (
+    idpaiement_isantaona character(10) DEFAULT concat('PI', nextval('public.idpaiement_isantaona'::regclass)) NOT NULL,
+    numero_mpandray integer,
+    annee_debut integer,
+    annee_fin integer,
+    montant numeric(10,2),
+    dateheurepaiemet timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.paiement_isantaona OWNER TO postgres;
+
+--
+-- Name: type; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.type (
+    idtype character(4) DEFAULT concat('T0', nextval('public.idtype'::regclass)) NOT NULL,
+    nomadidy text
+);
+
+
+ALTER TABLE public.type OWNER TO postgres;
+
+--
+-- Name: utilisateurs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.utilisateurs (
+    idutilisateur character(5) DEFAULT concat('U00', nextval('public.idutilisateur'::regclass)) NOT NULL,
+    nomutilisateur text,
+    motdepasse text
+);
+
+
+ALTER TABLE public.utilisateurs OWNER TO postgres;
+
+--
+-- Name: droits iddroit; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.droits ALTER COLUMN iddroit SET DEFAULT nextval('public.droits_iddroit_seq'::regclass);
+
+
+--
+-- Data for Name: droit_utilisateurs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.droit_utilisateurs (iddroit_utilisateur, iddroit, idutilisateur, isvalid) FROM stdin;
+DU001 	1	U001 	t
+DU002 	2	U001 	t
+DU003 	3	U001 	t
+DU004 	4	U001 	t
+DU005 	5	U001 	t
+DU006 	6	U001 	t
+DU007 	7	U001 	t
+DU008 	8	U001 	t
+DU009 	9	U001 	t
+DU0010	10	U001 	t
+\.
+
+
+--
+-- Data for Name: droits; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.droits (iddroit, typedroit) FROM stdin;
+1	/Home/Ajout
+2	/Home/Details
+3	/Home/Liste
+4	/Home/Home
+5	/Home/Search
+6	/Home/AjoutPaiement
+7	/Admin/AjoutUtilisateur
+8	/Admin/ImportData
+9	/Admin/Details
+10	/Admin/AjoutDroitUtilisateur
+\.
+
+
+--
+-- Data for Name: mpandray; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.mpandray (numero, anarana, fanampiny, fonenana, fokontany, tel) FROM stdin;
+\.
+
+
+--
+-- Data for Name: paiement_adidy; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.paiement_adidy (idpaiement_adidy, numero_mpandray, mois_debut, annee_debut, mois_fin, annee_fin, montant, duree, dateheurepaiemet) FROM stdin;
+\.
+
+
+--
+-- Data for Name: paiement_isantaona; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.paiement_isantaona (idpaiement_isantaona, numero_mpandray, annee_debut, annee_fin, montant, dateheurepaiemet) FROM stdin;
+\.
+
+
+--
+-- Data for Name: type; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.type (idtype, nomadidy) FROM stdin;
+T01 	vkt
+T02 	ikt
+T03 	adidy
+\.
+
+
+--
+-- Data for Name: utilisateurs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.utilisateurs (idutilisateur, nomutilisateur, motdepasse) FROM stdin;
+U001 	admin	D033E22AE348AEB5660FC2140AEC35850C4DA997
+\.
+
+
+--
+-- Name: droits_iddroit_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.droits_iddroit_seq', 10, true);
+
+
+--
+-- Name: iddroit_utilisateur; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.iddroit_utilisateur', 10, true);
+
+
+--
+-- Name: idpaiement_adidy; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.idpaiement_adidy', 1, false);
+
+
+--
+-- Name: idpaiement_isantaona; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.idpaiement_isantaona', 1, false);
+
+
+--
+-- Name: idtype; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.idtype', 3, true);
+
+
+--
+-- Name: idutilisateur; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.idutilisateur', 1, true);
+
+
+--
+-- Name: droit_utilisateurs droit_utilisateurs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.droit_utilisateurs
+    ADD CONSTRAINT droit_utilisateurs_pkey PRIMARY KEY (iddroit_utilisateur);
+
+
+--
+-- Name: droits droits_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.droits
+    ADD CONSTRAINT droits_pkey PRIMARY KEY (iddroit);
+
+
+--
+-- Name: mpandray mpandray_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mpandray
+    ADD CONSTRAINT mpandray_pkey PRIMARY KEY (numero);
+
+
+--
+-- Name: paiement_adidy paiement_adidy_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.paiement_adidy
+    ADD CONSTRAINT paiement_adidy_pkey PRIMARY KEY (idpaiement_adidy);
+
+
+--
+-- Name: paiement_isantaona paiement_isantaona_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.paiement_isantaona
+    ADD CONSTRAINT paiement_isantaona_pkey PRIMARY KEY (idpaiement_isantaona);
+
+
+--
+-- Name: type type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.type
+    ADD CONSTRAINT type_pkey PRIMARY KEY (idtype);
+
+
+--
+-- Name: utilisateurs utilisateurs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.utilisateurs
+    ADD CONSTRAINT utilisateurs_pkey PRIMARY KEY (idutilisateur);
+
+
+--
+-- Name: droit_utilisateurs droit_utilisateurs_iddroit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.droit_utilisateurs
+    ADD CONSTRAINT droit_utilisateurs_iddroit_fkey FOREIGN KEY (iddroit) REFERENCES public.droits(iddroit);
+
+
+--
+-- Name: droit_utilisateurs droit_utilisateurs_idutilisateur_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.droit_utilisateurs
+    ADD CONSTRAINT droit_utilisateurs_idutilisateur_fkey FOREIGN KEY (idutilisateur) REFERENCES public.utilisateurs(idutilisateur);
+
+
+--
+-- Name: paiement_adidy paiement_adidy_numero_mpandray_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.paiement_adidy
+    ADD CONSTRAINT paiement_adidy_numero_mpandray_fkey FOREIGN KEY (numero_mpandray) REFERENCES public.mpandray(numero);
+
+
+--
+-- Name: paiement_isantaona paiement_isantaona_numero_mpandray_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.paiement_isantaona
+    ADD CONSTRAINT paiement_isantaona_numero_mpandray_fkey FOREIGN KEY (numero_mpandray) REFERENCES public.mpandray(numero);
+
+
+--
+-- Name: SEQUENCE iddroit_utilisateur; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT USAGE ON SEQUENCE public.iddroit_utilisateur TO fiangonana;
+
+
+--
+-- Name: TABLE droit_utilisateurs; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.droit_utilisateurs TO fiangonana;
+
+
+--
+-- Name: TABLE droits; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,UPDATE ON TABLE public.droits TO fiangonana;
+
+
+--
+-- Name: SEQUENCE idpaiement_adidy; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT USAGE ON SEQUENCE public.idpaiement_adidy TO fiangonana;
+
+
+--
+-- Name: SEQUENCE idpaiement_isantaona; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT USAGE ON SEQUENCE public.idpaiement_isantaona TO fiangonana;
+
+
+--
+-- Name: SEQUENCE idtype; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT USAGE ON SEQUENCE public.idtype TO fiangonana;
+
+
+--
+-- Name: SEQUENCE idutilisateur; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT USAGE ON SEQUENCE public.idutilisateur TO fiangonana;
+
+
+--
+-- Name: TABLE mpandray; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,UPDATE ON TABLE public.mpandray TO fiangonana;
+
+
+--
+-- Name: TABLE paiement_adidy; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,UPDATE ON TABLE public.paiement_adidy TO fiangonana;
+
+
+--
+-- Name: TABLE paiement_isantaona; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,UPDATE ON TABLE public.paiement_isantaona TO fiangonana;
+
+
+--
+-- Name: TABLE type; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,UPDATE ON TABLE public.type TO fiangonana;
+
+
+--
+-- Name: TABLE utilisateurs; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,UPDATE ON TABLE public.utilisateurs TO fiangonana;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
