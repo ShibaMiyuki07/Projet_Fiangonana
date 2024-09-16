@@ -1,23 +1,42 @@
 ﻿using Adidy.Models;
 using Adidy.Services.Interface;
 using Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Modele;
+using Newtonsoft.Json;
 
 namespace Adidy.Controllers
 {
     public class AdminController(IUtilisateurService utilisateur,
-        IMpandrayService mpandrayService, IPaiementAdidyService paiementAdidyService, IPaiementIsantaonaService paiementIsantaonaService,IDroitService droitService,IDroitUtilisateurService droitUtilisateurService) : Controller
+        IMpandrayService mpandrayService,
+        IPaiementAdidyService paiementAdidyService,
+        IPaiementIsantaonaService paiementIsantaonaService,
+        IDroitService droitService,
+        IDroitUtilisateurService droitUtilisateurService,
+        IHttpContextAccessor httpContextAccessor) : Controller
     {
         private readonly IUtilisateurService utilisateurService = utilisateur;
+        private readonly IHttpContextAccessor httpContextAccessor = httpContextAccessor;
         private readonly IMpandrayService mpandrayService = mpandrayService;
         private readonly IPaiementAdidyService paiementAdidyService = paiementAdidyService;
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
         private readonly IDroitService droitService = droitService;
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
+        const string name = "/Admin";
 
-        public IActionResult AjoutUtilisateur()
+        public async Task<IActionResult> AjoutUtilisateur()
         {
+            string pageName = name + "/AjoutUtilisateur";
+            try
+            {
+                await Autorisation(pageName);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View("UtilisateurAjout");
         }
 
@@ -38,6 +57,15 @@ namespace Adidy.Controllers
         [HttpGet]
         public async Task<IActionResult> ImportData()
         {
+            string pageName = name+"/ImportData";
+            try
+            {
+                await Autorisation(pageName);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return await Task.Run(IActionResult () =>
             {
                 ViewData["type"] = Constante.toImport;
@@ -84,6 +112,15 @@ namespace Adidy.Controllers
         [HttpGet("/Admin/Details/{idUtilisateur}")]
         public async Task<IActionResult> UtilisateurDetails([FromRoute]string idUtilisateur)
         {
+            string pageName = name + "/Details";
+            try
+            {
+                await Autorisation(pageName);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
             Utilisateur? utilisateur = await utilisateurService.GetUtilisateurById(idUtilisateur);
             IEnumerable<Droit> droitNotInUtilisateur = await droitService.DroitNotInUtilisateur(utilisateur);
             ViewData["details"] = utilisateur;
@@ -94,6 +131,15 @@ namespace Adidy.Controllers
         [HttpPost]
         public async Task<IActionResult> AjoutDroitUtilisateur(string idUtilisateur,int idDroit)
         {
+            string pageName = name+"/AjoutDroitUtilisateur";
+            try
+            {
+                await Autorisation(pageName);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
             DroitUtilisateur droitUtilisateur = new()
             {
                 Idutilisateur = idUtilisateur,
@@ -102,6 +148,31 @@ namespace Adidy.Controllers
             };
             await droitUtilisateurService.Add(droitUtilisateur);
             return Redirect($"/Admin/Details/{idUtilisateur}");
+        }
+
+        public async Task Autorisation(string pageName)
+        {
+            Utilisateur? user = null;
+            if (httpContextAccessor.HttpContext!.Session.GetString("user")! == null)
+            {
+                TempData["error"] = "Veuillez vous connecter";
+                throw new Exception();
+            }
+            else
+            {
+                user = JsonConvert.DeserializeObject<Utilisateur>(httpContextAccessor.HttpContext!.Session.GetString("user")!)!;
+                if (user == null)
+                {
+                    TempData["error"] = "Veuillez vous connecter";
+                    throw new Exception();
+                }
+            }
+            bool checkDroit = await droitUtilisateurService.CheckDroit(user!.Idutilisateur, pageName);
+            if (!checkDroit)
+            {
+                TempData["error"] = "Seul les administrateurs peuve acceder a cette page";
+                throw new Exception();
+            }
         }
     }
 }

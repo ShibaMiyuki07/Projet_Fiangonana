@@ -1,3 +1,8 @@
+create user fiangonana;
+
+alter user fiangonana with password 'F1angonanaI234.!@';
+
+
 grant select,update,insert on table public.utilisateurs to fiangonana;
 grant select,update,insert on table public.type to fiangonana;
 grant select,update,insert on table public.paiement_adidy to fiangonana;
@@ -42,4 +47,4 @@ create table droit_utilisateurs(iddroit_utilisateur char(6) primary key default 
 insert into type(nomAdidy) values('vkt'),('ikt'),('adidy');
 
 insert into droits(typedroit) values
-('/Home/Ajout'),('/Home/Details'),('/Home/Liste'),('/Home/Home'),,('/Home/Search')('/Home/AjoutPaiement'),('/Admin/AjoutUtilisateur'),('/Admin/ImportData'),('/Admin/Details'),('AjoutDroitUtilisateur');
+('/Home/Ajout'),('/Home/Details'),('/Home/Liste'),('/Home/Home'),('/Home/Search'),('/Home/AjoutPaiement'),('/Admin/AjoutUtilisateur'),('/Admin/ImportData'),('/Admin/Details'),('/Admin/AjoutDroitUtilisateur');
