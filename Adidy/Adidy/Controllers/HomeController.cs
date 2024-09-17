@@ -30,8 +30,10 @@ namespace Adidy.Controllers
         {
             return await Task.Run(() =>
             {
-                var t = new ViewAsPdf("Index");
-                t.ViewName = "Index";
+                var t = new ViewAsPdf("Index")
+                {
+                    ViewName = "Index"
+                };
                 return t;
             });
         }

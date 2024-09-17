@@ -7,7 +7,7 @@ namespace Adidy.Models
     {
         public string? Daty { get; set; }
 
-        public int Numero { get; set; }
+        public string Numero { get; set; } = string.Empty;
 
         public string? Anarana { get; set; }
 
@@ -62,7 +62,7 @@ namespace Adidy.Models
             PaiementAdidy toAdd = new()
             {
                 Dateheurepaiemet = DateTimeChanger.StringToDateTime(ligne.Daty!),
-                NumeroMpandray = ligne.Numero,
+                NumeroMpandray = ligne.Numero.Contains("RP") ? 9999 : Int32.Parse(ligne.Numero),
                 Montant = decimal.Parse(ligne.Adidy),
                 AnneeDebut = ligne.AnneeDebut,
                 AnneeFin = ligne.AnneeFin,
@@ -78,7 +78,7 @@ namespace Adidy.Models
             PaiementIsantaona toAdd = new()
             {
                 Dateheurepaiemet = DateTimeChanger.StringToDateTime(ligne.Daty!),
-                NumeroMpandray = ligne.Numero,
+                NumeroMpandray = ligne.Numero.Contains("RP") ? 9999 : Int32.Parse(ligne.Numero),
                 Montant = decimal.Parse(ligne.Ikt),
                 AnneeDebut = ligne.AnneeDebut,
                 AnneeFin = ligne.AnneeFin
