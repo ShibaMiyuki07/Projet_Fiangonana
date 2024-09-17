@@ -1,4 +1,5 @@
 using Adidy.Extensions;
+using Rotativa.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -35,6 +36,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseRotativa();
 
 app.UseAuthorization();
 

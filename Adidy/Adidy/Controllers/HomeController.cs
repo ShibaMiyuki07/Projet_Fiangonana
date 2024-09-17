@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Modele;
 using Newtonsoft.Json;
+using Rotativa.AspNetCore;
 using System.Diagnostics;
 
 namespace Adidy.Controllers
@@ -24,6 +25,16 @@ namespace Adidy.Controllers
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
         private string name = "/Home";
+
+        public async Task<IActionResult> DataToPdf()
+        {
+            return await Task.Run(() =>
+            {
+                var t = new ViewAsPdf("Index");
+                t.ViewName = "Index";
+                return t;
+            });
+        }
 
         public IActionResult Index()
         {

@@ -2431,6 +2431,18 @@
           }
         }
       },
+      "Rotativa.AspNetCore/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Rotativa.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Rotativa.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "SQLitePCLRaw.core/2.1.6": {
         "type": "package",
         "dependencies": {
@@ -7195,6 +7207,23 @@
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
+    "Rotativa.AspNetCore/1.3.2": {
+      "sha512": "bzhSTu7OB9mDpoV+9YP61ABnQl50nXoUOjbkgMmmNnypb5fvuY7S75ANz/fObdA3Z6wBGSKUNzfGQH0zhIRGqg==",
+      "type": "package",
+      "path": "rotativa.aspnetcore/1.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Rotativa.AspNetCore.dll",
+        "lib/net6.0/Rotativa.AspNetCore.dll",
+        "lib/net7.0/Rotativa.AspNetCore.dll",
+        "lib/netcoreapp3.1/Rotativa.AspNetCore.dll",
+        "lib/netstandard2.0/Rotativa.AspNetCore.dll",
+        "rotativa.aspnetcore.1.3.2.nupkg.sha512",
+        "rotativa.aspnetcore.nuspec"
+      ]
+    },
     "SQLitePCLRaw.core/2.1.6": {
       "sha512": "wO6v9GeMx9CUngAet8hbO7xdm+M42p1XeJq47ogyRoYSvNSp0NGLI+MgC0bhrMk9C17MTVFlLiN6ylyExLCc5w==",
       "type": "package",
@@ -8497,7 +8526,8 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.4",
       "Modele >= 1.0.0",
       "NLog >= 5.3.3",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.4"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.4",
+      "Rotativa.AspNetCore >= 1.3.2"
     ]
   },
   "packageFolders": {
@@ -8596,6 +8626,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[8.0.4, )"
+          },
+          "Rotativa.AspNetCore": {
+            "target": "Package",
+            "version": "[1.3.2, )"
           }
         },
         "imports": [
