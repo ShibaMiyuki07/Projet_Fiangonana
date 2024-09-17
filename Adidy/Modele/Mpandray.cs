@@ -14,22 +14,22 @@ public partial class Mpandray
 
     [Required(ErrorMessage = "Ampidiro ny anaran'ilay mpandray")]
     [Name("anarana")]
-    public string? Anarana { get; set; }
+    public string Anarana { get; set; } = String.Empty;
 
 
     [Required(ErrorMessage = "Ampidiro ilay fanampin'anarana")]
     [Name("fanampiny")]
-    public string? Fanampiny { get; set; }
+    public string Fanampiny { get; set; } = String.Empty;
 
 
     [Required(ErrorMessage = "Ampidiro ny adiresy")]
     [Name("fonenana")]
-    public string? Fonenana { get; set; }
+    public string Fonenana { get; set; } = String.Empty;
 
 
     [Required(ErrorMessage = "Ampidiro ny anarana fokotany")]
     [Name("fokontany")]
-    public string? Fokontany { get; set; }
+    public string Fokontany { get; set; } = String.Empty;
 
     [Required(ErrorMessage = "Ampidiro ny numerao finday raha tsy misy dia atao 0")]
     public string? Tel
