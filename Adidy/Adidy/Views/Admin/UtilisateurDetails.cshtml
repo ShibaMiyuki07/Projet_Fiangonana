@@ -29,13 +29,15 @@
                 {
                     <tr>
                         <td>@item.IddroitNavigation!.Typedroit</td>
-                        <td>Supprimer</td>
+                            <td><form action="/Admin/DeleteDroitUtilisateur" method="post"><input type="hidden" name="idutilisateur" value="@details.Idutilisateur"><input type="hidden" name="iddroit" value="@item.Iddroit" /><button>Supprimer</button></form></td>
                     </tr>
                 }
             }
             else
             {
-                <div>Utilisateur sans droit</div>
+                <tr>
+                        <td colspan="2">Utilisateur sans droit</td>
+                </tr>
             }
             @if(droits != null && droits.Any())
             {

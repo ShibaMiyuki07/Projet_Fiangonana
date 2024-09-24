@@ -15,6 +15,12 @@ namespace Adidy.Services
             await context.SaveChangesAsync();
         }
 
+        public async Task Delete(DroitUtilisateur droitUtilisateur)
+        {
+            context.Remove(droitUtilisateur);
+            await context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<DroitUtilisateur>> DroitUtilisateursByIdUtilisateur(string idUtilisateur)
         {
             return await context.DroitUtilisateurs.Where(du => du.Idutilisateur == idUtilisateur).Include(c => c.IddroitNavigation).ToListAsync();

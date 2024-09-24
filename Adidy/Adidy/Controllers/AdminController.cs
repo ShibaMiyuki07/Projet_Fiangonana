@@ -153,9 +153,31 @@ namespace Adidy.Controllers
             return Redirect($"/Admin/Details/{idUtilisateur}");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteDroitUtilisateur(string idUtilisateur, int idDroit)
+        {
+            string pageName = name + "/DeleteDroitUtilisateur";
+            try
+            {
+                await Autorisation(pageName);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            DroitUtilisateur droitUtilisateur = new()
+            {
+                Idutilisateur = idUtilisateur,
+                Iddroit = idDroit,
+                Isvalid = true
+            };
+            await droitUtilisateurService.Delete(droitUtilisateur);
+            return Redirect($"/Admin/Details/{idUtilisateur}");
+        }
+
         public async Task Autorisation(string pageName)
         {
-            Utilisateur? user = null;
+            Utilisateur? user;
             if (httpContextAccessor.HttpContext!.Session.GetString("user")! == null)
             {
                 TempData["error"] = "Veuillez vous connecter";
