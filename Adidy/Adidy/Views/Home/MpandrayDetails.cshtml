@@ -6,7 +6,7 @@
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Details de mpandray</title>
+        <title>Details de @(details == null ?"(vide)" : details!.Anarana)</title>
         <link rel="stylesheet" href="~/css/MpandrayDetails.css" />
         <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     </head>
@@ -14,19 +14,20 @@
         @if(details != null)
         {
             <div class="details" id="details">
-                <div class="children"><strong>Numero Mpandray</strong> : @details.Numero</div>
+                <div class="children"><strong>Numero</strong> : @details.Numero</div>
                 <div class="children"><strong>Anarana</strong> : @details.Anarana</div>
                 <div class="children"><strong>Fanampiny</strong> : @(string.IsNullOrEmpty(details.Fanampiny) ? "(vide)" : details.Fanampiny) </div>
                 <div class="children"><strong>Fonenana</strong> : @(string.IsNullOrEmpty(details.Fonenana) ? "(vide)" : details.Fonenana)</div>
                 <div class="children"><strong>Fokontany</strong> : @(string.IsNullOrEmpty(details.Fokontany) ? "(vide)" : details.Fokontany)</div>
-                <div class="children"><strong>Numero Telephone</strong> : @(string.IsNullOrEmpty(details.Tel) ? "(vide)" : details.Tel)</div>
+                <div class="children"><strong>Telephone</strong> : @(string.IsNullOrEmpty(details.Tel) ? "(vide)" : details.Tel)</div>
                 <div class="children"><button onclick="showModif()" class="modifier">Modifier</button></div>
             </div>
 
+            <!--Start of cacher-->
             <div id="cacher" class="details" style="display :none">
                 <form method="post" action="/Home/Details?numero=@details.Numero">
                     <div class="children">
-                        Numero Mpandray :
+                        Numero :
                         <input type="number" name="numero" value="@details.Numero" />
                     </div>
                     <div class="children">
@@ -35,19 +36,19 @@
                     </div>
                     <div class="children">
                         Fanampiny :
-                        <input type="text" name="fanampiny" value="@details.Fanampiny" />
+                        <input type="text" name="fanampiny" value="@details.Fanampiny" placeholder="ex: Rasoa..." />
                     </div>
                     <div class="children"> 
                         Fonenana :
-                        <input type="text" name="fonenana" value="@details.Fonenana" />
+                        <input type="text" name="fonenana" value="@details.Fonenana" placeholder="ex: II N ...." />
                     </div>
                     <div class="children">
                         Fokontany :
-                        <input type="text" name="fokontany" value="@details.Fokontany" />
+                        <input type="text" name="fokontany" value="@details.Fokontany" placeholder="ex: Anjanahary..."/>
                     </div>
                     <div class="children">
-                        Numero Telephone :
-                        <input type="text" name="tel" value="@details.Tel" />
+                        Telephone :
+                        <input type="text" name="tel" value="@details.Tel" placeholder="ex: 034......"/>
                     </div>
                     <div class="children">
                         <button type="submit" class="valider">Modifier</button>
@@ -57,57 +58,108 @@
                     </div>
                 </form>
             </div>
+            <!--End of cacher-->
 
-            <div>
+            <!--Start of nouveau-->
+            <div class="nouveau">
                 <form action="/Home/AjoutPaiement" method="post">
                     <div>
                         <input type="hidden" name="numerompandray" value="@details.Numero" />
-                        <div>
-                            <select name="type">
-                                @for(int i=0;i<type_adidy.Count();i++)
-                                {
-                                    <option value="@i">@type_adidy[i]</option>
-                                }
-                            </select>
+                        <div class="child">
+                            <div>
+                                Date de paiement
+                            </div>
+                            <div>
+                                <input type="date" name="datepaiement" required />
+                            </div>
                         </div>
-                        <div>
-                            <select name="moisdebut">
-                                @foreach(var item in mois)
-                                {
-                                    <option value="@item.Item1">
-                                        @item.Item2
-                                    </option>
-                                }
-                            </select>
+                        <div class="child">
+                            <div>
+                                Type
+                            </div>
+                            <div>
+                                <select name="type">
+                                    @for (int i = 0; i < type_adidy.Count(); i++)
+                                    {
+                                        <option value="@i">@type_adidy[i]</option>
+                                    }
+                                </select>
+                            </div>
                         </div>
-                        <input type="number" name="anneedebut"/>
-                        <div>
-                            <select name="moisfin">
-                                @foreach (var item in mois)
-                                {
-                                    <option value="@item.Item1">
-                                        @item.Item2
-                                    </option>
-                                }
-                            </select>
+                        <div class="child">
+                            <div>
+                                Mois de debut
+                            </div>
+                            <div>
+                                <select name="moisdebut">
+                                    @foreach (var item in mois)
+                                    {
+                                        <option value="@item.Item1">
+                                            @item.Item2
+                                        </option>
+                                    }
+                                </select>
+                            </div>
                         </div>
-                        <input type="number" name="anneefin" />
-                        <input type="text" name="montant" />
-                        <button>Ajouter</button>
+                        <div class="child">
+                            <div>
+                                Annee debut
+                            </div>
+                            <div>
+                                <input type="number" name="anneedebut" placeholder="ex:2024,..." required />
+                            </div>
+                        </div>
+                        <div class="child">
+                            <div>
+                                Mois fin
+                            </div>
+                            <div>
+                                <select name="moisfin">
+                                    @foreach (var item in mois)
+                                    {
+                                        <option value="@item.Item1">
+                                            @item.Item2
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="child">
+                            <div>
+                                Annee fin
+                            </div>
+                            <div>
+                                <input type="number" name="anneefin" placeholder="ex:2024,..." required />
+                            </div>
+                        </div>
+                        <div class="child">
+                            <div>
+                                Montant(Ar)
+                            </div>
+                            <div>
+                                <input type="text" name="montant" placeholder="500..." required />
+                            </div>
+                        </div>
+                        <div class="child">
+                            <button type="submit" class="valider">Ajouter</button>
+                        </div>
                     </div>
                 </form>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div>
+            <!--End of nouveau-->
+
+
+            <div class="tableau row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div align="center">
                         <h3>Adidy naloa</h3>
                     </div>
                     <div>
                         @if (details.PaiementAdidies != null && details.PaiementAdidies.Any())
                         {
-                            <table>
+                            <table style="width:100%">
                                 <thead>
-                                    <tr>
+                                    <tr align="center">
                                         <th>Date Paiement</th>
                                         <th>Mois/Annee debut</th>
                                         <th>Mois/Annee fin</th>
@@ -117,12 +169,11 @@
                                 <tbody>
                                     @foreach (var item in details.PaiementAdidies)
                                     {
-                                        <tr>
+                                        <tr align="center">
                                             <td>@item.Dateheurepaiemet</td>
                                             <td>@item.MoisDebut/@item.AnneeDebut</td>
                                             <td>@item.MoisFin/@item.AnneeFin</td>
                                             <td>@item.Montant Ar</td>
-
                                         </tr>
                                     }
                                 </tbody>
@@ -135,16 +186,16 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div align="center">
                         <h3>Isan-taona naloa</h3>
                     </div>
                     <div>
                         @if (details.PaiementIsantaonas != null && details.PaiementIsantaonas.Any())
                         {
-                            <table>
+                            <table style="width:100%">
                                 <thead>
-                                    <tr>
+                                    <tr align="center">
                                         <th>Date paiement</th>
                                         <th>Annee debut</th>
                                         <th>Annee fin</th>
@@ -154,12 +205,11 @@
                                 <tbody>
                                     @foreach (var item in details.PaiementIsantaonas)
                                     {
-                                        <tr>
+                                        <tr align="center">
                                             <td>@item.Dateheurepaiemet</td>
                                             <td>@item.AnneeDebut</td>
                                             <td>@item.AnneeFin</td>
                                             <td>@item.Montant Ar</td>
-
                                         </tr>
                                     }
                                 </tbody>

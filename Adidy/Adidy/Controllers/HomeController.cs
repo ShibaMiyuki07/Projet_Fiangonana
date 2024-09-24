@@ -196,7 +196,7 @@ namespace Adidy.Controllers
 
 
         [HttpPost("/Home/AjoutPaiement")]
-        public async Task<IActionResult> Paiement(string numerompandray,int type,int moisdebut,int anneedebut,int moisfin,int anneefin,string montant)
+        public async Task<IActionResult> Paiement(string datepaiement,string numerompandray,int type,int moisdebut,int anneedebut,int moisfin,int anneefin,string montant)
         {
             string pageName = name + "/AjoutPaiement";
             int numero = Int32.Parse(numerompandray);
@@ -214,6 +214,7 @@ namespace Adidy.Controllers
                 {
                     PaiementAdidy aPayer = new()
                     {
+                        Dateheurepaiemet = DateTime.Parse(datepaiement),
                         NumeroMpandray = Int32.Parse(numerompandray),
                         MoisDebut = moisdebut,
                         AnneeDebut = anneedebut,
@@ -235,6 +236,7 @@ namespace Adidy.Controllers
                 {
                     PaiementIsantaona aPayer = new()
                     {
+                        Dateheurepaiemet = DateTime.Parse(datepaiement),
                         NumeroMpandray = Int32.Parse(numerompandray),
                         AnneeDebut = anneedebut,
                         AnneeFin = anneefin,

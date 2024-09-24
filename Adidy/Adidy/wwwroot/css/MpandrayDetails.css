@@ -4,7 +4,6 @@
 
 .modifier {
     background-color: rgb(255,204,0);
-    border-radius: 10px;
 }
 
 #cacher{
@@ -12,27 +11,47 @@
 }
 
 .details {
+    width : 100%;
     padding-top : 20px;
     display : flex;
-    padding-right : 0;
+    padding-left : 20px;
+}
+
+.nouveau {
+    width : 100%;
+    padding-top: 20px;
+    display: flex;
+    padding-left: 20px;
 }
 
 .children{
     display : inline-block;
     padding-right : 10px;
 }
-
-.valider{
-    background-color : green;
-    color : white;
+.child {
+    display: inline-block;
+    padding-right: 10px;
 }
 
-.annuler{
-    background-color : red;
-    color : white;
+.valider {
+    background-color: rgb(46,204,113);
+    color: white;
 }
 
-input[type=text]{
+.annuler {
+    background-color: rgb(255,76,48);
+    color: white;
+}
+
+.child div{
+    padding-top : 2px;
+}
+
+input[type=text],input[type=number],select,input[type=date]{
     width : 150px;
+    height : 27px;
 }
 
+tableau{
+    padding-top : 20px;
+}
