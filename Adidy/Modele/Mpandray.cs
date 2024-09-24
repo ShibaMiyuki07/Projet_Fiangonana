@@ -32,11 +32,11 @@ public partial class Mpandray
     public string Fokontany { get; set; } = String.Empty;
 
     [Required(ErrorMessage = "Ampidiro ny numerao finday raha tsy misy dia atao 0")]
-    public string? Tel
+    public string Tel
     {
         get
         {
-            return _tel;
+            return _tel.Replace(" ","");
         }
         set
         {

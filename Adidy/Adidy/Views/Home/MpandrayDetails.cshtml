@@ -8,19 +8,19 @@
     <head>
         <title>Details de mpandray</title>
         <link rel="stylesheet" href="~/css/MpandrayDetails.css" />
-
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     </head>
     <body>
         @if(details != null)
         {
             <div class="details" id="details">
-                <div class="children">Numero Mpandray : @details.Numero</div>
-                <div class="children">Anarana : @details.Anarana</div>
-                <div class="children">Fanampiny : @details.Fanampiny</div>
-                <div class="children">Fonenana : @details.Fonenana</div>
-                <div class="children">Fokontany : @details.Fokontany</div>
-                <div class="children">Numero Telephone : @details.Tel</div>
-                <div class="children"><button onclick="showModif()">Modifier</button></div>
+                <div class="children"><strong>Numero Mpandray</strong> : @details.Numero</div>
+                <div class="children"><strong>Anarana</strong> : @details.Anarana</div>
+                <div class="children"><strong>Fanampiny</strong> : @(string.IsNullOrEmpty(details.Fanampiny) ? "(vide)" : details.Fanampiny) </div>
+                <div class="children"><strong>Fonenana</strong> : @(string.IsNullOrEmpty(details.Fonenana) ? "(vide)" : details.Fonenana)</div>
+                <div class="children"><strong>Fokontany</strong> : @(string.IsNullOrEmpty(details.Fokontany) ? "(vide)" : details.Fokontany)</div>
+                <div class="children"><strong>Numero Telephone</strong> : @(string.IsNullOrEmpty(details.Tel) ? "(vide)" : details.Tel)</div>
+                <div class="children"><button onclick="showModif()" class="modifier">Modifier</button></div>
             </div>
 
             <div id="cacher" class="details" style="display :none">
@@ -50,10 +50,10 @@
                         <input type="text" name="tel" value="@details.Tel" />
                     </div>
                     <div class="children">
-                        <button type="submit">Modifier</button>
+                        <button type="submit" class="valider">Modifier</button>
                     </div>
                     <div class="children">
-                        <button>Annuler</button>
+                        <button type="reset" class="annuler" onclick="hideModif()">Annuler</button>
                     </div>
                 </form>
             </div>
@@ -97,65 +97,81 @@
                     </div>
                 </form>
             </div>
-            if (details.PaiementAdidies != null && details.PaiementAdidies.Any())
-            {
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date Paiement</th>
-                            <th>Mois/Annee debut</th>
-                            <th>Mois/Annee fin</th>
-                            <th>Montant</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in details.PaiementAdidies)
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div>
+                        <h3>Adidy naloa</h3>
+                    </div>
+                    <div>
+                        @if (details.PaiementAdidies != null && details.PaiementAdidies.Any())
                         {
-                            <tr>
-                                <td>@item.Dateheurepaiemet</td>
-                                <td>@item.MoisDebut/@item.AnneeDebut</td>
-                                <td>@item.MoisFin/@item.AnneeFin</td>
-                                <td>@item.Montant Ar</td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date Paiement</th>
+                                        <th>Mois/Annee debut</th>
+                                        <th>Mois/Annee fin</th>
+                                        <th>Montant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in details.PaiementAdidies)
+                                    {
+                                        <tr>
+                                            <td>@item.Dateheurepaiemet</td>
+                                            <td>@item.MoisDebut/@item.AnneeDebut</td>
+                                            <td>@item.MoisFin/@item.AnneeFin</td>
+                                            <td>@item.Montant Ar</td>
 
-                            </tr>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <div>Tsy mbola nandoa adidy ity mpandray ity</div>
-            }
-
-            if (details.PaiementIsantaonas != null && details.PaiementIsantaonas.Any())
-            {
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date paiement</th>
-                            <th>Annee debut</th>
-                            <th>Annee fin</th>
-                            <th>Montant</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (var item in details.PaiementIsantaonas)
+                        else
                         {
-                            <tr>
-                                <td>@item.Dateheurepaiemet</td>
-                                <td>@item.AnneeDebut</td>
-                                <td>@item.AnneeFin</td>
-                                <td>@item.Montant Ar</td>
-
-                            </tr>
+                            <div>Tsy mbola nandoa adidy ity mpandray ity</div>
                         }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <div>Tsy mbola nandoa IKT</div>
-            }
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div>
+                        <h3>Isan-taona naloa</h3>
+                    </div>
+                    <div>
+                        @if (details.PaiementIsantaonas != null && details.PaiementIsantaonas.Any())
+                        {
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date paiement</th>
+                                        <th>Annee debut</th>
+                                        <th>Annee fin</th>
+                                        <th>Montant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in details.PaiementIsantaonas)
+                                    {
+                                        <tr>
+                                            <td>@item.Dateheurepaiemet</td>
+                                            <td>@item.AnneeDebut</td>
+                                            <td>@item.AnneeFin</td>
+                                            <td>@item.Montant Ar</td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div>Tsy mbola nandoa IKT</div>
+                        }
+                    </div>
+                </div>
+            </div>
         }
         else
         {

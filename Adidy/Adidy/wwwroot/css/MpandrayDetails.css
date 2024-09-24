@@ -1,7 +1,38 @@
-﻿.details {
+﻿body{
+    padding-left: 10px;
+}
+
+.modifier {
+    background-color: rgb(255,204,0);
+    border-radius: 10px;
+}
+
+#cacher{
+    font-weight : bold;
+}
+
+.details {
+    padding-top : 20px;
     display : flex;
+    padding-right : 0;
 }
 
 .children{
     display : inline-block;
+    padding-right : 10px;
 }
+
+.valider{
+    background-color : green;
+    color : white;
+}
+
+.annuler{
+    background-color : red;
+    color : white;
+}
+
+input[type=text]{
+    width : 150px;
+}
+
