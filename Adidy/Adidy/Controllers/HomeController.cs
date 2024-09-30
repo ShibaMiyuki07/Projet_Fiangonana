@@ -26,22 +26,32 @@ namespace Adidy.Controllers
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
         private string name = "/Home";
 
-        public async Task<IActionResult> PaiementAdidyToPdf(DateTime debut,DateTime fin)
+        public async Task<IActionResult> PaiementToPdf(DateTime debut,DateTime fin,int type)
         {
-            ViewData["data"] = await paiementAdidyService.GetByDate(debut,fin);
+            if(type == 0)
+            {
+				ViewData["adidy"] = await paiementAdidyService.GetByDate(debut, fin);
+				ViewData["title"] = $"Adidy - {debut.Year}/{debut.Month}/{debut.Day} - {fin.Year}/{fin.Month}/{fin.Day}";
+			}
+            else
+            {
+				ViewData["ikt"] = await paiementIsantaonaService.GetByDate(debut, fin);
+				ViewData["title"] = $"IKT - {debut.Year}/{debut.Month}/{debut.Day} - {fin.Year}/{fin.Month}/{fin.Day}";
+			}
             var t = new ViewAsPdf()
             {
                 ViewName = "PaiementAdidyPdf",
-                FileName = $"Adidy - {debut.Year}/{debut.Month}/{debut.Day} - {fin.Year}/{fin.Month}/{fin.Day}.pdf",
+                FileName = $"{ViewData["title"]}.pdf",
                 ViewData = ViewData
             };
             return t;
+            //return View("PaiementAdidyPdf");
         }
 
         [HttpPost]
-        public async Task<IActionResult> ExportData(DateTime debut,DateTime fin)
+        public async Task<IActionResult> ExportData(DateTime debut,DateTime fin,int type)
         {
-            return await PaiementAdidyToPdf(debut, fin);
+            return await PaiementToPdf(debut, fin,type);
 		}
 
         public IActionResult Index()

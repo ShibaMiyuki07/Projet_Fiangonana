@@ -1,30 +1,71 @@
 ﻿@using Modele
 @{
-	IEnumerable<PaiementAdidy> paiements = (IEnumerable<PaiementAdidy>)ViewData["data"]!;
+	IEnumerable<PaiementAdidy>? adidy = (IEnumerable<PaiementAdidy>)ViewData["adidy"];
+	IEnumerable<PaiementIsantaona>? ikt = (IEnumerable<PaiementIsantaona>)ViewData["ikt"];
 }
 
 <html>
+	<head>
+		<link rel="stylesheet" href="~/css/pdf.css" />
+	</head>
 	<body>
-		<table>
+		<div align="center">
+			<h1>@ViewData["title"]</h1>
+		</div>
+		<table border="1" cellpadding="0" cellspacing="0">
 			<thead class="thead-primary">
 				<tr>
 					<th>Date paiement</th>
 					<th>Numero</th>
 					<th>Anarana & Fanampiny</th>
-					<th>Adidy</th>
+					<th>Montant</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach (var p in paiements)
+				@if(adidy != null)
+				{
+					@foreach (var p in adidy)
+					{
+						<tr>
+							<td>@p.Dateheurepaiemet!.Value.Date  </td>
+							<td>@p.NumeroMpandray</td>
+							<td>@p.NumeroMpandrayNavigation!.Anarana - @p.NumeroMpandrayNavigation.Fanampiny</td>
+							<td>@p.Montant</td>
+						</tr>
+					}
+				}
+				@if (ikt != null)
+				{
+					if(ikt.Any())
+					{
+						foreach(var item in ikt)
+						{
+							<tr>
+								<td>@item.Dateheurepaiemet!.Value.Date  </td>
+								<td>@item.NumeroMpandray</td>
+							<td>@item.NumeroMpandrayNavigation!.Anarana - @item.NumeroMpandrayNavigation.Fanampiny</td>
+								<td>@item.Montant</td>
+							</tr>
+						}
+				}
+			}
+			</tbody>
+			<tfoot>
+				@if(adidy != null)
 				{
 					<tr>
-						<td>@p.Dateheurepaiemet!.Value.Date  </td>
-						<td>@p.NumeroMpandray</td>
-						<td>@p.NumeroMpandrayNavigation!.Anarana - @p.NumeroMpandrayNavigation.Fanampiny</td>
-						<td>@p.Montant</td>
+						<td colspan="3"></td>
+						<td>Total : <strong>@adidy.Sum(p => p.Montant) Ar</strong></td>
 					</tr>
 				}
-			</tbody>
+				@if (ikt != null)
+				{
+					<tr>
+						<td colspan="3"></td>
+						<td>Total : <strong>@ikt.Sum(p => p.Montant) Ar</strong></td>
+					</tr>
+				}
+		</tfoot>
 		</table>
 	</body>
 </html>

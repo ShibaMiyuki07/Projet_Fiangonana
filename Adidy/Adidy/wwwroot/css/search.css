@@ -1,6 +1,15 @@
 ﻿.forms {
     padding-top: 1%;
-    padding-left: 64%;
+    padding-left: 20.2%;
+}
+
+.export{
+    padding-top : 1%;
+    padding-left : 21%;
+}
+
+.export > form > div{
+    padding-left : 3px;
 }
 
 .forms input[type=text]
@@ -8,7 +17,22 @@
     height : 33px;
 }
 
+input[type=date],select{
+    height : 33px;
+}
+
 .header{
     display : flex;
+}
 
+.header div{
+    display : flex;
+}
+
+button{
+    height : 33px;
+}
+
+form{
+    display : flex;
 }

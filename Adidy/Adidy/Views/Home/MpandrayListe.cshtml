@@ -32,13 +32,21 @@
 </head>
 <body>
 	<div class="header">
-		<div>
+		<div class="export">
 			<form action="/Home/ExportData" method="post">
 				<div>
 					<input type="date" name="debut" />
 				</div>
 				<div>
 					<input type="date" name="fin" />
+				</div>
+				<div>
+					<select name="type">
+						@for(int i=0;i<Constante.type_adidy.Count;i++)
+						{
+							<option value="@i">@Constante.type_adidy[i]</option>
+						}
+					</select>
 				</div>
 				<button >Exporter</button>
 			</form>
