@@ -1,0 +1,30 @@
+﻿@using Modele
+@{
+	IEnumerable<PaiementAdidy> paiements = (IEnumerable<PaiementAdidy>)ViewData["data"]!;
+}
+
+<html>
+	<body>
+		<table>
+			<thead class="thead-primary">
+				<tr>
+					<th>Date paiement</th>
+					<th>Numero</th>
+					<th>Anarana & Fanampiny</th>
+					<th>Adidy</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var p in paiements)
+				{
+					<tr>
+						<td>@p.Dateheurepaiemet!.Value.Date  </td>
+						<td>@p.NumeroMpandray</td>
+						<td>@p.NumeroMpandrayNavigation!.Anarana - @p.NumeroMpandrayNavigation.Fanampiny</td>
+						<td>@p.Montant</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</body>
+</html>

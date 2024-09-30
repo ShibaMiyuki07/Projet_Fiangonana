@@ -32,7 +32,7 @@ namespace Adidy.Services
 
         public async Task<IEnumerable<PaiementAdidy>> GetByDate(DateTime debut,DateTime fin)
         {
-            return await fiangonanaContext.PaiementAdidies.Where(p => p.Dateheurepaiemet >= debut && p.Dateheurepaiemet <= fin).ToListAsync();
+            return await fiangonanaContext.PaiementAdidies.Where(p => p.Dateheurepaiemet >= debut && p.Dateheurepaiemet <= fin).Include(c => c.NumeroMpandrayNavigation).ToListAsync();
         }
     }
 }

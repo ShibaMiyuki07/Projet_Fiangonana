@@ -31,7 +31,18 @@
 
 </head>
 <body>
-	<div class="row">
+	<div class="header">
+		<div>
+			<form action="/Home/ExportData" method="post">
+				<div>
+					<input type="date" name="debut" />
+				</div>
+				<div>
+					<input type="date" name="fin" />
+				</div>
+				<button >Exporter</button>
+			</form>
+		</div>
 		<div class="forms">
 			<form class="searchForms" action="/Home/Search" method="get">
 				<div>
@@ -106,13 +117,13 @@
 									@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
 									{
 										<div>
-											<a href="/Home/MpandrayListe/@(pejy+1)">Next</a>
+											<a href="/Home/MpandrayListe/@(pejy+1)">Suiv.</a>
 										</div>
 									}
 									else
 									{
 										<div>
-											<a href="/Home/Search?page=@(pejy+1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Next</a>
+											<a href="/Home/Search?page=@(pejy+1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Suiv.</a>
 										</div>
 									}
 								}
@@ -121,13 +132,13 @@
 									@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
 									{
 										<div>
-											<a href="/Home/MpandrayListe/@(pejy-1)">Next</a>
+											<a href="/Home/MpandrayListe/@(pejy-1)">Prec.</a>
 										</div>
 									}
 									else
 									{
 										<div>
-											<a href="/Home/Search?page=@(pejy-1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Next</a>
+											<a href="/Home/Search?page=@(pejy-1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Prec.</a>
 										</div>
 									}
 								}

@@ -26,17 +26,23 @@ namespace Adidy.Controllers
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
         private string name = "/Home";
 
-        public async Task<IActionResult> DataToPdf()
+        public async Task<IActionResult> PaiementAdidyToPdf(DateTime debut,DateTime fin)
         {
-            return await Task.Run(() =>
+            ViewData["data"] = await paiementAdidyService.GetByDate(debut,fin);
+            var t = new ViewAsPdf()
             {
-                var t = new ViewAsPdf("Index")
-                {
-                    ViewName = "Index"
-                };
-                return t;
-            });
+                ViewName = "PaiementAdidyPdf",
+                FileName = $"Adidy - {debut.Year}/{debut.Month}/{debut.Day} - {fin.Year}/{fin.Month}/{fin.Day}.pdf",
+                ViewData = ViewData
+            };
+            return t;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ExportData(DateTime debut,DateTime fin)
+        {
+            return await PaiementAdidyToPdf(debut, fin);
+		}
 
         public IActionResult Index()
         {
