@@ -195,7 +195,7 @@ namespace Adidy.Controllers
             bool checkDroit = await droitUtilisateurService.CheckDroit(user!.Idutilisateur, pageName);
             if (!checkDroit)
             {
-                TempData["error"] = "Seul les administrateurs peuve acceder a cette page";
+                TempData["error"] = "Seul les administrateurs peuvent acceder a cette page";
                 throw new Exception();
             }
         }

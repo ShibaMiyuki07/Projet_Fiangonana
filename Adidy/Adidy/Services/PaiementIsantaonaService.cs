@@ -22,7 +22,6 @@ namespace Adidy.Services
             await fiangonanaContext.AddAsync(paiementIsantaona);
             await fiangonanaContext.SaveChangesAsync();
         }
-
         public async Task<IEnumerable<PaiementIsantaona>> GetByDate(DateTime debut,DateTime fin)
         {
             return await fiangonanaContext.PaiementIsantaonas.Where(p => p.Dateheurepaiemet >= debut && p.Dateheurepaiemet <= fin).ToListAsync();
