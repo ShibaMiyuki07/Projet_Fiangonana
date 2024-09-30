@@ -30,6 +30,7 @@ namespace Adidy.Controllers
         {
             return await Task.Run(() =>
             {
+                TempData["error"] = "test";
                 var t = new ViewAsPdf("Index")
                 {
                     ViewName = "Index"
