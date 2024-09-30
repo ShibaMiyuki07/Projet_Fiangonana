@@ -30,7 +30,6 @@ namespace Adidy.Controllers
         {
             return await Task.Run(() =>
             {
-                TempData["error"] = "test";
                 var t = new ViewAsPdf("Index")
                 {
                     ViewName = "Index"
@@ -85,7 +84,8 @@ namespace Adidy.Controllers
                 page = 1;
             }
             IEnumerable<Mpandray> resultat = await MpandrayService.Search(page, tosearch);
-            ViewData["liste"] = resultat;
+			ViewData["context"] = httpContextAccessor;
+			ViewData["liste"] = resultat;
             ViewData["page"] = page;
             string currentLink = Request.Path.ToString();
             ViewData["link"] = currentLink;
@@ -113,6 +113,7 @@ namespace Adidy.Controllers
                 page = 1;
             }
             liste_mpandray = await MpandrayService.MpandraysPaginate(page);
+            ViewData["context"] = httpContextAccessor;
             ViewData["page"] = page;
             ViewData["liste"] = liste_mpandray;
             string currentLink = Request.Path.ToString();

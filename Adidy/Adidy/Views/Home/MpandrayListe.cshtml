@@ -4,11 +4,20 @@
 	int pejy = (int)ViewData["page"]!;
 	string query = (string)ViewData["query"]!;
 	List<Tuple<int, string>> mois = Constante.mois;
+	IHttpContextAccessor httpContextAccessor = (IHttpContextAccessor)ViewData["context"]!;
 }
 <!doctype html>
 <html lang="fr">
 <head>
-	<title>Table 01</title>
+	
+	@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
+	{
+		<title>Mpandray - Page @pejy</title>
+	}
+	else
+	{
+		<title>Resultats : "@httpContextAccessor.HttpContext.Request.Query["tosearch"]" - Page @pejy</title>
+	}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,19 +27,23 @@
 
 	<link rel="stylesheet" href="~/css/search.css">
 
+	<link rel="stylesheet" href="~/css/bootstrap.min.css"/>
+
 </head>
 <body>
-	<div class="forms">
-		<form class="searchForms" action="/Home/Search" method="get">
-			<div>
-				<input type="text" name="tosearch" /><input type="submit" value="rechercher" />
-			</div>
-		</form>
+	<div class="row">
+		<div class="forms">
+			<form class="searchForms" action="/Home/Search" method="get">
+				<div>
+					<input type="text" name="tosearch" /><button>Rechercher</button>
+				</div>
+			</form>
+		</div>
 	</div>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="table-wrap">
 						<table class="table">
 							<thead class="thead-primary">
@@ -79,10 +92,47 @@
 								}
 								else
 								{
-									<td colspan="4">Tsy misy mpandray intsony</td>
+									<tr>
+										<td colspan="5">Tsy misy mpandray intsony</td>
+									</tr>
+									
 								}
 							</tbody>
 						</table>
+						<div>
+							<div>
+								@if(liste_mpandray!.Any() && liste_mpandray!.Count() == 20)
+								{
+									@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
+									{
+										<div>
+											<a href="/Home/MpandrayListe/@(pejy+1)">Next</a>
+										</div>
+									}
+									else
+									{
+										<div>
+											<a href="/Home/Search?page=@(pejy+1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Next</a>
+										</div>
+									}
+								}
+								@if(pejy >1)
+								{
+									@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
+									{
+										<div>
+											<a href="/Home/MpandrayListe/@(pejy-1)">Next</a>
+										</div>
+									}
+									else
+									{
+										<div>
+											<a href="/Home/Search?page=@(pejy-1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Next</a>
+										</div>
+									}
+								}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
