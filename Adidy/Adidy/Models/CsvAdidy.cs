@@ -1,27 +1,37 @@
 ﻿using Adidy.Utils;
+using CsvHelper.Configuration.Attributes;
 using Modele;
 
 namespace Adidy.Models
 {
     public class CsvAdidy
     {
+        [Name("Daty")]
         public string? Daty { get; set; }
 
-        public string Numero { get; set; } = string.Empty;
+		[Name("Numero")]
+		public string Numero { get; set; } = string.Empty;
 
-        public string? Anarana { get; set; }
+		[Name("Anarana")]
+		public string? Anarana { get; set; }
 
-        public string Ikt { get; set; } = string.Empty;
+		[Name("IKT")]
+		public string Ikt { get; set; } = string.Empty;
 
-        public string Adidy { get; set; } = string.Empty;
+		[Name("Adidy")]
+		public string Adidy { get; set; } = string.Empty;
 
-        public string MoisDebut { get; set; } = string.Empty;
+		[Name("MoisDebut")]
+		public string MoisDebut { get; set; } = string.Empty;
 
-        public int AnneeDebut { get; set; }
+		[Name("AnneeDebut")]
+		public int AnneeDebut { get; set; }
 
-        public string MoisFin { get; set; } = string.Empty;
+		[Name("MoisFin")]
+		public string MoisFin { get; set; } = string.Empty;
 
-        public int AnneeFin { get; set; }
+		[Name("AnneeFin")]
+		public int AnneeFin { get; set; }
 
 
 

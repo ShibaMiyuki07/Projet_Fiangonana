@@ -1,0 +1,13 @@
+D:\Projet\Adidy\Modele\bin\Release\net8.0\Modele.deps.json
+D:\Projet\Adidy\Modele\bin\Release\net8.0\Modele.dll
+D:\Projet\Adidy\Modele\bin\Release\net8.0\Modele.pdb
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.csproj.AssemblyReference.cache
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.AssemblyInfoInputs.cache
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.AssemblyInfo.cs
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.csproj.CoreCompileInputs.cache
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.sourcelink.json
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.dll
+D:\Projet\Adidy\Modele\obj\Release\net8.0\refint\Modele.dll
+D:\Projet\Adidy\Modele\obj\Release\net8.0\Modele.pdb
+D:\Projet\Adidy\Modele\obj\Release\net8.0\ref\Modele.dll

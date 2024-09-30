@@ -24,12 +24,12 @@
 			<tbody>
 				@if(adidy != null)
 				{
-					@foreach (var p in adidy)
+					@foreach (var p in adidy.OrderBy(p => p.Dateheurepaiemet))
 					{
 						<tr>
 							<td>@p.Dateheurepaiemet!.Value.Date  </td>
 							<td>@p.NumeroMpandray</td>
-							<td>@p.NumeroMpandrayNavigation!.Anarana - @p.NumeroMpandrayNavigation.Fanampiny</td>
+							<td>@p.NumeroMpandrayNavigation!.Anarana  @p.NumeroMpandrayNavigation.Fanampiny</td>
 							<td>@p.Montant</td>
 						</tr>
 					}
@@ -38,34 +38,32 @@
 				{
 					if(ikt.Any())
 					{
-						foreach(var item in ikt)
+						foreach (var item in ikt.OrderBy(p => p.Dateheurepaiemet))
 						{
 							<tr>
 								<td>@item.Dateheurepaiemet!.Value.Date  </td>
 								<td>@item.NumeroMpandray</td>
-							<td>@item.NumeroMpandrayNavigation!.Anarana - @item.NumeroMpandrayNavigation.Fanampiny</td>
+							<td>@item.NumeroMpandrayNavigation!.Anarana  @item.NumeroMpandrayNavigation.Fanampiny</td>
 								<td>@item.Montant</td>
 							</tr>
 						}
 				}
 			}
+			@if (adidy != null)
+			{
+				<tr style="background-color: rgb(228 240 245);">
+					<td colspan="3"></td>
+					<td>Total : <strong>@adidy.Sum(p => p.Montant) Ar</strong></td>
+				</tr>
+			}
+			@if (ikt != null)
+			{
+				<tr style=" background-color: rgb(228 240 245);">
+					<td colspan="3"></td>
+					<td>Total : <strong>@ikt.Sum(p => p.Montant) Ar</strong></td>
+				</tr>
+			}
 			</tbody>
-			<tfoot>
-				@if(adidy != null)
-				{
-					<tr>
-						<td colspan="3"></td>
-						<td>Total : <strong>@adidy.Sum(p => p.Montant) Ar</strong></td>
-					</tr>
-				}
-				@if (ikt != null)
-				{
-					<tr>
-						<td colspan="3"></td>
-						<td>Total : <strong>@ikt.Sum(p => p.Montant) Ar</strong></td>
-					</tr>
-				}
-		</tfoot>
 		</table>
 	</body>
 </html>

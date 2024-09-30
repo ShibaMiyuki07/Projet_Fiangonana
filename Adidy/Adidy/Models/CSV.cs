@@ -10,10 +10,11 @@ namespace Data
 
         private readonly CsvConfiguration config = new(CultureInfo.InvariantCulture)
         {
-            PrepareHeaderForMatch = args => args.Header!.ToLower(),
-            MissingFieldFound = null,
-            HeaderValidated = null
-        };
+			PrepareHeaderForMatch = args => args.Header!.ToLower(),
+			MissingFieldFound = null,
+			HeaderValidated = null,
+            Delimiter = ";"
+		};
 
 
         public async Task<IEnumerable<T>> ImportFromIFormFile(IFormFile file)
@@ -29,6 +30,7 @@ namespace Data
                     var stream = file.OpenReadStream();
                     using (var reader = new StreamReader(stream))
                     {
+                        
                         line = await RetrieveCsv(reader);
                     }
 
@@ -48,7 +50,7 @@ namespace Data
             return await Task.Run(() =>
             {
                 var csv = new CsvReader(reader, config);
-                line = csv.GetRecords<T>().ToList();
+				line = csv.GetRecords<T>().ToList();
                 return line;
             });
         }
