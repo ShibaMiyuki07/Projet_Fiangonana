@@ -12,8 +12,7 @@ namespace Data
         {
 			PrepareHeaderForMatch = args => args.Header!.ToLower(),
 			MissingFieldFound = null,
-			HeaderValidated = null,
-            Delimiter = ";"
+			HeaderValidated = null
 		};
 
 
@@ -49,8 +48,17 @@ namespace Data
         {
             return await Task.Run(() =>
             {
-                var csv = new CsvReader(reader, config);
-				line = csv.GetRecords<T>().ToList();
+                try
+				{
+					var csv = new CsvReader(reader, config);
+					line = csv.GetRecords<T>().ToList();
+                }
+                catch
+                {
+                    config.Delimiter = ";";
+					var csv = new CsvReader(reader, config);
+					line = csv.GetRecords<T>().ToList();
+				}
                 return line;
             });
         }
