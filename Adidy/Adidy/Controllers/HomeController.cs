@@ -26,18 +26,33 @@ namespace Adidy.Controllers
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
         private string name = "/Home";
 
-        public async Task<IActionResult> DataToPdf()
+        public async Task<IActionResult> PaiementToPdf(DateTime debut,DateTime fin,int type)
         {
-            return await Task.Run(() =>
+            if(type == 0)
             {
-                TempData["error"] = "test";
-                var t = new ViewAsPdf("Index")
-                {
-                    ViewName = "Index"
-                };
-                return t;
-            });
+				ViewData["adidy"] = await paiementAdidyService.GetByDate(debut, fin);
+				ViewData["title"] = $"Adidy - {debut.Year}/{debut.Month}/{debut.Day} - {fin.Year}/{fin.Month}/{fin.Day}";
+			}
+            else
+            {
+				ViewData["ikt"] = await paiementIsantaonaService.GetByDate(debut, fin);
+				ViewData["title"] = $"IKT - {debut.Year}/{debut.Month}/{debut.Day} - {fin.Year}/{fin.Month}/{fin.Day}";
+			}
+            var t = new ViewAsPdf()
+            {
+                ViewName = "PaiementAdidyPdf",
+                FileName = $"{ViewData["title"]}.pdf",
+                ViewData = ViewData
+            };
+            return t;
+            //return View("PaiementAdidyPdf");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ExportData(DateTime debut,DateTime fin,int type)
+        {
+            return await PaiementToPdf(debut, fin,type);
+		}
 
         public IActionResult Index()
         {
@@ -85,7 +100,8 @@ namespace Adidy.Controllers
                 page = 1;
             }
             IEnumerable<Mpandray> resultat = await MpandrayService.Search(page, tosearch);
-            ViewData["liste"] = resultat;
+			ViewData["context"] = httpContextAccessor;
+			ViewData["liste"] = resultat;
             ViewData["page"] = page;
             string currentLink = Request.Path.ToString();
             ViewData["link"] = currentLink;
@@ -113,6 +129,7 @@ namespace Adidy.Controllers
                 page = 1;
             }
             liste_mpandray = await MpandrayService.MpandraysPaginate(page);
+            ViewData["context"] = httpContextAccessor;
             ViewData["page"] = page;
             ViewData["liste"] = liste_mpandray;
             string currentLink = Request.Path.ToString();

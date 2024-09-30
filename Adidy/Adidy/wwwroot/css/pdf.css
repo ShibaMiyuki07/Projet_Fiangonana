@@ -1,0 +1,15 @@
+﻿table {
+    width: 100%;
+    text-align: center;
+    border-color : grey;
+}
+
+th,td{
+    padding-top : 10px;
+
+}
+tfoot > tr {
+    background-color: rgb(228 240 245);
+}
+
+

@@ -9,5 +9,7 @@ namespace Adidy.Services.Interface
         public Task<IEnumerable<PaiementAdidy>> GetPaiementByNumeroMpandray(int numero);
 
         public Task AddPaiement(PaiementAdidy paiementAdidy);
+
+        public Task<IEnumerable<PaiementAdidy>> GetByDate(DateTime debut, DateTime fin);
     }
 }
