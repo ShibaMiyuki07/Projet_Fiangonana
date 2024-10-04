@@ -1,2 +1,4 @@
 
 *.vsidx
+/Adidy/Adidy/bin/Release
+/Adidy/Adidy/obj/Release

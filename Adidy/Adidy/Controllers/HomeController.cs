@@ -1,5 +1,6 @@
 using Adidy.Exceptions;
 using Adidy.Models;
+using Adidy.Services;
 using Adidy.Services.Interface;
 using Adidy.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -107,7 +108,8 @@ namespace Adidy.Controllers
             ViewData["link"] = currentLink;
 
             ViewData["query"] = tosearch;
-            return View("MpandrayListe");
+			ViewData["droits"] = await droitUtilisateurService.DroitUtilisateursByIdUtilisateur(getUserFromSession().Idutilisateur);
+			return View("MpandrayListe");
         }
 
         [HttpGet("/Home/MpandrayListe/{page}")]
@@ -134,6 +136,7 @@ namespace Adidy.Controllers
             ViewData["liste"] = liste_mpandray;
             string currentLink = Request.Path.ToString();
             ViewData["link"] = currentLink;
+            ViewData["droits"] = await droitUtilisateurService.DroitUtilisateursByIdUtilisateur(getUserFromSession().Idutilisateur);
             return View();
         }
 
@@ -179,14 +182,14 @@ namespace Adidy.Controllers
         [HttpGet("/Home/Ajout")]
         public async Task<IActionResult> MpandrayAjout()
         {
-            string pageName = name + "Ajout";
+            string pageName = name + "/Ajout";
 			try
 			{
 				await Autorisation(pageName);
 			}
 			catch
 			{
-				return RedirectToAction("Details", "Home");
+				return RedirectToAction("Error", "Home");
 			}
 			return await Task.Run(() =>
                 {
@@ -300,6 +303,12 @@ namespace Adidy.Controllers
 				TempData["error"] = "Vous n'avez pas les droits requis. Consultez un administrateur.";
 				throw new Exception();
 			}
+		}
+
+        public Utilisateur getUserFromSession()
+        {
+            return(Utilisateur) JsonConvert.DeserializeObject<Utilisateur>(httpContextAccessor.HttpContext!.Session.GetString("user")!)!;
+
 		}
     }
 }

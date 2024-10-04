@@ -48,7 +48,10 @@
 								}
 							</tbody>
 						</table>
-						<div><a href="/Home/UtilisateurListe">Next</a></div>
+						@if(liste_utilisateur.Any() && liste_utilisateur.Count()==20)
+						{
+							<div><a href="/Home/UtilisateurListe">Next</a></div>
+						}
 					</div>
 				</div>
 			</div>

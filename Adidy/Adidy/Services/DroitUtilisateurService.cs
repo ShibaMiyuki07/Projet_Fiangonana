@@ -17,7 +17,8 @@ namespace Adidy.Services
 
         public async Task Delete(DroitUtilisateur droitUtilisateur)
         {
-            context.Remove(droitUtilisateur);
+            droitUtilisateur = context.DroitUtilisateurs.Where(d => d.Idutilisateur == droitUtilisateur.Idutilisateur && d.Iddroit == droitUtilisateur.Iddroit && d.Isvalid == true).FirstOrDefault()!;
+			context.Remove(droitUtilisateur);
             await context.SaveChangesAsync();
         }
 

@@ -1,44 +1,38 @@
-﻿@{
-    string? erreur = (string?)ViewData["error"];
-}
-
-<html>
-	<head>
-        <title>Mpandray vaovao</title>
-	</head>
-	<body>
-    @if(!string.IsNullOrEmpty(erreur))
-    {
-        <div>@erreur</div>
-    }
-    <div class="formulaire">
-        <form method="post" action="/Home/Ajout">
-            <div>
-                Numero Mpandray :
-                <input type="number" name="numero" />
-            </div>
-            <div>
-                Anarana :
-                <input type="text" name="anarana" />
-            </div>
-            <div>
-                Fanampiny :
-                <input type="text" name="fanampiny"  />
-            </div>
-            <div>
-                Fonenana :
-                <input type="text" name="fonenana"  />
-            </div>
-            <div>
-                Fokontany :
-                <input type="text" name="fokontany"  />
-            </div>
-            <div>
-                Numero Telephone :
-                <input type="text" name="tel" />
-            </div>
-            <button type="submit">Ajouter</button>
-        </form>
+﻿<html>
+<head>
+    <link rel="stylesheet" href="~/css/MpandrayVavao.css">
+</head>
+<body>
+    <div style="padding-top: 0;padding-left: 0;">
+        <a href="/Home/MpandrayListe/1">Retour</a>
     </div>
-	</body>
+    <div style="align-self: center;">
+        <h2>Mpandray vaovao</h2>
+    </div>
+    <div class="container">
+        <div class="cta-form">
+            <form action="/Home/Ajout" method="post" class="form">
+
+                <input type="number" placeholder="Numero mpandray" class="form__input" id="numero" name="numero" />
+                <label for="name" class="form__label">Numero mpandray</label>
+
+                <input type="text" placeholder="Anarana" class="form__input" id="anarana" name="anarana" />
+                <label for="email" class="form__label">Anarana</label>
+
+                <input type="text" placeholder="Fanampiny" class="form__input" id="fanampiny" name="fanampiny" />
+                <label for="subject" class="form__label">Fanampiny</label>
+
+                <input type="text" placeholder="Fonenana" class="form__input" id="fonenana" name="fonenana" />
+                <label for="subject" class="form__label">Fonenana</label>
+
+                <input type="text" placeholder="Fokontany" class="form__input" id="fokontany" name="fokontany" />
+                <label for="subject" class="form__label">Fokontany</label>
+
+                <input type="text" placeholder="Numero telephone" class="form__input" id="tel" name="tel" />
+                <label for="subject" class="form__label">Numero telephone</label>
+
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+</body>
 </html>

@@ -5,6 +5,7 @@
 	string query = (string)ViewData["query"]!;
 	List<Tuple<int, string>> mois = Constante.mois;
 	IHttpContextAccessor httpContextAccessor = (IHttpContextAccessor)ViewData["context"]!;
+	IEnumerable<DroitUtilisateur> droits = (IEnumerable<DroitUtilisateur>)ViewData["droits"]!;
 }
 <!doctype html>
 <html lang="fr">
@@ -29,19 +30,51 @@
 
 	<link rel="stylesheet" href="~/css/bootstrap.min.css"/>
 
+	<link rel="stylesheet" href="~/css/MpandrayDetails.css" />
+
+	<link rel="stylesheet" href="~/css/menu.css" />
+
 </head>
 <body>
 	<div class="header">
+		<div>
+			<nav role="navigation">
+				<div id="menuToggle">
+					<input type="checkbox" />
+					<span></span>
+					<span></span>
+					<span></span>
+					<ul id="menu">
+						<a href="/Home/MpandrayListe/1"><li>Home</li></a>
+						@if(droits.Where(t => t.IddroitNavigation!.Typedroit == "/Home/Ajout" ).FirstOrDefault() != null)
+						{
+							<a href="/Home/Ajout"><li>Mpandray vaovao</li></a>
+						}
+						@if (droits.Where(t => t.IddroitNavigation!.Typedroit == "/Admin/ImportData").FirstOrDefault() != null)
+						{
+							<a href="/Admin/ImportData"><li>Import</li></a>
+						}
+						@if (droits.Where(t => t.IddroitNavigation!.Typedroit == "/Admin/UtilisateurListe").FirstOrDefault() != null)
+						{
+							<a href="/Admin/UtilisateurListe">
+							<li>Utilisateur</li></a>
+						}
+						
+						
+					</ul>
+				</div>
+			</nav>
+		</div>
 		<div class="export">
 			<form action="/Home/ExportData" method="post">
 				<div>
-					<input type="date" name="debut" />
+					<input style="height:35px;" type="date" name="debut" />
 				</div>
 				<div>
-					<input type="date" name="fin" />
+					<input style="height:35px;" type="date" name="fin" />
 				</div>
 				<div>
-					<select name="type">
+					<select style="height:35px;" name="type">
 						@for(int i=0;i<Constante.type_adidy.Count;i++)
 						{
 							<option value="@i">@Constante.type_adidy[i]</option>
@@ -119,23 +152,8 @@
 							</tbody>
 						</table>
 						<div>
-							<div>
-								@if(liste_mpandray!.Any() && liste_mpandray!.Count() == 20)
-								{
-									@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
-									{
-										<div>
-											<a href="/Home/MpandrayListe/@(pejy+1)">Suiv.</a>
-										</div>
-									}
-									else
-									{
-										<div>
-											<a href="/Home/Search?page=@(pejy+1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Suiv.</a>
-										</div>
-									}
-								}
-								@if(pejy >1)
+							<div class="details">
+								@if (pejy > 1)
 								{
 									@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
 									{
@@ -146,10 +164,26 @@
 									else
 									{
 										<div>
-											<a href="/Home/Search?page=@(pejy-1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Prec.</a>
+											<a href="/Home/Search?page=@(pejy-1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]"> Prec.</a>
 										</div>
 									}
 								}
+								@if(liste_mpandray!.Any() && liste_mpandray!.Count() == 20)
+								{
+									@if (httpContextAccessor.HttpContext!.Request.Query.Count == 0)
+									{
+										<div class="children">
+											<a href="/Home/MpandrayListe/@(pejy+1)">Suiv.</a>
+										</div>
+									}
+									else
+									{
+										<div class="childer">
+											<a href="/Home/Search?page=@(pejy+1)&tosearch=@httpContextAccessor.HttpContext.Request.Query["tosearch"]">Suiv.</a>
+										</div>
+									}
+								}
+								
 							</div>
 						</div>
 					</div>

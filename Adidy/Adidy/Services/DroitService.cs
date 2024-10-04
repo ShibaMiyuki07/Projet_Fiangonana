@@ -1,14 +1,16 @@
 ﻿using Adidy.Contexts;
 using Adidy.Exceptions;
+using Adidy.Log.Interface;
 using Adidy.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 using Modele;
 
 namespace Adidy.Services
 {
-    public class DroitService(FiangonanaContext context) : IDroitService
+    public class DroitService(FiangonanaContext context,ILoggerManager logger) : IDroitService
     {
         private readonly FiangonanaContext context = context;
+        private readonly ILoggerManager logger = logger;
 
         public async Task<IEnumerable<Droit>> GetAllDroit()
         {
@@ -17,6 +19,7 @@ namespace Adidy.Services
 
         public async Task<IEnumerable<Droit>> DroitNotInUtilisateur(Utilisateur? user)
         {
+            logger.LogInfo("test log");
             if (user == null)
                 throw new UtilisateurNotExistException();
 

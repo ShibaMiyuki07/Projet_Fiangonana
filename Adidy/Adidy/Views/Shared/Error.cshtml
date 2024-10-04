@@ -13,5 +13,5 @@
     </p>
 }
 <p>
-    @(TempData["error"]??"Erreur inconnu"). Veuillez reesayer. Si le probleme persiste, contactez un administrateur.
+    <strong>@(TempData["error"] ?? "Erreur inconnu")</strong>. Veuillez reesayer. Si le probleme persiste, contactez un administrateur.
 </p>

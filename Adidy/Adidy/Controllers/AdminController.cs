@@ -1,4 +1,5 @@
-﻿using Adidy.Models;
+﻿using Adidy.Log.Interface;
+using Adidy.Models;
 using Adidy.Services.Interface;
 using Data;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +16,8 @@ namespace Adidy.Controllers
         IPaiementIsantaonaService paiementIsantaonaService,
         IDroitService droitService,
         IDroitUtilisateurService droitUtilisateurService,
-        IHttpContextAccessor httpContextAccessor) : Controller
+        IHttpContextAccessor httpContextAccessor,
+        ILoggerManager logger) : Controller
     {
         private readonly IUtilisateurService utilisateurService = utilisateur;
         private readonly IHttpContextAccessor httpContextAccessor = httpContextAccessor;
@@ -24,6 +26,7 @@ namespace Adidy.Controllers
         private readonly IPaiementIsantaonaService paiementIsantaonaService = paiementIsantaonaService;
         private readonly IDroitService droitService = droitService;
         private readonly IDroitUtilisateurService droitUtilisateurService = droitUtilisateurService;
+        private readonly ILoggerManager loggerManager = logger;
         const string name = "/Admin";
 
 
@@ -79,6 +82,7 @@ namespace Adidy.Controllers
         [HttpPost]
         public async Task<IActionResult> Import(ImportCsv data)
         {
+            string[] delimiters = [",",";"];
             try
             {
                 if (!Path.GetExtension(data.File!.FileName).Contains("csv", StringComparison.CurrentCultureIgnoreCase))
@@ -88,25 +92,44 @@ namespace Adidy.Controllers
                 }
                 if (Constante.toImport[data.DataType - 1].Item2.Equals("mpandray", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File);
-                    await mpandrayService.BulkInsert(liste_mpandray);
+
+                    foreach(var item in delimiters)
+                    {
+                        try
+                        {
+                            IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File,item);
+                            await mpandrayService.BulkInsert(liste_mpandray);
+                        }
+                        catch{}
+                    }
                 }
                 else
                 {
-                    IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
-                    IEnumerable<PaiementAdidy> liste_paiement_adidy = await CsvAdidy.CsvToPaiement(liste_adidy);
-                    IEnumerable<PaiementIsantaona> liste_paiement_isantaona = await CsvAdidy.CsvToPaiementIsantaona(liste_adidy);
-                    ViewData["PaiementAdidy"] = liste_paiement_adidy;
-                    ViewData["PaiementIsantaona"] = liste_paiement_isantaona;
-                    ViewData["type"] = Constante.toImport;
-                    await paiementAdidyService.BulkInsert(liste_paiement_adidy);
-                    await paiementIsantaonaService.BulkInsert(liste_paiement_isantaona);
-                    return View();
+                    foreach(var item in delimiters)
+                    {
+                        try{
+                            loggerManager.LogInfo("Debut import");
+                            IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File,item);
+                            loggerManager.LogInfo("fin import csv adidy");
+                            IEnumerable<PaiementAdidy> liste_paiement_adidy = await CsvAdidy.CsvToPaiement(liste_adidy);
+                            loggerManager.LogInfo("fin import adidy");
+                            IEnumerable<PaiementIsantaona> liste_paiement_isantaona = await CsvAdidy.CsvToPaiementIsantaona(liste_adidy);
+                            loggerManager.LogInfo("fin import ikt");
+                            ViewData["PaiementAdidy"] = liste_paiement_adidy;
+                            ViewData["PaiementIsantaona"] = liste_paiement_isantaona;
+                            ViewData["type"] = Constante.toImport;
+                            await paiementAdidyService.BulkInsert(liste_paiement_adidy);
+                            await paiementIsantaonaService.BulkInsert(liste_paiement_isantaona);
+                            return View();
+                        }
+                        catch{}
+                    }
                 }
                 return RedirectToAction("ImportData", "Admin");
             }
             catch (Exception ex)
             {
+                loggerManager.LogError($"{ex.StackTrace}");
                 TempData["error"] = ex.Message;
                 return RedirectToAction("Error", "Home");
             }
@@ -114,7 +137,16 @@ namespace Adidy.Controllers
 
         public async Task<IActionResult> UtilisateurListe()
         {
-            IEnumerable<Utilisateur> liste_utilisateur = await utilisateurService.GetAllUtilisateur();
+            string pageName = name+"/UtilisateurListe";
+			try
+			{
+				await Autorisation(pageName);
+			}
+			catch
+			{
+				return RedirectToAction("Index", "Home");
+			}
+			IEnumerable<Utilisateur> liste_utilisateur = await utilisateurService.GetAllUtilisateur();
             ViewData["liste_utilisateur"] = liste_utilisateur;
             return View();
         }

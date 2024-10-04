@@ -1,0 +1,34 @@
+2024-10-05 00:00:36.2385|INFO|Adidy.Log.LoggerManager|Debut import
+2024-10-05 00:01:08.2863|ERROR|Adidy.Log.LoggerManager|   at CsvHelper.Expressions.ObjectRecordCreator.CreateCreateRecordDelegate(Type recordType)
+   at CsvHelper.Expressions.RecordCreator.GetCreateRecordDelegate[T](Type recordType)
+   at CsvHelper.Expressions.RecordManager.GetReadDelegate[T](Type recordType)
+   at CsvHelper.CsvReader.GetRecords[T]()+MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Data.CSV`1.<>c__DisplayClass2_0.<RetrieveCsv>b__0() in d:\Projet\Adidy\Adidy\Models\CSV.cs:line 54
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Data.CSV`1.RetrieveCsv(Stream stream, String delimiter) in d:\Projet\Adidy\Adidy\Models\CSV.cs:line 39
+   at Data.CSV`1.<>c__DisplayClass1_0.<<ImportFromIFormFile>b__0>d.MoveNext() in d:\Projet\Adidy\Adidy\Models\CSV.cs:line 24
+--- End of stack trace from previous location ---
+   at Data.CSV`1.ImportFromIFormFile(IFormFile file, String delimiter) in d:\Projet\Adidy\Adidy\Models\CSV.cs:line 15
+   at Adidy.Controllers.AdminController.Import(ImportCsv data) in d:\Projet\Adidy\Adidy\Controllers\AdminController.cs:line 111
+2024-10-05 00:02:28.5081|INFO|Adidy.Log.LoggerManager|Debut import
+2024-10-05 00:02:37.3571|INFO|Adidy.Log.LoggerManager|Debut import
+2024-10-05 00:02:53.7565|INFO|Adidy.Log.LoggerManager|fin import csv adidy
+2024-10-05 00:02:53.7565|INFO|Adidy.Log.LoggerManager|fin import adidy
+2024-10-05 00:02:53.7565|INFO|Adidy.Log.LoggerManager|fin import ikt
+2024-10-05 00:05:16.3889|INFO|Adidy.Log.LoggerManager|Debut import
+2024-10-05 00:05:21.5254|INFO|Adidy.Log.LoggerManager|Debut import
+2024-10-05 00:05:21.5254|INFO|Adidy.Log.LoggerManager|fin import csv adidy
+2024-10-05 00:05:21.5254|INFO|Adidy.Log.LoggerManager|fin import adidy
+2024-10-05 00:05:21.5254|INFO|Adidy.Log.LoggerManager|fin import ikt
+2024-10-05 00:07:04.5730|INFO|Adidy.Log.LoggerManager|Debut import
+2024-10-05 00:07:04.5846|INFO|Adidy.Log.LoggerManager|Debut import
+2024-10-05 00:07:04.5846|INFO|Adidy.Log.LoggerManager|fin import csv adidy
+2024-10-05 00:07:04.5846|INFO|Adidy.Log.LoggerManager|fin import adidy
+2024-10-05 00:07:04.5846|INFO|Adidy.Log.LoggerManager|fin import ikt

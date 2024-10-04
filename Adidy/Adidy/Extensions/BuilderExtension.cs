@@ -14,9 +14,9 @@ namespace Adidy.Extensions
         {
             InjectServices(services);
             InjectBdd(services, configuration);
-            InjectLog(services);
-            LogManager.Setup().LoadConfigurationFromFile("./nlog.config");
-            return services;
+			InjectLog(services);
+			LogManager.Setup().LoadConfigurationFromFile("./nlog.config");
+			return services;
         }
         public static void InjectServices(this IServiceCollection services)
         {
