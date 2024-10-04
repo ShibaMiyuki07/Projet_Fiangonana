@@ -79,29 +79,37 @@ namespace Adidy.Controllers
         [HttpPost]
         public async Task<IActionResult> Import(ImportCsv data)
         {
-            if (!Path.GetExtension(data.File!.FileName).Contains("csv", StringComparison.CurrentCultureIgnoreCase))
+            try
             {
-                ViewData["Error"] = "Les donnees a enregistre doivent etre en csv";
-                return View("Import");
+                if (!Path.GetExtension(data.File!.FileName).Contains("csv", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    ViewData["Error"] = "Les donnees a enregistre doivent etre en csv";
+                    return View("Import");
+                }
+                if (Constante.toImport[data.DataType - 1].Item2.Equals("mpandray", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File);
+                    await mpandrayService.BulkInsert(liste_mpandray);
+                }
+                else
+                {
+                    IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
+                    IEnumerable<PaiementAdidy> liste_paiement_adidy = await CsvAdidy.CsvToPaiement(liste_adidy);
+                    IEnumerable<PaiementIsantaona> liste_paiement_isantaona = await CsvAdidy.CsvToPaiementIsantaona(liste_adidy);
+                    ViewData["PaiementAdidy"] = liste_paiement_adidy;
+                    ViewData["PaiementIsantaona"] = liste_paiement_isantaona;
+                    ViewData["type"] = Constante.toImport;
+                    await paiementAdidyService.BulkInsert(liste_paiement_adidy);
+                    await paiementIsantaonaService.BulkInsert(liste_paiement_isantaona);
+                    return View();
+                }
+                return RedirectToAction("ImportData", "Admin");
             }
-            if (Constante.toImport[data.DataType - 1].Item2.Equals("mpandray", StringComparison.CurrentCultureIgnoreCase))
+            catch (Exception ex)
             {
-                IEnumerable<Mpandray> liste_mpandray = await new CSV<Mpandray>().ImportFromIFormFile(data.File);
-                await mpandrayService.BulkInsert(liste_mpandray);
+                TempData["error"] = ex.Message;
+                return RedirectToAction("Error", "Home");
             }
-            else
-            {
-                IEnumerable<CsvAdidy> liste_adidy = await new CSV<CsvAdidy>().ImportFromIFormFile(data.File);
-                IEnumerable<PaiementAdidy> liste_paiement_adidy = await CsvAdidy.CsvToPaiement(liste_adidy);
-                IEnumerable<PaiementIsantaona> liste_paiement_isantaona = await CsvAdidy.CsvToPaiementIsantaona(liste_adidy);
-                ViewData["PaiementAdidy"] = liste_paiement_adidy;
-                ViewData["PaiementIsantaona"] = liste_paiement_isantaona;
-                ViewData["type"] = Constante.toImport;
-                await paiementAdidyService.BulkInsert(liste_paiement_adidy);
-                await paiementIsantaonaService.BulkInsert(liste_paiement_isantaona);
-                return View();
-            }
-            return RedirectToAction("ImportData", "Admin");
         }
 
         public async Task<IActionResult> UtilisateurListe()
