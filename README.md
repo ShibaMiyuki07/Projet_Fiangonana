@@ -51,4 +51,5 @@ dotnet run
 L'application sera accessible à : http://localhost:5000 ou https://localhost:5001
 
 📄 Licence
+-----------
 Ce projet est open-source sous licence MIT.
